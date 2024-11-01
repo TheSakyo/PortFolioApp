@@ -1,0 +1,12 @@
+<app-header #header></app-header>
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="header.currentSection === 'projects'">
+    <app-projects></app-projects>
+  </ng-container>
+  <ng-container *ngIf="header.currentSection === 'about'">
+    <app-about></app-about>
+  </ng-container>
+  <ng-container *ngIf="header.currentSection === 'contact'">
+    <app-contact></app-contact>
+  </ng-container>
+</ion-content>

@@ -1,0 +1,38 @@
+/* ********************* */
+/* Styles pour le Bouton */
+/* ********************* */
+
+// Styles modernes pour le bouton Dark/Light ('Sombre'/'Clair')
+ion-button {
+  --background: var(--toggle-mod-background); // Couleur de fond selon le mode
+  --color: var(--toggle-mod-text); // Couleur du texte selon le mode
+  --border-radius: 15px; // Bord arrondi pour un aspect circulaire
+  --box-shadow: var(--box-shadow); // Ombre par défaut
+  display: flex; // Flex pour centrer le contenu
+  align-items: center; // Alignement vertical
+  justify-content: center; // Alignement horizontal
+  margin: 20px 0; // Marge autour du bouton
+  transition: background 0.3s ease, transform 0.3s ease; // Transition douce
+  transform: scale(1.02); // Légère augmentation de la taille
+  
+  &:hover { 
+    
+    transform: scale(1); // Légère diminution de la taille à la taille normal au survol
+    --box-shadow: var(--box-shadow-hover); // Ombre au survol
+    --background: var(--toggle-mod-hover-background); // Couleur de fond au survol selon le mode
+    --color: var(--toggle-mod-hover-text); // Couleur du texte au survol selon le mode 
+  }
+}
+
+/* ***************************** */
+/* Styles pour l'icône du Bouton */
+/* ***************************** */
+
+// Style de rotation, de taille et d'espacement pour l'icône du bouton
+ion-icon {
+  font-size: 1.5rem; // Augmenter la taille des icônes pour une meilleure visibilité
+  margin-right: 8px; // Espacement entre l'icône et le texte
+
+  // Légère rotation de couleur au survol du bouton
+  ion-button:hover & { transform: rotate(20deg); }
+}

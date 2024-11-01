@@ -1,0 +1,259 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+//@import '@ionic/angular/css/palettes/dark.system.css';
+
+/* ---------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------------- */
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* *** ⬇️ Global Base Style ⬇️ *** */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+/* ********************************* */
+/* Styles pour les Cartes et Modales */
+/* ********************************* */
+
+/* Style de base pour les cartes */
+.card {
+    background-color: var(--background-color); // Couleur de fond de la carte
+    border: 1px solid var(--border-color); // Bordure de la carte
+    box-shadow: var(--box-shadow); // Ombre pour donner du relief
+    border-radius: var(--border-radius-md); // Coins arrondis
+    padding: var(--spacing-md); // Espace interne
+    transition: all var(--transition-normal); // Transition pour les effets au survol
+    position: relative; // Position relative pour les éléments enfants
+    overflow: hidden; // Pour cacher les débordements
+
+    /* Effets appliqués au survol de la carte */
+    &:hover {
+        box-shadow: var(--box-shadow-hover); // Ombre différente au survol
+        transform: translateY(-4px); // Décalage vers le haut au survol
+        border-color: var(--primary-color); // Changement de couleur de bordure au survol
+    }
+
+    /* Effet de gradient subtil au hover */
+    &::before {
+        content: ''; // Crée un pseudo-élément avant la carte
+        position: absolute; // Position absolue pour le pseudo-élément
+        top: 0; left: 0; right: 0; bottom: 0; // Couvre toute la carte
+        background: linear-gradient(45deg, transparent, var(--hover-background-color)); // Dégradé
+        opacity: 0; // Opacité initiale
+        transition: opacity var(--transition-normal); // Transition pour l'opacité
+    }
+
+    &:hover::before {
+        opacity: 1; // Opacité au survol
+    }
+}
+
+/* **************************** */
+/*    Styles pour les Modales   */
+/* **************************** */
+
+/* Style de base pour les modales */
+.modal {
+    background-color: var(--background-color); // Couleur de fond
+    border-radius: var(--border-radius-lg); // Coins arrondis
+    box-shadow: var(--box-shadow-hover); // Ombre
+    padding: var(--spacing-xl); // Espace interne
+    color: var(--text-color); // Couleur du texte
+    border: 1px solid var(--border-color); // Bordure
+    transition: all var(--transition-normal); // Transition
+
+    /* Effet de backdrop blur */
+    &::backdrop {
+        background: rgba(15, 23, 42, 0.75); // Couleur de fond semi-transparente
+        backdrop-filter: blur(4px); // Flou d'arrière-plan
+    }
+
+    /* État actif de la modale */
+    &.active {
+        opacity: 1; // Opacité pleine
+        transform: scale(1); // Échelle normale
+    }
+
+    /* État caché de la modale */
+    &.hidden {
+        opacity: 0; // Invisible
+        transform: scale(0.95); // Légère réduction de taille
+    }
+}
+
+/* **************************** */
+/*    Styles pour les Messages  */
+/* **************************** */
+
+/* Style de base pour les messages d'alerte et de succès */
+.alert, .success {
+    padding: var(--spacing-md); // Espace interne
+    border-radius: var(--border-radius-md); // Coins arrondis
+    margin: var(--spacing-sm) 0; // Marges verticale
+    font-weight: 500; // Épaisseur de la police
+    display: flex; // Disposition flexible
+    align-items: center; // Alignement vertical
+    gap: var(--spacing-sm); // Espace entre les éléments
+    border: 1px solid transparent; // Bordure par défaut
+}
+
+/* Style spécifique pour les alertes */
+.alert {
+    background-color: rgba(239, 68, 68, 0.1); // Couleur de fond pour l'alerte
+    color: var(--accent-danger); // Couleur du texte
+    border-color: rgba(239, 68, 68, 0.2); // Bordure pour l'alerte
+}
+
+/* Style spécifique pour les messages de succès */
+.success {
+    background-color: rgba(16, 185, 129, 0.1); // Couleur de fond pour le succès
+    color: var(--accent-success); // Couleur du texte
+    border-color: rgba(16, 185, 129, 0.2); // Bordure pour le succès
+}
+
+/* *************************** */
+/*    Styles pour les Input    */
+/* *************************** */
+
+/* Style pour les champs de saisie de texte, email et mot de passe */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%; // Prend toute la largeur
+    padding: var(--spacing-sm); // Espace interne
+    margin-top: var(--spacing-xs); // Marges supérieures
+    border: 2px solid var(--border-color); // Bordure
+    border-radius: var(--border-radius-md); // Coins arrondis
+    background-color: var(--background-color); // Couleur de fond
+    color: var(--text-color); // Couleur du texte
+    font-size: var(--font-size-base); // Taille de police
+    transition: all var(--transition-normal); // Transition
+
+    /* État lorsque le champ est en focus */
+    &:focus {
+        outline: none; // Pas de contour par défaut
+        border-color: var(--primary-color); // Changement de couleur de bordure
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); // Ombre d'accentuation
+        background-color: var(--hover-background-color); // Changement de couleur de fond
+    }
+
+    /* Style du placeholder */
+    &::placeholder {
+        color: var(--secondary-color); // Couleur du texte du placeholder
+        opacity: 0.7; // Opacité pour le placeholder
+    }
+}
+
+/* **************************** */
+/*    Styles pour les Boutons   */
+/* **************************** */
+
+/* Style de base pour les boutons */
+.btn {
+    background-color: var(--primary-color); // Couleur de fond
+    color: white; // Couleur du texte
+    padding: var(--spacing-sm) var(--spacing-lg); // Espacement interne
+    border: none; // Pas de bordure par défaut
+    border-radius: var(--border-radius-md); // Coins arrondis
+    font-weight: 500; // Épaisseur de la police
+    font-size: var(--font-size-base); // Taille de police
+    cursor: pointer; // Curseur de pointeur
+    transition: all var(--transition-normal); // Transition
+    position: relative; // Position relative
+    overflow: hidden; // Pour cacher les débordements
+
+    /* Effet de brillance au hover */
+    &::before {
+        content: ''; // Pseudo-élément pour l'effet
+        position: absolute; // Position absolue
+        top: 0; left: -100%; // Commence hors du bouton
+        width: 100%; height: 100%; // Couvre tout le bouton
+        background: linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 100%
+        ); // Dégradé
+        transition: left 0.5s; // Transition pour le déplacement
+    }
+
+    /* Effets au survol du bouton */
+    &:hover {
+        background-color: var(--hover-color); // Changement de couleur de fond
+        transform: translateY(-2px); // Légère élévation
+        box-shadow: var(--box-shadow); // Ombre
+
+        &::before {
+            left: 100%; // Déplace le pseudo-élément vers la droite
+        }
+    }
+
+    /* Effets lorsque le bouton est cliqué */
+    &:active {
+        transform: translateY(1px); // Décalage vers le bas
+        background-color: var(--hover-color); // Maintient la couleur de survol
+    }
+
+    /* Variante secondaire */
+    &.btn-secondary {
+        background-color: transparent; // Fond transparent
+        border: 2px solid var(--primary-color); // Bordure
+        color: var(--primary-color); // Couleur du texte
+
+        &:hover {
+            background-color: var(--hover-background-color); // Changement de fond au survol
+            color: var(--hover-color); // Changement de couleur de texte
+            border-color: var(--hover-color); // Changement de bordure
+        }
+    }
+
+    /* Variante outline */
+    &.btn-outline {
+        background-color: transparent; // Fond transparent
+        border: 2px solid var(--border-color); // Bordure
+        color: var(--text-color); // Couleur du texte
+
+        &:hover {
+            border-color: var(--primary-color); // Changement de couleur de bordure
+            color: var(--primary-color); // Changement de couleur de texte
+            background-color: var(--hover-background-color); // Changement de fond au survol
+        }
+    }
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* *** ⬆️ Global Base Style ⬆️ *** */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

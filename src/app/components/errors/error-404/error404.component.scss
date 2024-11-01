@@ -1,0 +1,78 @@
+/* ************************** */
+/* Styles de la page d'erreur */
+/* ************************** */
+
+.error-page {
+    height: 100vh; /* Hauteur de la page d'erreur pour couvrir tout l'écran */
+    display: flex; /* Utilisation de flexbox pour centrer le contenu */
+    justify-content: center; /* Centrer horizontalement le contenu */
+    align-items: center; /* Centrer verticalement le contenu */
+    background: rgba(var(--background-color-rgb), 0.90); /* Application de la couleur de fond sombre définie par la variable */
+    color: var(--text-color); /* Application de la couleur du texte définie par la variable */
+    text-align: center; /* Centrer le texte à l'intérieur de la section */
+    font-family: 'Roboto', sans-serif; /* Définir la police de caractères utilisée */
+
+    /* **************************** */
+    /* Styles du conteneur d'erreur */
+    /* **************************** */
+
+    .error-container {
+        max-width: 50vw; /* Largeur maximale du conteneur pour une présentation agréable */
+        background: var(--container-background); /* Application de la couleur de fond gris foncé définie par la variable */
+        padding: 2.5rem; /* Espacement intérieur pour le confort visuel */
+        border-radius: 20px; /* Coins arrondis pour un effet moderne */
+        box-shadow: 0 0 30px var(--shadow-light), 0 0 60px var(--shadow-color); /* Ombres lumineuses pour un effet de profondeur */
+    }
+
+    /* ********************************* */
+    /* Styles du titre et section <span> */
+    /* ********************************* */
+
+    h1, span {
+        color: var(--accent-danger); /* Couleur du texte du titre */
+        font-size: 4rem; /* Taille de la police pour le titre principal */
+        margin-bottom: 1rem; /* Espacement en bas du titre */
+        text-shadow: 0 1px 0 #ec2020, 0 2px 0 #bf1c1c, 0 3px 0 #921111, 0 4px 0 #a91212, 0 5px 0 #921313, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+    }
+
+    span {
+        font-size: 1.3rem; /* Taille de la police pour le texte <span> */
+    }
+
+    /* ************************** */
+    /* Styles du message d'erreur */
+    /* ************************** */
+
+    .error-message {
+        font-size: 1.5rem; /* Taille de la police pour le message d'erreur */
+        font-weight: bold; /* Met le texte du bouton en gras */
+        margin-bottom: 1rem; /* Espacement en bas du message d'erreur */
+    }
+
+    /* ****************************** */
+    /* Styles des détails de l'erreur */
+    /* ****************************** */
+
+    .error-details {
+        font-size: 1.2rem; /* Taille de la police pour les détails supplémentaires */
+        margin-bottom: 2rem; /* Espacement en bas des détails */
+    }
+
+    /* **************** */
+    /* Styles du bouton */
+    /* **************** */
+
+    ion-button {
+        --background: var(--primary-color); /* Couleur de fond */
+        --color: white; /* Couleur du texte du bouton */
+        width: 95%;
+        font-weight: bold; /* Met le texte du bouton en gras */
+        border-radius: 25px; /* Arrondi des coins du bouton */
+        transition: transform 0.3s ease; /* Transition douce pour les effets de transformation */
+        margin-bottom: 2rem; /* Espacement en bas du bouton */
+
+        &:hover {
+            transform: scale(1.1); /* Augmente légèrement la taille du bouton au survol pour un effet interactif */
+        }
+    }
+}

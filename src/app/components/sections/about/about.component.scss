@@ -1,0 +1,472 @@
+/* ***************** */
+/* Section: Général  */
+/* ***************** */
+
+.about-page {
+    
+    --background: rgba(var(--background-color-rgb), 0.90); /* 90% d'opacité */
+    --color: var(--text-color); /* Application de la couleur du texte */
+    font-family: 'Inter', sans-serif; /* Police de caractère utilisée */
+    line-height: 1.6; /* Hauteur de ligne pour améliorer la lisibilité */
+    
+    h1, h2, h3 {
+
+        color: var(--primary-color); /* Couleur des titres */
+        letter-spacing: -0.025em; /* Espacement des lettres */
+        font-weight: 700; /* Épaisseur de la police */
+    }
+
+    h1 {
+
+        font-size: var(--font-size-4xl); /* Taille de la police pour h1 */
+        margin-bottom: var(--spacing-lg); /* Marge en bas de h1 */
+
+    }
+
+    
+            
+    .header-container {
+        text-align: center;
+        margin-bottom: var(--spacing-xl);
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .header-line {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                var(--primary-color) 0%,
+                transparent 100%
+            );
+            margin: 0 auto;
+        }
+    }
+
+    section {
+        min-height: 100vh; /* Hauteur minimale de chaque section égale à la hauteur de la fenêtre */
+        padding: 100px 0; /* Espacement vertical autour des sections */
+        position: relative; /* Position relative pour permettre le positionnement absolu des éléments enfants */
+        display: flex; /* Utilisation de Flexbox pour centrer le contenu */
+        align-items: center; /* Alignement vertical au centre des éléments */
+    
+        &:not(:last-child)::after {
+                content: ''; /* Création d'un élément pseudo pour la séparation entre les sections */
+                position: absolute; /* Positionnement absolu pour le placer correctement */
+                bottom: 0; /* Alignement en bas de la section */
+                left: 50%; /* Centrage horizontal */
+                transform: translateX(-50%); /* Ajustement du centrage */
+                width: 80%; /* Largeur de la ligne de séparation */
+                height: 1px; /* Épaisseur de la ligne */
+                background: linear-gradient(90deg, 
+                    transparent, /* Début du dégradé transparent */
+                    var(--primary-color), /* Couleur primaire pour le milieu */
+                    transparent /* Fin du dégradé transparent */
+                );
+            }
+        }
+}
+
+/* ********************* */
+/* Section: Introduction */
+/* ********************* */
+
+.intro-section {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: var(--spacing-xl) 0;
+    -o-animation-delay: var(--background-color);
+    color: white;
+
+    &::before {
+        content: ''; /* Élément pseudo pour le fond de la section */
+        position: absolute; /* Positionnement absolu pour le placer derrière le contenu */
+        top: 0; /* Aligne en haut */
+        left: 0; /* Aligne à gauche */
+        right: 0; /* Aligne à droite */
+        bottom: 0; /* Aligne en bas */
+        background: linear-gradient(
+            135deg,
+            rgba(10, 25, 47, 0.9), /* Couleur de début avec transparence */
+            rgba(10, 25, 47, 0.7) /* Couleur de fin avec transparence */
+        );
+        z-index: 1; /* Assure que cet élément est derrière le contenu */
+    }
+
+    .background-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary-color);
+            filter: blur(60px);
+            opacity: 0.1;
+            animation: float 10s ease-in-out infinite;
+            
+            &-1 {
+                top: 10%;
+                left: 10%;
+                width: 300px;
+                height: 300px;
+                animation-delay: 0s;
+            }
+            
+            &-2 {
+                bottom: 20%;
+                right: 15%;
+                width: 400px;
+                height: 400px;
+                animation-delay: -3s;
+            }
+            
+            &-3 {
+                top: 50%;
+                left: 50%;
+                width: 200px;
+                height: 200px;
+                animation-delay: -6s;
+            }
+        }
+    }
+
+    .intro-content {
+        position: relative;
+        z-index: 2;
+        max-width: var(--container-width, 1200px);
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+    }
+
+    .intro-header {
+        margin-bottom: var(--spacing-xl);
+        
+        .greeting-text {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            
+            .hello {
+                display: inline-block;
+                animation: wave 2s ease-in-out infinite;
+            }
+        }
+
+        .name {
+            font-size: 4.5rem;
+            color: var(--heading-color);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            
+            .cursor {
+                animation: blink 1s step-end infinite;
+            }
+        }
+
+        .title-wrapper {
+            .title {
+                font-size: 2.5rem;
+                color: rgb(216, 216, 216);
+                font-weight: 500;
+                
+                .primary {
+                    color: var(--primary-color);
+                }
+            }
+        }
+    }
+
+    .intro-description {
+        max-width: 800px;
+
+        .bio-content {
+            margin-bottom: var(--spacing-xl);
+            
+            .bio-text {
+                color: rgb(222, 231, 238);
+                font-size: 1.1rem;
+                line-height: 2;
+                margin-bottom: var(--spacing-md);
+                text-align: justify;
+            }
+        }
+    }
+}
+
+/* ****************** */
+/* Section: Timeline  */
+/* ****************** */
+
+.timeline-section {
+    .timeline {
+        position: relative; /* Positionnement relatif pour le conteneur de la timeline */
+        max-width: 800px; /* Largeur maximale de la timeline */
+        margin: 0 auto; /* Centre la timeline horizontalement */
+        
+        &::before {
+            content: ''; /* Élément pseudo pour la ligne verticale de la timeline */
+            position: absolute; /* Positionnement absolu pour le placer au centre */
+            left: 50%; /* Centre horizontalement */
+            transform: translateX(-50%); /* Ajustement du centrage */
+            width: 2px; /* Largeur de la ligne */
+            height: 100%; /* Hauteur de la ligne */
+            background: var(--primary-color); /* Couleur de la ligne */
+            opacity: 0.3; /* Opacité de la ligne */
+        }
+            
+        .timeline-item {
+            opacity: 0; /* Opacité initiale pour l'animation */
+            transform: translateX(-50px); /* Décalage horizontal pour l'animation */
+            transition: all 0.6s ease; /* Transition pour l'animation */
+            width: calc(50% - 40px); /* Largeur des éléments de la timeline */
+            margin: 100px 0; /* Marges verticales pour espacer les éléments */
+            position: relative; /* Positionnement relatif pour les éléments enfants */
+            
+            &:nth-child(even) {
+                margin-left: auto; /* Aligne à droite pour les éléments pairs */
+                transform: translateX(50px); /* Décalage horizontal pour l'animation des éléments pairs */
+                
+                &::before {
+                left: -60px; /* Positionne le cercle à gauche des éléments pairs */
+                }
+            }
+            
+            &.visible {
+                opacity: 1; /* Rend l'élément visible */
+                transform: translateX(0); /* Annule le décalage horizontal */
+            }
+            
+            &::before {
+                content: ''; /* Élément pseudo pour le cercle de chaque élément de la timeline */
+                position: absolute; /* Positionnement absolu pour le placer à droite */
+                width: 20px; /* Largeur du cercle */
+                height: 20px; /* Hauteur du cercle */
+                background: var(--primary-color); /* Couleur du cercle */
+                border-radius: 50%; /* Rend le cercle rond */
+                right: -60px; /* Positionne le cercle à droite */
+                top: 0; /* Aligne en haut */
+            }
+        }
+    }
+}
+
+/* ******************** */
+/* Section: Compétences */
+/* ******************** */
+
+.skills-section {
+    .skills-grid {
+        display: grid; /* Utilisation de Grid pour la mise en page des compétences */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Crée des colonnes réactives */
+        gap: 32px; /* Espacement entre les éléments de la grille */
+        max-width: 1200px; /* Largeur maximale de la grille */
+        margin: 0 auto; /* Centre la grille horizontalement */
+        padding: 0 24px; /* Espacement latéral */
+        
+        .skill {
+            background: rgba(100, 255, 218, 0.1); /* Fond légèrement transparent pour chaque compétence */
+            border: 1px solid var(--primary-color); /* Bordure avec la couleur primaire */
+            padding: 24px; /* Espacement interne */
+            border-radius: 8px; /* Coins arrondis */
+            text-align: center; /* Centre le texte */
+            opacity: 0; /* Opacité initiale pour l'animation */
+            transform: scale(0.9); /* Réduction de la taille pour l'animation */
+            transition: all 0.3s ease; /* Transition pour les effets d'animation */
+            cursor: crosshair; /* Curseur de croix */
+            
+            &.visible {
+                opacity: 1; /* Rend l'élément visible */
+                transform: scale(1); /* Annule la réduction de taille */
+            }
+            
+            &:hover {
+                transform: translateY(-10px); /* Lève l'élément au survol */
+                background: rgba(100, 255, 218, 0.2); /* Change le fond au survol */
+            }
+        }
+    }
+}
+
+/* **************** */
+/* Section: Projets */
+/* **************** */
+
+.projects-section {
+    min-height: 100vh;
+    padding: var(--spacing-xl) 0;
+
+    .projects-container {
+        max-width: var(--container-width, 1200px);
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+
+        .projects-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-xl);
+
+            > p {
+                text-align: center;
+                max-width: 700px;
+                font-size: 1.1rem;
+                line-height: 1.6;
+                color: var(--text-color);
+                margin-bottom: var(--spacing-lg);
+            }
+            
+            .cta-container {
+                text-align: center;
+                margin-top: var(--spacing-lg);
+
+                .view-projects-btn {
+                    position: relative;
+                    padding: 16px 32px;
+                    background: transparent;
+                    border: 2px solid var(--primary-color);
+                    border-radius: 8px;
+                    color: var(--primary-color);
+                    font-size: 1rem;
+                    font-weight: 500;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 12px;
+                    overflow: hidden;
+                    
+                    span {
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    ion-icon {
+                        font-size: 20px;
+                        transition: transform 0.3s ease;
+                    }
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0;
+                        height: 100%;
+                        background: var(--primary-color);
+                        transition: width 0.3s ease;
+                        z-index: 1;
+                    }
+                    
+                    &:hover {
+                        color: var(--background);
+                        
+                        &::before {
+                            width: 100%;
+                        }
+
+                        ion-icon {
+                            transform: translateX(5px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* ********** */
+/* Animations */
+/* ********** */
+
+
+@keyframes float {
+
+    /* À l'état initial (0%) et final (100%), l'élément est à sa position d'origine */
+    0%, 100% { transform: translateY(0); }
+
+    /* À 50% du temps d'animation, l'élément se déplace vers le haut de 20 pixels */
+    50% { transform: translateY(-20px); }
+}
+
+/* """"""""""""""""""""""""""""""" */
+
+@keyframes wave {
+
+    /* À l'état initial (0%) et final (100%), l'élément n'est pas tourné */
+    0%, 100% { transform: rotate(0deg); }
+
+    /* À 50% du temps d'animation, l'élément est tourné de 20 degrés */
+    50% { transform: rotate(20deg); }
+}
+
+/* """"""""""""""""""""""""""""""" */
+
+@keyframes blink {
+
+    /* À l'état initial (0%) et final (100%), l'élément est entièrement opaque */
+    0%, 100% { opacity: 1; }
+
+    /* À 50% du temps d'animation, l'élément devient totalement transparent */
+    50% { opacity: 0; }
+}
+
+/* """"""""""""""""""""""""""""""" */
+
+@keyframes fadeInUp {
+    from {
+        /* À l'état initial (début de l'animation), l'opacité de l'élément est définie à 0, ce qui signifie qu'il est complètement transparent et invisible. */
+        opacity: 0; 
+
+        /* L'élément est déplacé vers le bas de 30 pixels sur l'axe Y, ce qui le positionne en dessous de sa position d'origine. */
+        transform: translateY(30px); 
+    }
+    to {
+        /* À la fin de l'animation, l'opacité est définie à 1, rendant l'élément complètement opaque et visible. */
+        opacity: 1; 
+
+        /* L'élément est déplacé à sa position d'origine (0 pixels sur l'axe Y), annulant le déplacement initial. */
+        transform: translateY(0); 
+    }
+}
+
+/* ------------------------- */
+
+/* Classe utilitaire pour l'animation au défilement */
+.fade-in {
+    /* Par défaut, l'élément est complètement transparent (invisible) grâce à une opacité de 0. */
+    opacity: 0; 
+
+    /* L'élément est déplacé vers le bas de 30 pixels sur l'axe Y, ce qui le positionne en dessous de sa position d'origine. */
+    transform: translateY(30px); 
+
+    /* Définit la transition de toutes les propriétés CSS (ici, l'opacité et la transformation) sur une durée de 0,6 secondes avec une fonction de timing 'ease' pour un effet d'animation fluide. */
+    transition: all 0.6s ease; 
+
+    &.visible { 
+
+        /* Lorsque l'élément est visible, son opacité est réglée à 1, ce qui le rend complètement opaque et donc visible. */
+        opacity: 1;
+
+        /* L'élément est remis à sa position d'origine (0 pixels sur l'axe Y), annulant le déplacement vers le bas initial. */
+        transform: translateY(0); 
+    }
+}

@@ -1,0 +1,77 @@
+/* ******************************** */
+/* Styles pour le Header et Toolbar */
+/* ******************************** */
+
+ion-header {
+    background: var(--background-color); // Fond clair / sombre
+    box-shadow: var(--box-shadow); // Ombre par défaut
+    transition: background 0.3s ease, box-shadow 0.3s ease; // Transition douce pour le changement de fond
+}
+
+ion-toolbar {
+    --background: transparent; // Fond transparent pour la toolbar
+    --padding: 0.5rem 1rem; // Espacement autour du contenu
+    --padding-end: 25px;    // Ajoute un padding à droite
+    display: flex; // Disposition en flex pour les éléments
+    justify-content: space-between; // Justification des éléments
+
+    // Ajout d'une légère ombre pour le contraste
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ********************** */
+/*  Styles pour le Titre  */
+/* ********************** */
+
+ion-title {
+    font-size: 1.5rem; // Taille du texte
+    font-weight: 700; // Poids de la police
+    color: var(--text-color); // Couleur du texte
+}
+
+/* ************************* */
+/*  Styles pour les Boutons  */
+/* ************************  */
+
+ion-buttons {
+    display: flex; // Disposition en flex pour les boutons
+    align-items: center; // Alignement des éléments
+    height: 100%; // Hauteur du bouton
+    margin-right: 50px; // Marge à droite
+}
+
+ion-button {
+    height: 100%; // Hauteur du bouton
+    background: transparent; // Fond transparent pour les boutons
+    color: var(--text-color); // Couleur du texte définie globalement
+    --padding-start: 25px; // Espacement interne gauche du bouton
+    --padding-end: 25px; // Espacement interne droit du bouton
+    font-weight: 600; // Poids de la police
+
+    transition: background 0.3s ease, transform 0.3s ease; // Transition pour le fond et la transformation
+    cursor: pointer; // Curseur en forme de main
+
+    &.active {
+        --background: var(--primary-color); // Fond pour l'état actif
+        color: #fff; // Couleur du texte pour l'état actif
+        transform: scale(1.05); // Effet de survol
+    }
+
+    &:hover {
+        --background: var(--hover-background-color); // Fond léger au survol
+        color: var(--hover-color); // Couleur du texte au survol
+        transform: translateY(-2px); // Légère translation vers le haut au survol
+    }
+}
+
+/* ************************ */
+/*  Styles pour les Icônes  */
+/* ************************ */
+
+ion-icon {
+    margin-right: 5px; // Marge à droite pour l'espace entre l'icône et le texte
+    color: inherit; // Récupère la couleur du texte du bouton
+
+    // Couleur de l'icône au survol
+    &:hover { color: var(--hover-color); }
+}

@@ -1,0 +1,125 @@
+/* ****************************** */
+/*         Theme Variables        */
+/* ****************************** */
+
+:root {
+    /******************************/
+    /*      Colors Variables      */
+    /******************************/
+
+    // Couleurs Principales
+    --primary-color: #2563eb;            // Bleu moderne pour les éléments principaux
+    --primary-color-rgb: 52, 152, 219;     // Couleurs RGB pour les éléments principaux
+    --secondary-color: #64748b;          // Gris slate pour les éléments secondaires
+    --background-color: #f8fafc;         // Fond blanc très légèrement bleuté
+    --background-color-rgb: 248, 250, 252; // Fond blanc très légèrement bleuté en rgb
+    --container-background: #e6e7e8;     // Couleur de blanc très légèrement grisé
+    --hover-color: #1d4ed8;              // Bleu plus profond pour le hover
+    --hover-background-color: #dbeafe;   // Bleu très clair pour le hover
+    --active-background-color: #bfdbfe;  // Bleu clair pour l'état actif
+    --active-text-color: #1e40af;        // Bleu foncé pour le texte actif
+    --text-color: #1e293b;               // Slate foncé pour le texte
+
+    // Couleurs Accent
+    --accent-primary: #3b82f6;           // Bleu vif pour les accents
+    --accent-success: #10b981;           // Vert émeraude
+    --accent-warning: #f59e0b;           // Orange amber
+    --accent-danger: #ef4444;            // Rouge moderne
+    --accent-info: #06b6d4;              // Cyan
+
+    // Ombres et Effets
+    --shadow-color: rgb(51 65 85 / 0.1);
+    --shadow-light: rgb(51 65 85 / 0.08);
+    --box-shadow: 
+        0 1px 3px rgb(51 65 85 / 0.1),
+        0 1px 2px rgb(51 65 85 / 0.06);
+    --box-shadow-hover: 
+        0 10px 15px -3px rgb(51 65 85 / 0.1),
+        0 4px 6px -4px rgb(51 65 85 / 0.1);
+
+    // Bordures
+    --border-color: #e2e8f0;
+    --border-radius-sm: 0.375rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 1rem;
+
+    // Transitions
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    // Espacements
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    // Toggle Theme
+    --toggle-mod-background: #0f172a;
+    --toggle-mod-hover-background: #1e293b;
+    --toggle-mod-text: #f8fafc;
+    --toggle-mod-hover-text: #ffffff;
+
+    /****************************/
+    /*      Fonts Variables     */
+    /****************************/
+    
+    --font-family: 'Inter', system-ui, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+}
+
+/* Theme Sombre */
+.dark {
+    /******************************/
+    /*      Colors Variables      */
+    /******************************/
+
+    // Couleurs Principales
+    --primary-color: #3b82f6;           // Bleu plus lumineux
+    --primary-color-rgb: 41, 128, 185;     // Couleurs RGB pour les éléments principaux
+    --secondary-color: #94a3b8;         // Gris slate plus clair
+    --background-color: #0f172a;        // Fond slate très foncé
+    --background-color-rgb: 15, 23, 42;   // Fond slate très foncé en rgb
+    --container-background: #2e333d;    // Couleur de fond gris foncé
+    --hover-color: #60a5fa;             // Bleu plus clair pour le hover
+    --hover-background-color: #1e293b;  // Slate foncé pour le hover
+    --active-background-color: #1e40af; // Bleu foncé pour l'état actif
+    --active-text-color: #ffffff;       // Texte blanc pour l'état actif
+    --active-text-color: #ffffff;       // Texte blanc pour l'état actif
+    --text-color: #f1f5f9;              // Texte presque blanc
+    --text-color: #f1f5f9;              // Texte presque blanc
+
+    // Couleurs Accent
+    --accent-primary: #60a5fa;          // Bleu plus lumineux
+    --accent-success: #34d399;          // Vert émeraude plus lumineux
+    --accent-warning: #fbbf24;          // Orange amber plus lumineux
+    --accent-danger: #f87171;           // Rouge plus lumineux
+    --accent-info: #22d3ee;             // Cyan plus lumineux
+
+    // Ombres et Effets
+    --shadow-color: rgb(0 0 0 / 0.3);
+    --shadow-light: rgb(0 0 0 / 0.2);
+    --box-shadow: 
+        0 1px 3px rgb(0 0 0 / 0.3),
+        0 1px 2px rgb(0 0 0 / 0.2);
+    --box-shadow-hover: 
+        0 10px 15px -3px rgb(0 0 0 / 0.3),
+        0 4px 6px -4px rgb(0 0 0 / 0.2);
+
+    // Bordures
+    --border-color: #334155;
+
+    // Toggle Theme
+    --toggle-mod-background: #f8fafc;
+    --toggle-mod-hover-background: #f1f5f9;
+    --toggle-mod-text: #0f172a;
+    --toggle-mod-hover-text: #000000;
+}
