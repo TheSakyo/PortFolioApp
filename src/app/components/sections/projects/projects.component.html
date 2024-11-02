@@ -1,10 +1,105 @@
-<section>
-  <h2>Testimonials</h2>
-  <div class="testimonials">
-    <div class="testimonial">
-      <p>"This background image includes a semi-transparent overlay layer."</p>
-      <cite>Catherine Win (Designer)</cite>
+<div class="projects-page">
+
+  <!-- Section: Titre -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="fade-in">Mes Projets</h1>
+      <p class="fade-in">Découvrez l'ensemble de mes réalisations et projets personnels</p>
     </div>
-    <!-- Ajoute d'autres témoignages ici -->
-  </div>
-</section>
+  </section>
+
+  <!-- Section: Recherche -->
+  <section class="search-section">
+    <div class="search-container fade-in">
+      <div class="search-box">
+        <ion-icon name="search-outline"></ion-icon>
+        <input type="text" placeholder="Rechercher un projet...">
+      </div>
+      <div class="filters">
+        <button class="filter-btn active">Tous</button>
+        <button class="filter-btn">Web</button>
+        <button class="filter-btn">Mobile</button>
+        <button class="filter-btn">Java</button>
+        <button class="filter-btn">Autres</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Projets -->
+  <section class="projects-grid-section">
+    <div class="projects-grid">
+      <!-- Project Card 1 -->
+      <div class="project-card fade-in">
+        <div class="project-image">
+          <img src="/assets/images/project_img.svg" alt="Project 1">
+          <div class="project-overlay">
+            <button class="view-project-btn">Voir le projet</button>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>Gestion de Projet App</h3>
+          <p>Application web de gestion de projets développée avec Angular et Spring Boot</p>
+          <div class="project-tags">
+            <span class="tag">Angular</span>
+            <span class="tag">Spring</span>
+            <span class="tag">MySQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card 2 -->
+      <div class="project-card fade-in">
+        <div class="project-image">
+          <img src="/assets/images/project_img.svg" alt="Project 2">
+          <div class="project-overlay">
+            <button class="view-project-btn">Voir le projet</button>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>Plugin Minecraft</h3>
+          <p>Système de mini-jeux développé en Java pour serveur Minecraft</p>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+            <span class="tag">Spigot</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Project Cards... -->
+      <div class="project-card fade-in">
+        <div class="project-image">
+          <img src="/assets/images/project_img.svg" alt="Project 3">
+          <div class="project-overlay">
+            <button class="view-project-btn">Voir le projet</button>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>Application Mobile</h3>
+          <p>Application mobile de suivi sportif développée avec Ionic</p>
+          <div class="project-tags">
+            <span class="tag">Ionic</span>
+            <span class="tag">Angular</span>
+            <span class="tag">Firebase</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Pagination -->
+  <section class="pagination-section">
+    <div class="pagination fade-in">
+      <button class="page-btn" disabled>
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+    </div>
+  </section>
+
+</div>

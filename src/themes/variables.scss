@@ -12,8 +12,8 @@
     --primary-color-rgb: 52, 152, 219;     // Couleurs RGB pour les éléments principaux
     --secondary-color: #64748b;          // Gris slate pour les éléments secondaires
     --background-color: #f8fafc;         // Fond blanc très légèrement bleuté
-    --background-color-rgb: 248, 250, 252; // Fond blanc très légèrement bleuté en rgb
-    --container-background: #e6e7e8;     // Couleur de blanc très légèrement grisé
+    --background-color-rgb: 223, 232, 240; // Fond blanc très légèrement bleuté en rgb
+    --background-container: 216, 226, 236; // Couleur de blanc très légèrement grisé
     --hover-color: #1d4ed8;              // Bleu plus profond pour le hover
     --hover-background-color: #dbeafe;   // Bleu très clair pour le hover
     --active-background-color: #bfdbfe;  // Bleu clair pour l'état actif
@@ -26,6 +26,13 @@
     --accent-warning: #f59e0b;           // Orange amber
     --accent-danger: #ef4444;            // Rouge moderne
     --accent-info: #06b6d4;              // Cyan
+
+    // Couleurs Accent plus sombre
+    --accent-darken-primary: #1e4e8c;    // Bleu plus sombre pour les accents
+    --accent-darken-success: #0f8a4a;    // Vert émeraude plus sombre
+    --accent-darken-warning: #b97c0f;    // Orange amber plus sombre
+    --accent-darken-danger: #b43c3c;     // Rouge moderne plus sombre
+    --accent-darken-info: #048a9c;       // Cyan plus sombre
 
     // Ombres et Effets
     --shadow-color: rgb(51 65 85 / 0.1);
@@ -84,11 +91,11 @@
 
     // Couleurs Principales
     --primary-color: #3b82f6;           // Bleu plus lumineux
-    --primary-color-rgb: 41, 128, 185;     // Couleurs RGB pour les éléments principaux
+    --primary-color-rgb: 41, 128, 185;    // Couleurs RGB pour les éléments principaux
     --secondary-color: #94a3b8;         // Gris slate plus clair
     --background-color: #0f172a;        // Fond slate très foncé
     --background-color-rgb: 15, 23, 42;   // Fond slate très foncé en rgb
-    --container-background: #2e333d;    // Couleur de fond gris foncé
+    --background-container: 35, 48, 72;   // Couleur de fond gris foncé
     --hover-color: #60a5fa;             // Bleu plus clair pour le hover
     --hover-background-color: #1e293b;  // Slate foncé pour le hover
     --active-background-color: #1e40af; // Bleu foncé pour l'état actif
@@ -103,6 +110,14 @@
     --accent-warning: #fbbf24;          // Orange amber plus lumineux
     --accent-danger: #f87171;           // Rouge plus lumineux
     --accent-info: #22d3ee;             // Cyan plus lumineux
+
+    // Couleurs Accent plus sombre
+    --accent-darken-primary: #4981fa;   // Bleu légèrement assombri
+    --accent-darken-success: #1e9f6a;   // Vert émeraude légèrement assombri
+    --accent-darken-warning: #f7a93e;   // Orange amber légèrement assombri
+    --accent-darken-danger: #f56a6a;    // Rouge moderne légèrement assombri
+    --accent-darken-info: #1ab6d8;      // Cyan légèrement assombri
+
 
     // Ombres et Effets
     --shadow-color: rgb(0 0 0 / 0.3);

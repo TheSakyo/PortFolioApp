@@ -1,0 +1,264 @@
+/* ************************************************************************** */
+/* Section: Configuration Globale de la Page Projects                         */
+/* Description: Définition des variables et styles de base pour la page       */
+/* ************************************************************************** */
+
+.projects-page {
+    background: rgba(var(--background-color-rgb), 0.95); // Fond semi-transparent à 90%
+    font-family: 'Inter', sans-serif; // Police moderne et lisible
+    color: var(--text-color); // Couleur de texte dynamique
+
+    /* ************************************************************************** */
+    /* Section: Hero - Section d'En-tête Principal                                */
+    /* Description: Bannière principale avec titre et description du projet       */
+    /* ************************************************************************** */
+    
+    .hero-section {
+        min-height: 40vh; // Hauteur minimale de 40% de la hauteur de la fenêtre
+        display: flex; // Utilisation de Flexbox pour le centrage
+        align-items: center; // Centrage vertical
+        justify-content: center; // Centrage horizontal
+        position: relative; // Position relative pour le positionnement des éléments enfants
+        background: linear-gradient(
+            135deg, /* Angle du dégradé pour un effet diagonal */
+            rgba(10, 25, 47, 0.9), /* Couleur de début plus opaque */
+            rgba(10, 25, 47, 0.7) /* Couleur de fin plus transparente */
+        );// Dégradé pour l'effet de profondeur
+        padding: var(--spacing-xl) 0; // Espacement vertical important
+
+        .hero-content {
+            text-align: center; // Alignement du texte au centre
+            z-index: 2; // Superposition au-dessus du fond
+
+            h1 {
+                font-size: 4rem; // Taille importante pour le titre principal
+                color: var(--primary-color); // Couleur primaire pour mise en évidence
+                margin-bottom: var(--spacing-md); // Espacement sous le titre
+                text-shadow: 0 1px 0 #2a5ece, 0 2px 0 #2956b8, 0 3px 0 #2a4e9d, 0 4px 0 #2a4888, 0 5px 0 #284176, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+            }
+
+            p {
+                font-size: 1.2rem; // Taille légèrement plus grande pour la lisibilité
+                color: rgb(222, 231, 238); // Couleur claire pour le contraste
+                max-width: 600px; // Largeur maximale pour une meilleure lisibilité
+                margin: 0 auto; // Centrage horizontal
+            }
+        }
+    }
+
+    /* ************************************************************************** */
+    /* Section: Recherche et Filtres                                              */
+    /* Description: Zone de recherche et boutons de filtrage des projets          */
+    /* ************************************************************************** */
+
+    .search-section {
+        padding: var(--spacing-xl) 0; // Espacement vertical important
+        background: rgba(var(--background-container), 0.8); // Couleur de fond semi transparente
+        box-shadow: var(--shadow-color) 0px 1px 2px 0px, var(--shadow-color) 0px 1px 3px 1px; // Ombre pour le contraste
+
+        .search-container {
+            max-width: var(--container-width, 1200px); // Largeur maximale avec fallback
+            margin: 0 auto; // Centrage horizontal
+            padding: 0 var(--spacing-lg); // Espacement horizontal
+
+            .search-box {
+                display: flex; // Layout flexible
+                align-items: center; // Alignement vertical des éléments
+                padding: 12px 20px; // Espacement interne
+                border: 3px solid var(--accent-darken-primary); // Bordure distinctive
+                border-radius: 8px; // Coins arrondis
+                margin-bottom: var(--spacing-lg); // Espacement avec les filtres
+                background: rgba(255, 255, 255, 0.1); // Fond légèrement visible
+
+                ion-icon {
+                    color: var(--accent-darken-primary); // Couleur de l'icône
+                    font-size: 1.5rem; // Taille de l'icône
+                    margin-right: 12px; // Espacement avec le champ de saisie
+                }
+
+                input {
+                    background: transparent; // Fond transparent
+                    border: none; // Suppression de la bordure
+                    color: var(--text-color); // Couleur du texte
+                    font-size: 1rem; // Taille de police standard
+                    width: 100%; // Occupation de tout l'espace disponible
+                    outline: none; // Suppression du contour au focus
+
+                    &::placeholder { 
+                        
+                        color: var(--text-color); // Couleur du placeholder
+                        filter: opacity(0.8)
+                    } 
+                }
+            }
+
+            .filters {
+                display: flex; // Layout flexible
+                gap: 12px; // Espacement entre les filtres
+                flex-wrap: wrap; // Passage à la ligne si nécessaire
+
+                .filter-btn {
+                    padding: 8px 16px; // Espacement interne
+                    background: transparent; // Fond transparent
+                    border: 2px solid var(--accent-darken-primary); // Bordure fine
+                    border-radius: 20px; // Coins très arrondis
+                    color: var(--accent-darken-primary); // Couleur du texte
+                    font-weight: bold; // Gras du texte
+                    cursor: pointer; // Curseur pointeur
+                    transition: all 0.3s ease; // Animation douce
+
+                    &:hover, &.active {
+                        background: var(--accent-darken-primary); // Fond coloré au survol/actif
+                        color: var(--background); // Texte sur fond coloré
+                    }
+                }
+            }
+        }
+    }
+
+    /* ************************************************************************** */
+    /* Section: Grille des Projets                                                */
+    /* Description: Affichage des projets sous forme de grille responsive         */
+    /* ************************************************************************** */
+
+    .projects-grid-section {
+        padding: var(--spacing-xl) 0; // Espacement vertical important
+
+        .projects-grid {
+            display: grid; // Layout en grille
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); // Colonnes responsive
+            gap: 32px; // Espacement entre les cartes
+            max-width: var(--container-width, 1200px); // Largeur maximale
+            margin: 0 auto; // Centrage horizontal
+            padding: 0 var(--spacing-lg); // Espacement horizontal
+
+            .project-card {
+                background: rgba(var(--background-container), 0.8); // Fond légèrement visible
+                border-radius: 12px; // Coins arrondis
+                overflow: hidden; // Cache le débordement
+                transition: transform 0.3s ease; // Animation au survol
+                cursor:  crosshair; // Curseur croix
+
+                &:hover {
+                    transform: translateY(-10px); // Effet de flottement au survol
+
+                    .project-overlay { opacity: 1; }  // Affichage de l'overlay au survol
+                }
+
+                .project-image {
+                    position: relative; // Pour le positionnement de l'overlay
+                    height: 200px; // Hauteur fixe
+
+                    img {
+                        width: 100%; // Largeur complète
+                        height: 100%; // Hauteur complète
+                        object-fit: cover; // Couverture de l'espace
+                    }
+
+                    .project-overlay {
+                        position: absolute; // Positionnement absolu
+                        top: 0; // Aligné avec le haut de
+                        left: 0; // Aligné avec la gauche
+                        right: 0; // Aligné avec la droite
+                        bottom: 0; // Aligné avec le bas
+                        background: rgba(var(--background-container), 0.7); // Fond semi-transparent
+                        display: flex; // Centrage du bouton
+                        align-items: center; // Centrage vertical
+                        justify-content: center; // Centrage horizontal
+                        opacity: 0; // Invisible par défaut
+                        transition: opacity 0.3s ease; // Animation de l'opacité
+
+                        .view-project-btn {
+                            padding: 12px 24px; // Espacement interne
+                            background: var(--primary-color); // Fond coloré
+                            border: none; // Sans bordure
+                            border-radius: 4px; // Coins légèrement arrondis
+                            color: var(--background); // Texte contrasté
+                            font-weight: 500; // Police semi-grasse
+                            cursor: pointer; // Curseur pointeur
+                            transition: transform 0.3s ease; // Animation
+
+                            &:hover { transform: scale(1.05); } // Léger agrandissement au survol
+                        }
+
+                        &:hover { opacity: 1; } // Apparition de l'overlay au survol
+                    }
+                }
+
+                .project-info {
+                    padding: 24px; // Espacement interne
+
+                    h3 {
+                        color: var(--primary-color); // Couleur du titre
+                        font-size: 1.5rem; // Taille du titre
+                        margin-bottom: 12px; // Espacement sous le titre
+                    }
+
+                    p {
+                        color: var(--text-color); // Couleur du texte
+                        margin-bottom: 16px; // Espacement sous le paragraphe
+                        line-height: 1.6; // Hauteur de ligne
+                    }
+
+                    .project-tags {
+                        display: flex; // Layout flexible
+                        flex-wrap: wrap; // Passage à la ligne
+                        gap: 8px; // Espacement entre les tags
+
+                        .tag {
+                            padding: 4px 12px; // Espacement interne
+                            background: rgba(122, 246, 217, 0.1); // Fond léger
+                            border: 1px solid var(--accent-darken-primary); // Bordure fine
+                            border-radius: 16px; // Coins très arrondis
+                            font-size: 0.9rem; // Taille de police réduite
+                            color: var(--accent-darken-primary); // Couleur du texte
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ************************************************************************** */
+    /* Section: Pagination                                                        */
+    /* Description: Navigation entre les pages de projets                         */
+    /* ************************************************************************** */
+
+    .pagination-section {
+        padding: var(--spacing-xl) 0; // Espacement vertical
+        display: flex; // Layout flexible
+        justify-content: center; // Centrage horizontal
+
+        .pagination {
+            display: flex; // Layout flexible
+            gap: 8px; // Espacement entre les boutons
+            align-items: center; // Centrage vertical
+
+            .page-btn {
+                width: 40px; // Largeur fixe
+                height: 40px; // Hauteur fixe
+                display: flex; // Pour le centrage
+                align-items: center; // Centrage vertical
+                justify-content: center; // Centrage horizontal
+                background: transparent; // Fond transparent
+                border: 1px solid var(--primary-color); // Bordure fine
+                border-radius: 8px; // Coins arrondis
+                color: var(--primary-color); // Couleur du texte
+                cursor: pointer; // Curseur pointeur
+                transition: all 0.3s ease; // Animation
+
+                &:hover:not(:disabled), &.active {
+                    background: var(--primary-color); // Fond coloré au survol/actif
+                    color: var(--background); // Texte contrasté
+                }
+
+                &:disabled {
+                    opacity: 0.5; // Semi-transparent si désactivé
+                    cursor: not-allowed; // Curseur non-autorisé
+                }
+
+                ion-icon { font-size: 1.2rem; } // Taille de l'icône
+            }
+        }
+    }
+}

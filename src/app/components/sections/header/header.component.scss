@@ -1,77 +1,77 @@
-/* ******************************** */
-/* Styles pour le Header et Toolbar */
-/* ******************************** */
+/* ************************************************************************** */
+/* Section: Header et Toolbar                                                  */
+/* Description: Définition des styles pour l'en-tête et la barre d'outils     */
+/* ************************************************************************** */
 
 ion-header {
-    background: var(--background-color); // Fond clair / sombre
-    box-shadow: var(--box-shadow); // Ombre par défaut
-    transition: background 0.3s ease, box-shadow 0.3s ease; // Transition douce pour le changement de fond
+    background: var(--background-color); // Fond adaptatif selon le thème clair/sombre
+    box-shadow: var(--box-shadow); // Ombre portée pour la profondeur visuelle
+    transition: background 0.3s ease, box-shadow 0.3s ease; // Animation douce pour les changements d'état
 }
 
 ion-toolbar {
-    --background: transparent; // Fond transparent pour la toolbar
-    --padding: 0.5rem 1rem; // Espacement autour du contenu
-    --padding-end: 25px;    // Ajoute un padding à droite
-    display: flex; // Disposition en flex pour les éléments
-    justify-content: space-between; // Justification des éléments
-
-    // Ajout d'une légère ombre pour le contraste
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --background: transparent; // Fond transparent pour s'adapter au header
+    --padding: 0.5rem 1rem; // Espacement interne uniforme
+    --padding-end: 25px; // Espacement supplémentaire à droite
+    display: flex; // Layout flexible
+    justify-content: space-between; // Distribution équitable de l'espace
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Ombre légère pour la séparation visuelle
 }
 
-/* ********************** */
-/*  Styles pour le Titre  */
-/* ********************** */
+/* ************************************************************************** */
+/* Section: Titre                                                              */
+/* Description: Style du titre principal                                       */
+/* ************************************************************************** */
 
 ion-title {
-    font-size: 1.5rem; // Taille du texte
-    font-weight: 700; // Poids de la police
-    color: var(--text-color); // Couleur du texte
+    font-size: 1.5rem; // Taille importante pour la hiérarchie visuelle
+    font-weight: 700; // Police en gras pour l'emphase
+    color: var(--text-color); // Couleur adaptative selon le thème
 }
 
-/* ************************* */
-/*  Styles pour les Boutons  */
-/* ************************  */
+/* ************************************************************************** */
+/* Section: Boutons                                                            */
+/* Description: Styles des boutons de navigation et d'action                   */
+/* ************************************************************************** */
 
 ion-buttons {
-    display: flex; // Disposition en flex pour les boutons
-    align-items: center; // Alignement des éléments
-    height: 100%; // Hauteur du bouton
-    margin-right: 50px; // Marge à droite
+    display: flex; // Layout flexible pour les boutons
+    align-items: center; // Centrage vertical des éléments
+    height: 100%; // Hauteur complète du conteneur parent
+    margin-right: 50px; // Marge à droite pour l'espacement
 }
 
 ion-button {
-    height: 100%; // Hauteur du bouton
-    background: transparent; // Fond transparent pour les boutons
-    color: var(--text-color); // Couleur du texte définie globalement
-    --padding-start: 25px; // Espacement interne gauche du bouton
-    --padding-end: 25px; // Espacement interne droit du bouton
-    font-weight: 600; // Poids de la police
-
-    transition: background 0.3s ease, transform 0.3s ease; // Transition pour le fond et la transformation
-    cursor: pointer; // Curseur en forme de main
+    height: 100%; // Hauteur complète pour l'alignement
+    background: transparent; // Fond transparent par défaut
+    color: var(--text-color); // Couleur de texte adaptative
+    --padding-start: 25px; // Marge interne gauche
+    --padding-end: 25px; // Marge interne droite
+    font-weight: 600; // Police semi-grasse
+    transition: background 0.3s ease, transform 0.3s ease; // Animations multiples
+    cursor: pointer; // Curseur interactif
 
     &.active {
-        --background: var(--primary-color); // Fond pour l'état actif
-        color: #fff; // Couleur du texte pour l'état actif
-        transform: scale(1.05); // Effet de survol
+        --background: var(--primary-color); // Fond coloré pour l'état actif
+        color: #fff; // Texte blanc pour le contraste
+        transform: scale(1.05); // Léger agrandissement
     }
 
     &:hover {
-        --background: var(--hover-background-color); // Fond léger au survol
-        color: var(--hover-color); // Couleur du texte au survol
-        transform: translateY(-2px); // Légère translation vers le haut au survol
+        --background: var(--hover-background-color); // Fond au survol
+        color: var(--hover-color); // Couleur de texte au survol
+        transform: translateY(-2px); // Effet de flottement au survol
     }
 }
 
-/* ************************ */
-/*  Styles pour les Icônes  */
-/* ************************ */
+/* ************************************************************************** */
+/* Section: Icônes                                                             */
+/* Description: Styles des icônes dans les boutons                            */
+/* ************************************************************************** */
 
 ion-icon {
-    margin-right: 5px; // Marge à droite pour l'espace entre l'icône et le texte
-    color: inherit; // Récupère la couleur du texte du bouton
+    margin-right: 5px; // Espacement avec le texte adjacent
+    color: inherit; // Hérite de la couleur du parent (bouton)
 
-    // Couleur de l'icône au survol
-    &:hover { color: var(--hover-color); }
+    &:hover {  color: var(--hover-color); } // Changement de couleur au survol
 }

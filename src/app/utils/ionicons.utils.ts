@@ -1,5 +1,5 @@
 import { addIcons } from "ionicons";
-import { arrowForwardOutline, briefcaseOutline, informationCircleOutline, mailOutline, moon, sunny } from 'ionicons/icons';
+import { arrowForwardOutline, briefcaseOutline, chevronBackOutline, chevronForwardOutline, informationCircleOutline, mailOutline, moon, searchOutline, sunny } from 'ionicons/icons';
 
 export abstract class IoniconsUtils {
 
@@ -8,7 +8,10 @@ export abstract class IoniconsUtils {
         addIcons({
             'sunny': sunny,
             'moon': moon,
+            'search-outline': searchOutline,
             'arrow-forward-outline': arrowForwardOutline,
+            'chevron-forward-outline': chevronForwardOutline,
+            'chevron-back-outline': chevronBackOutline,
             'briefcase-outline': briefcaseOutline,
             'information-circle-outline': informationCircleOutline,
             'mail-outline': mailOutline

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { AnimationService } from 'src/app/services/animation.service';
 
 @Component({
   selector: 'app-projects',
@@ -14,8 +15,26 @@ import { IonicModule } from '@ionic/angular';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  /********************************************************/
+  /**************   ⬇️    CONSTRUCTEUR    ⬇️   **************/
+  /********************************************************/
+  
+  /**
+   * Constructeur du composant 'Mes Projets'.
+   * @param elementRef - Référence à l'élément racine du composant.
+   * @param animationService - Le service correspondant à la gestion des animations de l'application.
+   */
+  constructor(private elementRef: ElementRef, private animationService: AnimationService) {}
 
-  ngOnInit() {}
-
+  /********************************************************/
+  /**************   ⬇️    CYCLE DE VIE    ⬇️   **************/
+  /********************************************************/
+  
+  /**
+   * Lors de l'initialisation du composant, on initialise l'animation du scroll.
+   */
+  ngOnInit() {
+    this.animationService.initScroll(this.elementRef); // Initialisation de l'animation du scroll à l'aide de son service
+  }
 }
+

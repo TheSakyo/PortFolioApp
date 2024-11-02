@@ -16,6 +16,12 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class Error404Component {
   
+  /******************************************************/
+  /**************   ⬇️    PROPRIÉTÉS    ⬇️   **************/
+  /******************************************************/
+
+  public cloudCount: number[] = [1, 2, 3, 4, 5]; // Tableau contenant des nombres pour générer des nuages aléatoirement
+
   /********************************************************/
   /**************   ⬇️    CONSTRUCTEUR    ⬇️   **************/
   /********************************************************/
