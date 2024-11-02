@@ -3,73 +3,68 @@
 /* ***************** */
 
 .about-page {
-    
-    --background: rgba(var(--background-color-rgb), 0.90); /* 90% d'opacité */
-    --color: var(--text-color); /* Application de la couleur du texte */
-    font-family: 'Inter', sans-serif; /* Police de caractère utilisée */
-    line-height: 1.6; /* Hauteur de ligne pour améliorer la lisibilité */
+    --background: rgba(var(--background-color-rgb), 0.90); // 90% d'opacité
+    --color: var(--text-color); // Application de la couleur du texte
+    font-family: 'Inter', sans-serif; // Police de caractère utilisée
+    line-height: 1.6; // Hauteur de ligne pour améliorer la lisibilité
     
     h1, h2, h3 {
-
-        color: var(--primary-color); /* Couleur des titres */
-        letter-spacing: -0.025em; /* Espacement des lettres */
-        font-weight: 700; /* Épaisseur de la police */
+        color: var(--primary-color); // Couleur des titres
+        letter-spacing: -0.025em; // Espacement des lettres
+        font-weight: 700; // Épaisseur de la police
     }
 
     h1 {
-
-        font-size: var(--font-size-4xl); /* Taille de la police pour h1 */
-        margin-bottom: var(--spacing-lg); /* Marge en bas de h1 */
+        font-size: var(--font-size-4xl); // Taille de la police pour 'h1'
+        margin-bottom: var(--spacing-lg); // Marge en bas de 'h1'
 
     }
-
-    
             
     .header-container {
-        text-align: center;
-        margin-bottom: var(--spacing-xl);
-
+        text-align: center; // Centre horizontalement tout le contenu de l'en-tête
+        margin-bottom: var(--spacing-xl); // Ajoute un espacement sous le conteneur de l'en-tête
+    
         h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            position: relative;
-            display: inline-block;
+            font-size: 2.5rem; // Taille de police pour le titre
+            color: var(--primary-color); // Couleur du texte du titre
+            position: relative; // Position relative pour pouvoir ajouter des effets ou éléments autour si nécessaire
+            display: inline-block; // Affiche le titre en ligne et le centre sans prendre toute la largeur
         }
-
+    
         .header-line {
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(
-                90deg,
-                var(--primary-color) 0%,
-                transparent 100%
-            );
-            margin: 0 auto;
+            width: 100px; // Largeur fixe pour la ligne décorative sous le titre */
+            height: 4px; // Hauteur de la ligne */
+            background: linear-gradient( 
+                90deg, /* Angle de dégradé (horizontal de gauche à droite) */
+                var(--primary-color) 0%, /* Couleur primaire au début du dégradé */
+                transparent 100% /* Transparent à la fin du dégradé pour créer un effet de fondu */
+            ); // Dégradé linéaire pour la ligne
+            margin: 0 auto; // Centre la ligne horizontalement sous le titre
         }
-    }
+    }    
 
     section {
-        min-height: 100vh; /* Hauteur minimale de chaque section égale à la hauteur de la fenêtre */
-        padding: 100px 0; /* Espacement vertical autour des sections */
-        position: relative; /* Position relative pour permettre le positionnement absolu des éléments enfants */
-        display: flex; /* Utilisation de Flexbox pour centrer le contenu */
-        align-items: center; /* Alignement vertical au centre des éléments */
+        min-height: 100vh; // Hauteur minimale de chaque section égale à la hauteur de la fenêtre
+        padding: 100px 0; // Espacement vertical autour des sections
+        position: relative; // Position relative pour permettre le positionnement absolu des éléments enfants
+        display: flex; // Utilisation de Flexbox pour centrer le contenu
+        align-items: center; // Alignement vertical au centre des éléments
     
         &:not(:last-child)::after {
-                content: ''; /* Création d'un élément pseudo pour la séparation entre les sections */
-                position: absolute; /* Positionnement absolu pour le placer correctement */
-                bottom: 0; /* Alignement en bas de la section */
-                left: 50%; /* Centrage horizontal */
-                transform: translateX(-50%); /* Ajustement du centrage */
-                width: 80%; /* Largeur de la ligne de séparation */
-                height: 1px; /* Épaisseur de la ligne */
-                background: linear-gradient(90deg, 
-                    transparent, /* Début du dégradé transparent */
-                    var(--primary-color), /* Couleur primaire pour le milieu */
-                    transparent /* Fin du dégradé transparent */
-                );
-            }
-        }
+            content: ''; // Création d'un élément pseudo pour la séparation entre les sections
+            position: absolute; // Positionnement absolu pour le placer correctement
+            bottom: 0; // Alignement en bas de la section
+            left: 50%; // Centrage horizontal
+            transform: translateX(-50%); // Ajustement du centrage
+            width: 80%; // Largeur de la ligne de séparation
+            height: 1px; // Épaisseur de la ligne
+            background: linear-gradient(90deg, 
+                transparent, /* Début du dégradé transparent */
+                var(--primary-color), /* Couleur primaire pour le milieu */
+                transparent /* Fin du dégradé transparent */
+            );
+    }
+    }
 }
 
 /* ********************* */
@@ -77,136 +72,133 @@
 /* ********************* */
 
 .intro-section {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding: var(--spacing-xl) 0;
-    -o-animation-delay: var(--background-color);
-    color: white;
+    min-height: 100vh; // Hauteur minimale de 100% de la fenêtre pour occuper tout l'écran
+    position: relative; // Position relative pour contenir les éléments absolument positionnés
+    display: flex; // Utilise Flexbox pour aligner le contenu
+    align-items: center; // Centre le contenu verticalement
+    overflow: hidden; // Masque les éléments qui dépassent la section
+    padding: var(--spacing-xl) 0; // Espacement vertical pour le contenu
+    -o-animation-delay: var(--background-color); // Paramètre lié aux animations (peut être à corriger si besoin)
+    color: white; // Couleur blanche pour le texte de la section
 
     &::before {
-        content: ''; /* Élément pseudo pour le fond de la section */
-        position: absolute; /* Positionnement absolu pour le placer derrière le contenu */
-        top: 0; /* Aligne en haut */
-        left: 0; /* Aligne à gauche */
-        right: 0; /* Aligne à droite */
-        bottom: 0; /* Aligne en bas */
+        content: ''; // Création d'un élément pseudo pour le fond
+        position: absolute; // Place cet élément en fond par rapport au parent
+        top: 0; // Position en haut
+        left: 0; // Position à gauche
+        right: 0; // Étend jusqu'au bord droit
+        bottom: 0; // Étend jusqu'au bord bas
         background: linear-gradient(
             135deg,
-            rgba(10, 25, 47, 0.9), /* Couleur de début avec transparence */
-            rgba(10, 25, 47, 0.7) /* Couleur de fin avec transparence */
+            rgba(10, 25, 47, 0.9), /* Couleur sombre transparente au début */
+            rgba(10, 25, 47, 0.7) /* Couleur plus claire et transparente à la fin */
         );
-        z-index: 1; /* Assure que cet élément est derrière le contenu */
+        z-index: 1; // Assure que cet élément est sous le contenu principal
     }
 
     .background-shapes {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        
+        position: absolute; // Position absolue pour que les formes soient en fond
+        top: 0; // Aligné en haut
+        left: 0; // Aligné à gauche
+        width: 100%; // Prend toute la largeur
+        height: 100%; // Prend toute la hauteur
+        z-index: 1; // Assure que les formes sont sous le contenu principal
+
         .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--primary-color);
-            filter: blur(60px);
-            opacity: 0.1;
-            animation: float 10s ease-in-out infinite;
-            
+            position: absolute; // Position pour permettre un placement personnalisé
+            border-radius: 50%; // Donne une forme arrondie (cercle)
+            background: var(--primary-color); // Couleur de fond définie par la variable
+            filter: blur(60px); // Applique un flou pour un effet estompé
+            opacity: 0.1; // Rend la forme semi-transparente
+            animation: float 10s ease-in-out infinite; // Animation de flottement sur 10s
+
             &-1 {
-                top: 10%;
-                left: 10%;
-                width: 300px;
-                height: 300px;
-                animation-delay: 0s;
+                top: 10%; // Position en haut de 10%
+                left: 10%; // Position à gauche de 10%
+                width: 300px; // Largeur de la forme
+                height: 300px; // Hauteur de la forme
+                animation-delay: 0s; // Pas de délai d'animation
             }
-            
+
             &-2 {
-                bottom: 20%;
-                right: 15%;
-                width: 400px;
-                height: 400px;
-                animation-delay: -3s;
+                bottom: 20%; // Position en bas de 20%
+                right: 15%; // Position à droite de 15%
+                width: 400px; // Largeur de la forme
+                height: 400px; // Hauteur de la forme
+                animation-delay: -3s; // Début de l'animation retardé de 3s
             }
-            
+
             &-3 {
-                top: 50%;
-                left: 50%;
-                width: 200px;
-                height: 200px;
-                animation-delay: -6s;
+                top: 50%; // Position au milieu verticalement
+                left: 50%; // Position au milieu horizontalement
+                width: 200px; // Largeur de la forme
+                height: 200px; // Hauteur de la forme
+                animation-delay: -6s; // Début de l'animation retardé de 6s
             }
         }
     }
 
     .intro-content {
-        position: relative;
-        z-index: 2;
-        max-width: var(--container-width, 1200px);
-        margin: 0 auto;
-        padding: 0 var(--spacing-lg);
+        position: relative; // Position relative pour que le contenu se place au-dessus des formes
+        z-index: 2; // Place le contenu au-dessus des formes et du fond
+        max-width: var(--container-width, 1200px); // Largeur maximale du conteneur
+        margin: 0 auto; // Centre le contenu horizontalement
+        padding: 0 var(--spacing-lg); // Espacement horizontal interne
     }
 
     .intro-header {
-        margin-bottom: var(--spacing-xl);
-        
+        margin-bottom: var(--spacing-xl); // Espace sous l'en-tête
+
         .greeting-text {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-sm);
-            
+            font-size: 1.2rem; // Taille de police pour le texte de salutation
+            color: var(--primary-color); // Couleur principale
+            margin-bottom: var(--spacing-sm); // Espace sous le texte de salutation
+
             .hello {
-                display: inline-block;
-                animation: wave 2s ease-in-out infinite;
+                display: inline-block; // Affiche le texte de salutation en bloc inline
+                animation: wave 2s ease-in-out infinite; // Animation de vague en boucle
             }
         }
 
         .name {
-            font-size: 4.5rem;
-            color: var(--heading-color);
-            margin-bottom: var(--spacing-md);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            
-            .cursor {
-                animation: blink 1s step-end infinite;
-            }
+            font-size: 4.5rem; // Taille de police pour le nom
+            color: var(--heading-color); // Couleur définie par la variable pour les titres
+            margin-bottom: var(--spacing-md); // Espace sous le nom
+            display: flex; // Utilisation de Flexbox
+            align-items: center; // Alignement vertical au centre
+            gap: 0.5rem; // Espacement entre les éléments
+
+            .cursor { animation: blink 1s step-end infinite; } // Animation de clignotement pour le curseur            
         }
 
         .title-wrapper {
             .title {
-                font-size: 2.5rem;
-                color: rgb(216, 216, 216);
-                font-weight: 500;
-                
-                .primary {
-                    color: var(--primary-color);
-                }
+                font-size: 2.5rem; // Taille de police pour le titre
+                color: rgb(216, 216, 216); // Couleur gris clair pour le texte
+                font-weight: 500; // Poids moyen pour le texte
+
+                .primary { color: var(--primary-color); } // Couleur principale pour le texte mis en avant
             }
         }
     }
 
     .intro-description {
-        max-width: 800px;
+        max-width: 800px; // Limite de largeur pour le texte de description
 
         .bio-content {
-            margin-bottom: var(--spacing-xl);
-            
+            margin-bottom: var(--spacing-xl); // Espace sous le contenu de la bio
+
             .bio-text {
-                color: rgb(222, 231, 238);
-                font-size: 1.1rem;
-                line-height: 2;
-                margin-bottom: var(--spacing-md);
-                text-align: justify;
+                color: rgb(222, 231, 238); // Couleur gris clair pour le texte de la bio
+                font-size: 1.1rem; // Taille de police pour le texte
+                line-height: 2; // Hauteur de ligne pour améliorer la lisibilité
+                margin-bottom: var(--spacing-md); // Espace sous chaque paragraphe
+                text-align: justify; // Justifie le texte pour un alignement homogène
             }
         }
     }
 }
+
 
 /* ****************** */
 /* Section: Timeline  */
@@ -214,52 +206,50 @@
 
 .timeline-section {
     .timeline {
-        position: relative; /* Positionnement relatif pour le conteneur de la timeline */
-        max-width: 800px; /* Largeur maximale de la timeline */
-        margin: 0 auto; /* Centre la timeline horizontalement */
+        position: relative; // Positionnement relatif pour le conteneur de la timeline
+        max-width: 800px; // Largeur maximale de la timeline
+        margin: 0 auto; // Centre la timeline horizontalement
         
         &::before {
-            content: ''; /* Élément pseudo pour la ligne verticale de la timeline */
-            position: absolute; /* Positionnement absolu pour le placer au centre */
-            left: 50%; /* Centre horizontalement */
-            transform: translateX(-50%); /* Ajustement du centrage */
-            width: 2px; /* Largeur de la ligne */
-            height: 100%; /* Hauteur de la ligne */
-            background: var(--primary-color); /* Couleur de la ligne */
-            opacity: 0.3; /* Opacité de la ligne */
+            content: ''; // Élément pseudo pour la ligne verticale de la timeline
+            position: absolute; // Positionnement absolu pour le placer au centre
+            left: 50%; // Centre horizontalement
+            transform: translateX(-50%); // Ajustement du centrage
+            width: 2px; // Largeur de la ligne
+            height: 100%; // Hauteur de la ligne
+            background: var(--primary-color); // Couleur de la ligne
+            opacity: 0.3; // Opacité de la ligne
         }
             
         .timeline-item {
-            opacity: 0; /* Opacité initiale pour l'animation */
-            transform: translateX(-50px); /* Décalage horizontal pour l'animation */
-            transition: all 0.6s ease; /* Transition pour l'animation */
-            width: calc(50% - 40px); /* Largeur des éléments de la timeline */
-            margin: 100px 0; /* Marges verticales pour espacer les éléments */
-            position: relative; /* Positionnement relatif pour les éléments enfants */
+            opacity: 0; // Opacité initiale pour l'animation
+            transform: translateX(-50px); // Décalage horizontal pour l'animation
+            transition: all 0.6s ease; // Transition pour l'animation
+            width: calc(50% - 40px); // Largeur des éléments de la timeline
+            margin: 100px 0; // Marges verticales pour espacer les éléments
+            position: relative; // Positionnement relatif pour les éléments enfants
             
             &:nth-child(even) {
-                margin-left: auto; /* Aligne à droite pour les éléments pairs */
-                transform: translateX(50px); /* Décalage horizontal pour l'animation des éléments pairs */
-                
-                &::before {
-                left: -60px; /* Positionne le cercle à gauche des éléments pairs */
-                }
+                margin-left: auto; // Aligne à droite pour les éléments pairs
+                transform: translateX(50px); // Décalage horizontal pour l'animation des éléments pairs
+            
+                &::before { left: -60px; } // Positionne le cercle à gauche des éléments pairs
             }
             
             &.visible {
-                opacity: 1; /* Rend l'élément visible */
-                transform: translateX(0); /* Annule le décalage horizontal */
+                opacity: 1; // Rend l'élément visible
+                transform: translateX(0); // Annule le décalage horizontal
             }
             
             &::before {
-                content: ''; /* Élément pseudo pour le cercle de chaque élément de la timeline */
-                position: absolute; /* Positionnement absolu pour le placer à droite */
-                width: 20px; /* Largeur du cercle */
-                height: 20px; /* Hauteur du cercle */
-                background: var(--primary-color); /* Couleur du cercle */
-                border-radius: 50%; /* Rend le cercle rond */
-                right: -60px; /* Positionne le cercle à droite */
-                top: 0; /* Aligne en haut */
+                content: ''; // Élément pseudo pour le cercle de chaque élément de la timeline
+                position: absolute; // Positionnement absolu pour le placer à droite
+                width: 20px; // Largeur du cercle
+                height: 20px; // Hauteur du cercle
+                background: var(--primary-color); // Couleur du cercle
+                border-radius: 50%; // Rend le cercle rond
+                right: -60px; // Positionne le cercle à droite
+                top: 0; // Aligne en haut
             }
         }
     }
@@ -271,32 +261,32 @@
 
 .skills-section {
     .skills-grid {
-        display: grid; /* Utilisation de Grid pour la mise en page des compétences */
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Crée des colonnes réactives */
-        gap: 32px; /* Espacement entre les éléments de la grille */
-        max-width: 1200px; /* Largeur maximale de la grille */
-        margin: 0 auto; /* Centre la grille horizontalement */
-        padding: 0 24px; /* Espacement latéral */
+        display: grid; // Utilisation de Grid pour la mise en page des compétences
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Crée des colonnes réactives
+        gap: 32px; // Espacement entre les éléments de la grille
+        max-width: 1200px; // Largeur maximale de la grille
+        margin: 0 auto; // Centre la grille horizontalement
+        padding: 0 24px; // Espacement latéral
         
         .skill {
-            background: rgba(100, 255, 218, 0.1); /* Fond légèrement transparent pour chaque compétence */
-            border: 1px solid var(--primary-color); /* Bordure avec la couleur primaire */
-            padding: 24px; /* Espacement interne */
-            border-radius: 8px; /* Coins arrondis */
-            text-align: center; /* Centre le texte */
-            opacity: 0; /* Opacité initiale pour l'animation */
-            transform: scale(0.9); /* Réduction de la taille pour l'animation */
-            transition: all 0.3s ease; /* Transition pour les effets d'animation */
-            cursor: crosshair; /* Curseur de croix */
+            background: rgba(100, 255, 218, 0.1); // Fond légèrement transparent pour chaque compétence
+            border: 1px solid var(--primary-color); // Bordure avec la couleur primaire
+            padding: 24px; // Espacement interne
+            border-radius: 8px; // Coins arrondis
+            text-align: center; // Centre le texte
+            opacity: 0; // Opacité initiale pour l'animation
+            transform: scale(0.9); // Réduction de la taille pour l'animation
+            transition: all 0.3s ease; // Transition pour les effets d'animation
+            cursor: crosshair; // Curseur de croix
             
             &.visible {
-                opacity: 1; /* Rend l'élément visible */
-                transform: scale(1); /* Annule la réduction de taille */
+                opacity: 1; // Rend l'élément visible
+                transform: scale(1); // Annule la réduction de taille
             }
             
             &:hover {
-                transform: translateY(-10px); /* Lève l'élément au survol */
-                background: rgba(100, 255, 218, 0.2); /* Change le fond au survol */
+                transform: translateY(-10px); // Lève l'élément au survol
+                background: rgba(100, 255, 218, 0.2); // Change le fond au survol
             }
         }
     }
@@ -307,87 +297,84 @@
 /* **************** */
 
 .projects-section {
-    min-height: 100vh;
-    padding: var(--spacing-xl) 0;
+    min-height: 100vh; // Assure que la section prend au moins la hauteur de la fenêtre
+    padding: var(--spacing-xl) 0; // Ajoute un espacement vertical en haut et en bas
 
     .projects-container {
-        max-width: var(--container-width, 1200px);
-        margin: 0 auto;
-        padding: 0 var(--spacing-lg);
+        max-width: var(--container-width, 1200px); // Définit une largeur maximale pour centrer le contenu
+        margin: 0 auto; // Centre le conteneur horizontalement
+        padding: 0 var(--spacing-lg); // Ajoute un espacement horizontal interne
 
         .projects-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--spacing-xl);
+            display: flex; // Utilise Flexbox pour aligner le contenu
+            flex-direction: column; // Dispose les éléments verticalement
+            align-items: center; // Centre les éléments horizontalement
+            gap: var(--spacing-xl); // Espace entre chaque élément dans la colonne
 
             > p {
-                text-align: center;
-                max-width: 700px;
-                font-size: 1.1rem;
-                line-height: 1.6;
-                color: var(--text-color);
-                margin-bottom: var(--spacing-lg);
+                text-align: center; // Centre le texte
+                max-width: 700px; // Limite la largeur pour un meilleur confort de lecture
+                font-size: 1.1rem; // Taille de police légèrement plus grande que la normale
+                line-height: 1.6; // Hauteur de ligne pour améliorer la lisibilité
+                color: var(--text-color); // Couleur du texte définie par une variable
+                margin-bottom: var(--spacing-lg); // Espacement sous le paragraphe
             }
-            
+
             .cta-container {
-                text-align: center;
-                margin-top: var(--spacing-lg);
+                text-align: center; // Centre le conteneur d'appel à l'action
+                margin-top: var(--spacing-lg); // Espacement au-dessus du bouton
 
                 .view-projects-btn {
-                    position: relative;
-                    padding: 16px 32px;
-                    background: transparent;
-                    border: 2px solid var(--primary-color);
-                    border-radius: 8px;
-                    color: var(--primary-color);
-                    font-size: 1rem;
-                    font-weight: 500;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 12px;
-                    overflow: hidden;
-                    
+                    position: relative; // Nécessaire pour placer les pseudo-éléments correctement
+                    padding: 16px 32px; // Espacement interne pour le bouton
+                    background: transparent; // Fond transparent pour que la bordure soit visible
+                    border: 2px solid var(--primary-color); // Bordure de couleur principale
+                    border-radius: 8px; // Coins arrondis
+                    color: var(--primary-color); // Couleur de texte correspondant à la bordure
+                    font-size: 1rem; // Taille de police normale
+                    font-weight: 500; // Poids moyen pour une apparence élégante
+                    cursor: pointer; // Change le curseur en pointeur pour indiquer un bouton cliquable
+                    transition: all 0.3s ease; // Transition pour les effets de hover
+                    display: inline-flex; // Aligne les éléments en ligne dans le bouton
+                    align-items: center; // Centre verticalement les éléments dans le bouton
+                    gap: 12px; // Espace entre les éléments à l'intérieur du bouton
+                    overflow: hidden; // Masque le contenu débordant pour l'effet de survol
+
                     span {
-                        position: relative;
-                        z-index: 2;
+                        position: relative; // Position relative pour que le texte reste au-dessus du fond
+                        z-index: 2; // Place le texte au-dessus de l'animation de fond
                     }
 
                     ion-icon {
-                        font-size: 20px;
-                        transition: transform 0.3s ease;
+                        font-size: 20px; // Taille de l'icône
+                        transition: transform 0.3s ease; // Transition pour l'animation de translation
                     }
 
                     &::before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 0;
-                        height: 100%;
-                        background: var(--primary-color);
-                        transition: width 0.3s ease;
-                        z-index: 1;
+                        content: ''; // Crée un pseudo-élément pour l'animation de fond
+                        position: absolute; // Position absolue pour couvrir le bouton
+                        top: 0; // Place en haut
+                        left: 0; // Place à gauche
+                        width: 0; // Initialement, le fond couvre 0% de la largeur
+                        height: 100%; // Hauteur complète pour couvrir le bouton verticalement
+                        background: var(--primary-color); // Fond de couleur principale pour l'animation
+                        transition: width 0.3s ease; // Transition de largeur pour l'effet de remplissage
+                        z-index: 1; // Place le fond sous le texte du bouton
                     }
-                    
-                    &:hover {
-                        color: var(--background);
-                        
-                        &::before {
-                            width: 100%;
-                        }
 
-                        ion-icon {
-                            transform: translateX(5px);
-                        }
+                    &:hover {
+                        color: var(--background); // Change la couleur du texte au survol
+
+                        &::before { width: 100%; } // Remplit complètement le fond au survol
+                        
+                        ion-icon { transform: translateX(5px); } // Déplace légèrement l'icône vers la droite au survol
                     }
                 }
             }
         }
     }
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -400,10 +387,10 @@
 
 @keyframes float {
 
-    /* À l'état initial (0%) et final (100%), l'élément est à sa position d'origine */
+    // À l'état initial (0%) et final (100%), l'élément est à sa position d'origine
     0%, 100% { transform: translateY(0); }
 
-    /* À 50% du temps d'animation, l'élément se déplace vers le haut de 20 pixels */
+    // À 50% du temps d'animation, l'élément se déplace vers le haut de 20 pixels
     50% { transform: translateY(-20px); }
 }
 
@@ -411,10 +398,10 @@
 
 @keyframes wave {
 
-    /* À l'état initial (0%) et final (100%), l'élément n'est pas tourné */
+    // À l'état initial (0%) et final (100%), l'élément n'est pas tourné
     0%, 100% { transform: rotate(0deg); }
 
-    /* À 50% du temps d'animation, l'élément est tourné de 20 degrés */
+    // À 50% du temps d'animation, l'élément est tourné de 20 degrés
     50% { transform: rotate(20deg); }
 }
 
@@ -422,10 +409,10 @@
 
 @keyframes blink {
 
-    /* À l'état initial (0%) et final (100%), l'élément est entièrement opaque */
+    // À l'état initial (0%) et final (100%), l'élément est entièrement opaque
     0%, 100% { opacity: 1; }
 
-    /* À 50% du temps d'animation, l'élément devient totalement transparent */
+    // À 50% du temps d'animation, l'élément devient totalement transparent
     50% { opacity: 0; }
 }
 
@@ -433,40 +420,43 @@
 
 @keyframes fadeInUp {
     from {
-        /* À l'état initial (début de l'animation), l'opacité de l'élément est définie à 0, ce qui signifie qu'il est complètement transparent et invisible. */
+
+        // À l'état initial (début de l'animation), l'opacité de l'élément est définie à 0, ce qui signifie qu'il est complètement transparent et invisible.
         opacity: 0; 
 
-        /* L'élément est déplacé vers le bas de 30 pixels sur l'axe Y, ce qui le positionne en dessous de sa position d'origine. */
+        // L'élément est déplacé vers le bas de 30 pixels sur l'axe Y, ce qui le positionne en dessous de sa position d'origine.
         transform: translateY(30px); 
     }
     to {
-        /* À la fin de l'animation, l'opacité est définie à 1, rendant l'élément complètement opaque et visible. */
+        // À la fin de l'animation, l'opacité est définie à 1, rendant l'élément complètement opaque et visible.
         opacity: 1; 
 
-        /* L'élément est déplacé à sa position d'origine (0 pixels sur l'axe Y), annulant le déplacement initial. */
+        // L'élément est déplacé à sa position d'origine (0 pixels sur l'axe Y), annulant le déplacement initial.
         transform: translateY(0); 
     }
 }
 
 /* ------------------------- */
+/* ------------------------- */
 
-/* Classe utilitaire pour l'animation au défilement */
+// Classe utilitaire pour l'animation au défilement */
 .fade-in {
-    /* Par défaut, l'élément est complètement transparent (invisible) grâce à une opacité de 0. */
+
+    // Par défaut, l'élément est complètement transparent (invisible) grâce à une opacité de 0.
     opacity: 0; 
 
-    /* L'élément est déplacé vers le bas de 30 pixels sur l'axe Y, ce qui le positionne en dessous de sa position d'origine. */
+    // L'élément est déplacé vers le bas de 30 pixels sur l'axe Y, ce qui le positionne en dessous de sa position d'origine.
     transform: translateY(30px); 
 
-    /* Définit la transition de toutes les propriétés CSS (ici, l'opacité et la transformation) sur une durée de 0,6 secondes avec une fonction de timing 'ease' pour un effet d'animation fluide. */
+    // Définit la transition de toutes les propriétés CSS (ici, l'opacité et la transformation) sur une durée de 0,6 secondes avec une fonction de timing 'ease' pour un effet d'animation fluide.
     transition: all 0.6s ease; 
 
     &.visible { 
 
-        /* Lorsque l'élément est visible, son opacité est réglée à 1, ce qui le rend complètement opaque et donc visible. */
+        // Lorsque l'élément est visible, son opacité est réglée à 1, ce qui le rend complètement opaque et donc visible.
         opacity: 1;
 
-        /* L'élément est remis à sa position d'origine (0 pixels sur l'axe Y), annulant le déplacement vers le bas initial. */
+        // L'élément est remis à sa position d'origine (0 pixels sur l'axe Y), annulant le déplacement vers le bas initial.
         transform: translateY(0); 
     }
 }
