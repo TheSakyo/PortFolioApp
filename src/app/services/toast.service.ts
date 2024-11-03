@@ -129,7 +129,40 @@ export class ToastService {
       message: toastOptions.message || 'Notification reçue.', // Initialise le message de notification à 'Notification reçue.' si non fournie
       duration: toastOptions.duration || 3000, // Initialise la durée d'affichage à '300ms' si non fournie
       color: toastOptions.color || undefined, // Initialise la couleur à 'undefined' si non fournie
-      position: toastOptions.position || EToastPosition.TOP // Initialise la position 'en haut' si non fournie
+      position: toastOptions.position || EToastPosition.TOP, // Initialise la position 'en haut' si non fournie
+      cssClass: this.normalizeCssClass(toastOptions.cssClass) // Normalise les options de classe CSS pour les notifications toast
     };
+  }
+
+  /**
+   * Normalise les options de classe CSS pour les notifications toast.
+   *
+   * Cette méthode garantit que la classe CSS 'toast-custom-class' est incluse, 
+   * quel que soit le type de l'option `cssClass` fourni : chaîne, tableau ou non défini.
+   *
+   * @param cssClass - La ou les classes CSS fournies, qui peuvent être 
+   *                   une chaîne de caractères, un tableau de chaînes de caractères, ou non définies.
+   *
+   * @returns Un tableau de chaînes de caractères contenant les classes CSS fournies combinées avec 'toast-custom-class'.
+   */
+  private normalizeCssClass(cssClass?: string | string[]): string[] {
+
+    const defaultClass = 'toast-custom-class'; // Classe CSS par défaut
+    let cssClassArray: string[] = [defaultClass]; // Initialise le tableau avec la classe CSS par défaut
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+    // Si l'option 'cssClass' est défini comme une chaîne, on redéfinit le tableau proprement
+    if(typeof cssClass === 'string') cssClassArray = [cssClass, ...cssClassArray];
+
+    /**
+     * Sinon, si l'option 'cssClass' est déjà un tableau et qu'il contient pas la classe CSS par défaut, 
+     * on redéfinit le tableau proprement en combinant les valeurs avec la classe par défaut.
+     */
+    else if(Array.isArray(cssClass) && cssClass.includes(defaultClass) === false) cssClassArray = [...cssClass, ...cssClassArray];
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+    return cssClassArray; // On renvoi le tableau avec la classe CSS par défaut
   }
 }

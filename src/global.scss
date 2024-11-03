@@ -41,7 +41,18 @@
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /* *** ⬇️ Global Base Style ⬇️ *** */
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* ******************************************************************************* */
+/* Section: Notification toast                                                     */
+/* Description: Stylisation globale des notifications toast de l'application       */
+/* ******************************************************************************* */
+
+
+.toast-custom-class {
+
+    color: rgba(var(--text-color-rgb), 0.9); // Couleur du texte dynamique
+}
 
 /* ************************************************************************** */
 /* Section: Animations                                                        */
