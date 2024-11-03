@@ -74,7 +74,7 @@ export class ToastService {
    * Affiche une notification toast en utilisant les options fournies.
    * 
    * Cette méthode crée une instance de notification toast avec les options spécifiées, puis l'affiche à l'utilisateur.
-   * Elle permet d'utiliser des options personnalisées tout en définissant des options par défaut pour la notification.
+   * Elle permet d'utiliser des options personnalisées tout en définissant pour certaines options des valeurs par défaut pour la notification.
    * 
    * @param toastOptions - Les options à utiliser pour configurer la notification toast 
    *                       conformément à l'interface par défaut `ToastOptions`.
@@ -96,7 +96,7 @@ export class ToastService {
     };
 
     // Vérifie si aucune option de toast n'est définie et si des options pour la notification toast ont été fournies, alors on met en place des options par défaut.
-    if(!this._toastOptions && toastOptions) this.toastOptions = defaultOptions;
+    if(!this._toastOptions && !toastOptions) this.toastOptions = defaultOptions;
 
     // Crée une instance de notification toast à partir des options fournies et l'affiche.
     return this.toastController.create(toastOptions).then(toast => toast.present())
