@@ -82,9 +82,9 @@ export class ContactComponent implements OnInit {
 
       // Déclenche l'indicateur de soumission pour indiquer un envoi en cours.
       this.isSubmitting = true;
-
+      
       /**
-       * On essaie d'envoyer le formulaire.
+       * On essaie d'envoyer le formulaire en vérifiant les informations de saisies.
        */
       try {
 
