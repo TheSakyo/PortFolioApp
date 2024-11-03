@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastOptions } from '@ionic/core';
 import { ToastController } from '@ionic/angular';
-import { EToastColor } from '../enums/toast.color.enum';
 import { EToastPosition } from '../enums/toast.position.enum';
 import { IToastOptions } from '../interfaces/global/toast.options.interface';
 
@@ -32,12 +30,13 @@ export class ToastService {
    * Définit les options de configuration des notifications toast.
    * 
    * Vous pouvez configurer les paramètres de la notification toast en utilisant l'interface par défaut 
-   * `ToastOptions`, en conjonction avec la nouvelle interface `IToastOptions`. Cela inclut les options 
-   * `color` et `position`, qui peuvent être définies à l'aide des énumérations `EToastColor` et 
-   * `EToastPosition` pour garantir que seules des valeurs valides soient utilisées.
+   * `ToastOptions` en conjonction avec la nouvelle interface `IToastOptions`. 
    * 
-   * Elle permet d'initialiser des options personnalisées tout en définissant pour certaines options 
-   * des valeurs par défaut pour la notification.
+   * En effet grâce à cette nouvelle interface, certaines propriétés sont omises pour plutôt utiliser 
+   * des types d'énumérations et ainsi garantir que seules des valeurs valides soient utilisées.
+   * 
+   * Ce setter initialise des options personnalisées tout en définissant des valeurs par défaut 
+   * pour la notification.
    * 
    * @param options - Options de configuration pour les notifications toast (inclut les propriétés de 
    *                  l'interface `IToastOptions` étendue de l'interface `ToastOptions`).
@@ -107,23 +106,20 @@ export class ToastService {
   /**********************************************************/
 
   /**
-   * Initialise des options par défaut pour une notification toast en cas d'informations manquantes.
+   * Initialise les options par défaut pour une notification toast en cas d'informations manquantes.
    *
-   * Cette méthode renvoie un objet contenant des options de notification toast, 
-   * combinant les paramètres fournis avec des valeurs par défaut. Les propriétés 
-   * 'color' et 'position' sont omises pour utilisé ses types à travers les énumérations `EToastColor` et `EToastPosition`.
+   * Cette méthode renvoie un objet combinant les options fournies avec des valeurs par défaut. 
+   * Certaines propriétés sont omises pour utiliser des types d'énumérations grâce à l'interface `IToastOptions` étendant `ToastOptions`.
    *
-   * @param toastOptions - Les options de configuration de la notification toast, excluant 'color' et 'position', 
-   *                      avec des options spécifiques pour 'color' et 'position' basées sur les énumérations 
-   *                      `EToastColor` et `EToastPosition`.
+   * @param toastOptions - Options de configuration de la notification toast, excluant 'color' et 'position'.
    *
-   * @returns Un objet d'options de notification toast contenant les paramètres fournis combinés avec des valeurs par défaut : 
-   *            - 'message' initialisé à la valeur fournie ou 'Notification reçue.' si non spécifié,
-   *            - 'duration' initialisé à la valeur fournie ou '3000ms' si non spécifié,
-   *            - 'color' initialisé à la valeur fournie ou 'undefined' si non spécifié,
-   *            - 'position' initialisé à la valeur fournie ou 'en haut' si non spécifié,
+   * @returns Un objet contenant : 
+   *            - 'message' : valeur fournie ou 'Notification reçue.' par défaut,
+   *            - 'duration' : valeur fournie ou '3000ms' par défaut,
+   *            - 'color' : valeur fournie ou 'undefined' par défaut,
+   *            - 'position' : valeur fournie ou 'en haut' par défaut.
    */
-  private initializeDefaultToastOptions(toastOptions: Omit<ToastOptions, 'color' | 'position'> & { color?: EToastColor; position?: EToastPosition }): Omit<ToastOptions, 'color' | 'position'> & { color?: EToastColor; position?: EToastPosition } {
+  private initializeDefaultToastOptions(toastOptions: IToastOptions): IToastOptions {
 
     /** 
      * Renvoi les options par défaut pour la notification toast en omettant 'color' et 'position'.
