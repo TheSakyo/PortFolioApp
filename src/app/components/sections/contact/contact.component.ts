@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { ToastService } from '../../../services/toast.service';
 import { EToastColor } from 'src/app/enums/toast.color.enum';
 import { AnimationService } from 'src/app/services/animation.service';
+import { EToastPosition } from 'src/app/enums/toast.position.enum';
 
 @Component({
   selector: 'app-contact',
@@ -24,8 +25,10 @@ export class ContactComponent implements OnInit {
   /**************   ⬇️    PROPRIÉTÉS    ⬇️   ************/
   /****************************************************/
 
-  contactForm: FormGroup; // Formulaire de contact, utilisé pour capturer les données utilisateur.
-  isSubmitting = false; // Indicateur d'état indiquant si le formulaire est en cours de soumission.
+  public contactForm: FormGroup; // Formulaire de contact, utilisé pour capturer les données utilisateur.
+  public isSubmitting = false; // Indicateur d'état indiquant si le formulaire est en cours de soumission.
+
+  private toastPosition: EToastPosition = EToastPosition.BOTTOM; // Position de la notification toast.
 
   /****************************************************/
   /**************   ⬇️    CONSTRUCTEUR    ⬇️   **********/
@@ -91,12 +94,29 @@ export class ContactComponent implements OnInit {
         // Simulation d'un appel API pour l'envoi du formulaire.
         await new Promise(resolve => setTimeout(resolve, 1500));
         
-        // Affiche un message de succès et réinitialise le formulaire avec l'aide de son service associé.
-        await this.toastService.present({ message: 'Message envoyé avec succès !', color: EToastColor.SUCCESS });
+        // Affiche un message de succès avec l'aide de son service associé.
+        await this.toastService.present({ 
+          message: 'Message envoyé avec succès !', // Message de la notification
+          color: EToastColor.SUCCESS, // Couleur de la notification
+          position: this.toastPosition // Position de la notification
+        });
+        
         this.contactForm.reset(); // Réinitialise le formulaire après l'envoi.
 
-      // En cas d'erreur, on affiche un message d'erreur toujours avec l'aide de son service associé.
-      } catch(error) { await this.toastService.present({ message: 'Erreur lors de l\'envoi du message.', color: EToastColor.DANGER }); } 
+      /**
+       * En cas d'erreur, on affiche un message d'erreur toujours avec l'aide de son service associé.
+       */ 
+      } catch(error) { 
+        
+        /**
+         * Affiche un message d'erreur toujours avec l'aide de son service associé.
+         */
+        await this.toastService.present({ 
+          message: 'Erreur lors de l\'envoi du message.', // Message de la notification
+          color: EToastColor.DANGER, // Couleur de la notification
+          position: this.toastPosition // Position de la notification
+        }); 
+      } 
       
       // Finalement, on réinitialise l'indicateur de soumission.
       finally { this.isSubmitting = false; }
@@ -113,7 +133,11 @@ export class ContactComponent implements OnInit {
        * Affiche une notification toast toujours avec l'aide de son service associé pour 
        * inviter l'utilisateur à remplir correctement tous les champs.
        */
-      await this.toastService.present({ message: 'Veuillez remplir tous les champs correctement.', color: EToastColor.WARNING });
+      await this.toastService.present({ 
+        message: 'Veuillez remplir tous les champs correctement.', // Message de la notification
+        color: EToastColor.WARNING, // Couleur de la notification
+        position: this.toastPosition // Position de la notification
+      });
     }
   }
 }
