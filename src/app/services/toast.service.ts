@@ -78,13 +78,21 @@ export class ToastService {
   public present(toastOptions: IToastOptions | undefined = undefined, resetOptions: boolean = true): Promise<void> { 
 
     /**
-     * On assigne (toastOptions) aux options par défaut (_toastOptions) si elles sont définies et que (toastOptions) est vide, 
-     * Ensuite on met à jour (_toastOptions) avec (toastOptions) si aucune option n'est définie.
+     * Tout d'abord, on vérifie si des options de notification toast initiales (_toastOptions) sont définies.
      * 
-     * Sinon, on conserve leur valeur actuelle.
+     * Si c'est le cas et que les options de notification toast fournies (toastOptions) sont vides, 
+     * on assigne la propriété '_toastOptions' à celle de 'toastOptions'. 
+     * 
+     * Sinon, on conserve la valeur actuelle de la propriété 'toastOptions'.
      */
     toastOptions = this._toastOptions && !toastOptions ? this._toastOptions : toastOptions;
-    this._toastOptions = toastOptions && !this._toastOptions ? toastOptions : this._toastOptions;
+
+    /**
+     * Si les options de notification toast fournies (toastOptions) sont définies après la vérification précédente, 
+     * on met à jour les options de notification toast initiales (_toastOptions) 
+     * avec cette valeur à l'aide de son setter (toastOptions()).
+     */
+    if(toastOptions) this.toastOptions = toastOptions;
 
     /**
      * Crée une instance de notification toast à partir des options de configuration de la notification et l'affiche.
