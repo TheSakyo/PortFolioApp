@@ -87,10 +87,10 @@ export class ToastService {
     this._toastOptions = toastOptions && !this._toastOptions ? toastOptions : this._toastOptions;
 
     /**
-     * Crée une instance de notification toast à partir des options fournies et l'affiche.
+     * Crée une instance de notification toast à partir des options de configuration de la notification et l'affiche.
      * Finalement, on réinitialise les options pour la notification toast si le paramètre (resetOptions) est vrai.
      */
-    return this.toastController.create(toastOptions).then(toast => toast.present())
+    return this.toastController.create(this._toastOptions).then(toast => toast.present())
       .finally(() => { if(resetOptions) this._toastOptions = undefined; });
   }
 
