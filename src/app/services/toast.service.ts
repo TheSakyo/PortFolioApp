@@ -3,6 +3,7 @@ import { ToastOptions } from '@ionic/core';
 import { ToastController } from '@ionic/angular';
 import { EToastColor } from '../enums/toast.color.enum';
 import { EToastPosition } from '../enums/toast.position.enum';
+import { IToastOptions } from '../interfaces/global/toast.options.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
@@ -11,7 +12,7 @@ export class ToastService {
   /**************   ⬇️    PROPRIÉTÉS    ⬇️   **************/
   /******************************************************/
   
-  private _toastOptions?: ToastOptions;
+  private _toastOptions?: IToastOptions;
 
   /********************************************************/
   /**************   ⬇️    CONSTRUCTEUR    ⬇️   **************/
@@ -30,40 +31,32 @@ export class ToastService {
   /**
    * Définit les options de configuration des notifications toast.
    * 
-   * Utilisez cette propriété pour configurer les paramètres de la notification toast, incluant l'interface par défaut
-   * `ToastOptions` ainsi que les options `color` et `position` en utilisant les énumérations `EToastColor` et `EToastPosition`.
+   * Vous pouvez configurer les paramètres de la notification toast en utilisant l'interface par défaut 
+   * `ToastOptions`, en conjonction avec la nouvelle interface `IToastOptions`. Cela inclut les options 
+   * `color` et `position`, qui peuvent être définies à l'aide des énumérations `EToastColor` et 
+   * `EToastPosition` pour garantir que seules des valeurs valides soient utilisées.
    * 
-   * @param options - Les options de configuration de la notification toast, avec des énumérations spécifiques pour `color` et `position`, 
-   *                  ainsi que les autres paramètres de `ToastOptions`.
+   * Elle permet d'initialiser des options personnalisées tout en définissant pour certaines options 
+   * des valeurs par défaut pour la notification.
+   * 
+   * @param options - Options de configuration pour les notifications toast (inclut les propriétés de 
+   *                  l'interface `IToastOptions` étendue de l'interface `ToastOptions`).
    * 
    * @example
    * toastServiceInstance.toastOptions({
-   *    color: EToastColor.PRIMARY,            // type : EToastColor
-   *    position: EToastPosition.BOTTOM    // type : EToastPosition
-   *    ... // autre propriété de ToastOptions
+   *    color: EToastColor.PRIMARY,        // Énumération 'EToastColor' de l'interface 'IToastOptions'
+   *    position: EToastPosition.BOTTOM    // Énumération 'EToastPosition' de l'interface 'IToastOptions'
+   *    ... // Autre propriété de l'interface 'ToastOptions'
    * });
    */
-  public set toastOptions(options: Omit<ToastOptions, 'color' | 'position'> & { color?: EToastColor; position?: EToastPosition }) {
-      
+  public set toastOptions(options: IToastOptions) {
+    
     /**
-     * Assigne un nouvel objet d'options de notification à `_toastOptions`. 
-     * Les options contiennent toutes les propriétés d'options existantes avec une nouvelle gestion des propriétés `color` et `position`.
+     * Assigne un nouvel objet d'options de notification à `_toastOptions` en mettant en place des options par défaut si nécessaire.
+     * Cela permettra d'éviter des répétitions dans la configuration des notifications toast, en garantissant que chaque notification 
+     * utilise des paramètres cohérents tout en permettant des personnalisations spécifiques.
      */
-    this._toastOptions = { 
-        
-      ...options, // Copie les propriétés existantes de `options` dans le nouvel objet.
-      color: options.color, // Récupère l'énumération de la couleur de la notification toast.
-      position: options.position, // Récupère l'énumération de la position de la notification toast.
-      duration: options.duration ?? 3000, // Définit la durée par défaut de la notification toast à 3000ms.
-
-      /**
-       * Ajoute un bouton par défaut avec le texte 'OK' et un rôle 'cancel'.
-       */
-      buttons: options.buttons ?? [{ 
-          text: 'OK',
-          role: 'cancel'
-      }],
-    };
+    this._toastOptions = this.initializeDefaultToastOptions(options);
   }
 
   /****************************************************/
@@ -82,24 +75,57 @@ export class ToastService {
    *                       après l'affichage. La valeur par défaut est `true`.
    * @returns Une promesse qui se résout lorsque la notification toast a été présentée à l'utilisateur.
    */
-  public present(toastOptions: Omit<ToastOptions, 'color' | 'position'> & { color?: EToastColor; position?: EToastPosition }, resetOptions = true): Promise<void> { 
-    
-    /** 
-     * Définit les options par défaut pour la notification toast en omettant 'color' et 'position'.
-     */ 
-    const defaultOptions: Omit<ToastOptions, 'color' | 'position'> & { color?: EToastColor; position?: EToastPosition } = {
-      ...toastOptions, // Combine les options fournies avec les valeurs par défaut.
-      duration: 3000, // Durée d'affichage du toast en millisecondes.
-      buttons: [{ text: 'OK', role: 'cancel' }], // Bouton par défaut avec texte 'OK' qui annule le toast.
-      color: undefined, // Initialisation de la couleur à 'undefined', à remplacer si spécifié.
-      position: EToastPosition.TOP // Position par défaut du toast.
-    };
+  public present(toastOptions: IToastOptions | undefined = undefined, resetOptions: boolean = true): Promise<void> { 
 
-    // Vérifie si aucune option de toast n'est définie et si des options pour la notification toast ont été fournies, alors on met en place des options par défaut.
-    if(!this._toastOptions && !toastOptions) this.toastOptions = defaultOptions;
+    /**
+     * On assigne (toastOptions) aux options par défaut (_toastOptions) si elles sont définies et que (toastOptions) est vide, 
+     * Ensuite on met à jour (_toastOptions) avec (toastOptions) si aucune option n'est définie.
+     * 
+     * Sinon, on conserve leur valeur actuelle.
+     */
+    toastOptions = this._toastOptions && !toastOptions ? this._toastOptions : toastOptions;
+    this._toastOptions = toastOptions && !this._toastOptions ? toastOptions : this._toastOptions;
 
-    // Crée une instance de notification toast à partir des options fournies et l'affiche.
+    /**
+     * Crée une instance de notification toast à partir des options fournies et l'affiche.
+     * Finalement, on réinitialise les options pour la notification toast si le paramètre (resetOptions) est vrai.
+     */
     return this.toastController.create(toastOptions).then(toast => toast.present())
-      .finally(() => { if(resetOptions) this._toastOptions = undefined; }); // Réinitialise les options pour la notification toast si le paramètre resetOptions est vrai.
+      .finally(() => { if(resetOptions) this._toastOptions = undefined; });
+  }
+
+  /***********************************************************/
+  /**************   ⬇️    MÉTHODES PRIVÉES   ⬇️   **************/
+  /**********************************************************/
+
+  /**
+   * Initialise des options par défaut pour une notification toast en cas d'informations manquantes.
+   *
+   * Cette méthode renvoie un objet contenant des options de notification toast, 
+   * combinant les paramètres fournis avec des valeurs par défaut. Les propriétés 
+   * 'color' et 'position' sont omises pour utilisé ses types à travers les énumérations `EToastColor` et `EToastPosition`.
+   *
+   * @param toastOptions - Les options de configuration de la notification toast, excluant 'color' et 'position', 
+   *                      avec des options spécifiques pour 'color' et 'position' basées sur les énumérations 
+   *                      `EToastColor` et `EToastPosition`.
+   *
+   * @returns Un objet d'options de notification toast contenant les paramètres fournis combinés avec des valeurs par défaut : 
+   *            - 'message' initialisé à la valeur fournie ou 'Notification reçue.' si non spécifié,
+   *            - 'duration' initialisé à la valeur fournie ou '3000ms' si non spécifié,
+   *            - 'color' initialisé à la valeur fournie ou 'undefined' si non spécifié,
+   *            - 'position' initialisé à la valeur fournie ou 'en haut' si non spécifié,
+   */
+  private initializeDefaultToastOptions(toastOptions: Omit<ToastOptions, 'color' | 'position'> & { color?: EToastColor; position?: EToastPosition }): Omit<ToastOptions, 'color' | 'position'> & { color?: EToastColor; position?: EToastPosition } {
+
+    /** 
+     * Renvoi les options par défaut pour la notification toast en omettant 'color' et 'position'.
+     */ 
+    return {
+      ...toastOptions, // Combine les options fournies avec les valeurs par défaut
+      message: toastOptions.message || 'Notification reçue.', // Initialise le message de notification à 'Notification reçue.' si non fournie
+      duration: toastOptions.duration || 3000, // Initialise la durée d'affichage à '300ms' si non fournie
+      color: toastOptions.color || undefined, // Initialise la couleur à 'undefined' si non fournie
+      position: toastOptions.position || EToastPosition.TOP // Initialise la position 'en haut' si non fournie
+    };
   }
 }
