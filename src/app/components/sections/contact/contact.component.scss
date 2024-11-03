@@ -140,6 +140,7 @@
             }
 
             ion-input, ion-textarea {
+                --color: var(--text-color); // Couleur de texte dynamique
                 --padding-start: 1rem; // Espacement à gauche
                 --padding-end: 1rem; // Espacement à droite
                 --padding-top: 1rem; // Espacement en haut
