@@ -28,7 +28,7 @@
                     background: linear-gradient(120deg, var(--accent-primary), var(--accent-secondary)); // Dégradé pour effet visuel
                     -webkit-background-clip: text; // Découpe le fond pour qu'il ne soit visible qu'à travers le texte
                     -webkit-text-fill-color: transparent; // Rend le texte transparent, laissant apparaître le dégradé
-                    background-clip: text; // Version standard (pour une meilleure compatibilité)
+                    background-clip: text; // Version standard (permet une meilleure compatibilité)
                     color: transparent; // Fallback pour les navigateurs ne supportant pas -webkit-text-fill-color
                 }
 
