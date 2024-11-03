@@ -1,0 +1,190 @@
+/* ************************************************************************** */
+/* Section: Configuration Globale de la Page de Contact Ionic                  */
+/* Description: Styles adaptés pour les composants Ionic                       */
+/* ************************************************************************** */
+
+.contact-page {
+    background: rgba(var(--background-color-rgb), 0.95); // Fond semi-transparent à 95% pour une meilleure lisibilité
+
+    /* ************************************************************************** */
+    /* Section: Hero - Section d'En-tête Principal                                */
+    /* Description: Configuration de la bannière principale avec effets visuels   */
+    /* ************************************************************************** */
+    
+    .hero-section {
+        background: transparent; // Fond transparent pour permettre l'effet de superposition
+        
+        ion-toolbar {
+            --background: transparent; // Suppression du fond de la barre d'outils
+            --border-width: 0; // Suppression de la bordure par défaut
+
+            .hero-content {
+                padding: 2rem 1rem; // Espacement interne pour le contenu
+                text-align: center; // Centrage du texte
+
+                h1 {
+                    font-size: 3rem; // Taille importante pour le titre principal
+                    margin-bottom: 1rem; // Espacement sous le titre
+                    background: linear-gradient(120deg, var(--accent-primary), var(--accent-secondary)); // Dégradé pour effet visuel
+                    -webkit-background-clip: text; // Découpe le fond pour qu'il ne soit visible qu'à travers le texte
+                    -webkit-text-fill-color: transparent; // Rend le texte transparent, laissant apparaître le dégradé
+                    background-clip: text; // Version standard (pour une meilleure compatibilité)
+                    color: transparent; // Fallback pour les navigateurs ne supportant pas -webkit-text-fill-color
+                }
+
+                p {
+                    font-size: 1.2rem; // Taille légèrement plus grande pour la lisibilité
+                    color: var(--text-color); // Utilisation de la couleur de texte dynamique
+                    opacity: 0.8; // Légère transparence pour effet visuel
+                }
+            }
+        }
+    }
+
+    /* ************************************************************************** */
+    /* Section: Contenu Principal et Grille                                       */
+    /* Description: Organisation du layout avec système de grille responsive      */
+    /* ************************************************************************** */
+
+    .contact-content {
+        padding: 1rem; // Espacement interne uniforme
+        max-width: 1200px; // Largeur maximale pour grands écrans
+        margin: 0 auto; // Centrage horizontal du contenu
+
+        .contact-grid {
+            display: grid; // Utilisation du système de grille
+            grid-template-columns: 1fr 1.5fr; // Répartition des colonnes avec ratio 1:1.5
+            gap: 1rem; // Espacement entre les éléments de la grille
+            
+            // Passage à une seule colonne sur petit écran
+            @media(max-width: 968px) { grid-template-columns: 1fr; }
+        }
+    }
+
+    /* ************************************************************************** */
+    /* Section: Cartes d'Information                                              */
+    /* Description: Style des cartes avec effets de profondeur et interactions   */
+    /* ************************************************************************** */
+
+    ion-card {
+        background: rgba(var(--background-container), 0.8); // Fond semi-transparent
+        border-radius: 15px; // Coins arrondis pour effet moderne
+        margin: 1rem 0; // Espacement vertical entre les cartes
+        box-shadow: var(--shadow-light) 3px 3px 6px 0px inset,
+                    var(--shadow-color) -3px -3px 6px 1px inset; // Double ombre pour effet de profondeur
+
+        ion-card-header {
+            display: flex; // Layout flexible pour l'en-tête
+            align-items: center; // Alignement vertical des éléments
+            gap: 1rem; // Espacement entre les éléments
+            padding: 1.5rem 1rem 1rem; // Espacement interne asymétrique
+
+            .contact-icon, .form-icon {
+                font-size: 2rem; // Taille importante pour les icônes
+                color: var(--accent-primary); // Couleur d'accent pour mise en évidence
+            }
+
+            h3 {
+                font-size: 1.5rem; // Taille moyenne pour les titres de carte
+                color: var(--text-color); // Couleur de texte dynamique
+                margin: 0; // Suppression des marges par défaut
+            }
+        }   
+
+        // Espacement interne uniforme
+        ion-card-content { padding: 1rem; }
+    }
+
+    /* ************************************************************************** */
+    /* Section: Liste des Contacts                                                */
+    /* Description: Configuration des listes avec effets au survol               */
+    /* ************************************************************************** */
+
+    ion-list {
+        background: transparent; // Suppression du fond par défaut
+
+        ion-item {
+            --background: transparent; // Élément transparent
+            --background-hover: rgba(var(--accent-primary-rgb), 0.1); // Effet de survol subtil
+            --ripple-color: rgba(var(--accent-primary-rgb), 0.1); // Couleur de l'effet ripple
+            
+            ion-icon {
+                color: var(--accent-primary); // Couleur d'accent pour les icônes
+                font-size: 1.5rem; // Taille moyenne des icônes
+            }
+
+            // Couleur de texte dynamique
+            ion-label { color: var(--text-color); }
+        }
+    }
+
+    /* ************************************************************************** */
+    /* Section: Formulaire de Contact                                             */
+    /* Description: Style des éléments de formulaire avec états interactifs      */
+    /* ************************************************************************** */
+
+    .contact-form {
+        ion-item {
+            --background: transparent; // Fond transparent pour les éléments
+            --border-color: rgba(var(--text-color-rgb), 0.1); // Bordure légère
+            --highlight-color: var(--accent-primary); // Couleur de mise en évidence
+            --padding-start: 0; // Suppression du padding gauche par défaut
+            
+            &.item-has-focus {
+                --highlight-background: rgba(var(--accent-primary-rgb), 0.1); // Effet de focus subtil
+            }
+
+            ion-label {
+                --color: var(--text-color); // Couleur de texte dynamique
+                opacity: 0.8; // Légère transparence
+            }
+
+            ion-input, ion-textarea {
+                --padding-start: 1rem; // Espacement à gauche
+                --padding-end: 1rem; // Espacement à droite
+                --padding-top: 1rem; // Espacement en haut
+                --padding-bottom: 1rem; // Espacement en bas
+                --placeholder-color: rgba(var(--text-color-rgb), 0.5); // Couleur du placeholder
+                --placeholder-opacity: 0.5; // Opacité du placeholder
+            }
+        }
+
+        .form-grid {
+            display: grid; // Utilisation du système de grille
+            grid-template-columns: 1fr 1fr; // Deux colonnes de taille égale
+            gap: 1rem; // Espacement entre les éléments
+            margin-bottom: 1rem; // Marge sous la grille
+
+            // Passage à une seule colonne sur petit écran
+            @media(max-width: 768px) { grid-template-columns: 1fr; }
+        }
+
+        ion-note[slot="error"] {
+            color: var(--ion-color-danger); // Couleur rouge pour les erreurs
+            font-size: 0.8rem; // Taille réduite pour les messages d'erreur
+            padding: 0.5rem 0; // Espacement vertical
+        }
+
+        /* ********************************************************************** */
+        /* Sous-Section: Bouton de Soumission                                     */
+        /* Description: Style et animation du bouton principal                    */
+        /* ********************************************************************** */
+
+        ion-button {
+            --background: var(--accent-primary); // Couleur de fond principale
+            --background-hover: var(--accent-secondary); // Couleur au survol
+            --ripple-color: rgba(255, 255, 255, 0.2); // Effet de clic subtil
+            margin: 1rem 0; // Espacement vertical
+            height: 3rem; // Hauteur fixe
+            font-weight: 600; // Police en semi-gras
+            
+            ion-icon {
+                margin-left: 0.5rem; // Espacement à gauche de l'icône
+                transition: transform 0.3s ease; // Animation douce
+            }
+
+            // Si le bouton n'est pas désactivé, une animation de l'icône est appliquée au survol
+            &:not([disabled]):hover { ion-icon { transform: translateX(5px); } }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import { addIcons } from "ionicons";
-import { arrowForwardOutline, briefcaseOutline, chevronBackOutline, chevronForwardOutline, informationCircleOutline, mailOutline, moon, searchOutline, sunny } from 'ionicons/icons';
+import { arrowForwardOutline, briefcaseOutline, chevronBackOutline, chevronForwardOutline, informationCircleOutline, logoGithub, logoLinkedin, mailOutline, moon, searchOutline, sunny } from 'ionicons/icons';
 
 export abstract class IoniconsUtils {
 
@@ -14,7 +14,9 @@ export abstract class IoniconsUtils {
             'chevron-back-outline': chevronBackOutline,
             'briefcase-outline': briefcaseOutline,
             'information-circle-outline': informationCircleOutline,
-            'mail-outline': mailOutline
+            'mail-outline': mailOutline,
+            'logo-linkedin': logoLinkedin,
+            'logo-github': logoGithub
         });
     }
 }

@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/* Section: Configuration Globale de la Page d'Erreur                         */
+/* Description: Styles de base et mise en page pour la page d'erreur         */
+/* ************************************************************************** */
+
 .error-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: rgba(var(--background-color-rgb), 0.90);
+    display: flex; // Utilisation de flexbox pour le centrage
+    align-items: center; // Centrage vertical
+    justify-content: center; // Centrage horizontal
+    height: 100vh; // Hauteur complète de la vue
+    background: rgba(var(--background-color-rgb), 0.90); // Fond semi-transparent à 90%
+
+    /* ************************************************************************** */
+    /* Section: Formes d'Arrière-Plan                                             */
+    /* Description: Configuration des nuages décoratifs flottants                 */
+    /* ************************************************************************** */
 
     .background-shapes {
         position: absolute; // Positionnement absolu
@@ -14,33 +24,33 @@
         z-index: 1; // Au-dessus du fond
 
         .shape-cloud {
-            position: absolute;
-            filter: drop-shadow(0 0 0.75rem var(--shadow-color)) blur(10px); // Combinaison de drop-shadow et blur
+            position: absolute; // Positionnement absolu
+            filter: drop-shadow(0 0 0.75rem var(--shadow-color)) blur(10px); // Effet d'ombre portée et flou
             opacity: 0.4; // Semi-transparent
-            animation: floatCloud 15s linear infinite;
+            animation: floatCloud 15s linear infinite; // Animation continue des nuages
 
             /* ******************************************************************** */
-            /* Sous-Section: Configuration des Formes de nuages Individuelles       */
-            /* Description: Positionnement et dimensionnement de chaque forme       */
+            /* Sous-Section: Configuration des Nuages Individuels                   */
+            /* Description: Positionnement et dimensionnement de chaque nuage       */
             /* ******************************************************************** */
 
             &-1 {
-                width: 300px; // Largeur à 200px
-                height: 200px; // Hauteur à 130px
+                width: 300px; // Largeur du nuage 1
+                height: 200px; // Hauteur du nuage 1
                 top: 10%; // Position du haut
                 left: 20%; // Position de la gauche
             }
         
             &-2 {
-                width: 400px; // Largeur à 250px
-                height: 250px; // Hauteur à 150px
+                width: 400px; // Largeur du nuage 2
+                height: 250px; // Hauteur du nuage 2
                 top: 30%; // Position du haut
                 left: 50%; // Position de la gauche
             }
         
             &-3 {
-                width: 280px; // Largeur à 180px
-                height: 180px; // Hauteur à 120px
+                width: 280px; // Largeur du nuage 3
+                height: 180px; // Hauteur du nuage 3
                 top: 50%; // Position du haut
                 left: 75%; // Position de la gauche
             }
@@ -53,74 +63,99 @@
             }
 
             &-5 {
-                width: 450px; // Largeur du nuage 4
-                height: 270px; // Hauteur du nuage 4
+                width: 450px; // Largeur du nuage 5
+                height: 270px; // Hauteur du nuage 5
                 top: 15%; // Position du haut
                 left: 80%; // Position de la gauche
             }
         }
     }
 
-    .error-container {
-        z-index: 2; // Au-dessus des formes
-        text-align: center;
-        padding: 2rem;
-        border: 1px solid var(--accent-darken-danger);
-        border-radius: 10px;
-        background-color: rgba(var(--background-container), 0.8);
-        box-shadow: var(--shadow-light) 3px 3px 6px 0px inset, var(--shadow-color) -3px -3px 6px 1px inset;
-        transition: transform 0.2s;
+    /* ************************************************************************** */
+    /* Section: Conteneur Principal d'Erreur                                      */
+    /* Description: Styles pour la boîte principale affichant le message d'erreur */
+    /* ************************************************************************** */
 
-        &:hover { transform: scale(1.05); }
+    .error-container {
+        z-index: 2; // Au-dessus des formes de nuages
+        text-align: center; // Centrage du texte
+        padding: 2rem; // Espacement interne
+        border: 1px solid var(--accent-darken-danger); // Bordure rouge foncé
+        border-radius: 10px; // Coins arrondis
+        background-color: rgba(var(--background-container), 0.8); // Fond semi-transparent
+        box-shadow: var(--shadow-light) 3px 3px 6px 0px inset,
+                    var(--shadow-color) -3px -3px 6px 1px inset; // Ombre interne double
+        transition: transform 0.2s; // Animation douce au survol
+
+        &:hover { transform: scale(1.05); } // Effet de zoom au survol
         
+        /* ************************************************************************** */
+        /* Sous-Section: Éléments Internes du Conteneur                              */
+        /* Description: Configuration des différents éléments du message d'erreur     */
+        /* ************************************************************************** */
+
         .error-icon {
-            font-size: 3rem;
-            margin: 1rem 0;
+            font-size: 3rem; // Taille de l'icône
+            margin: 1rem 0; // Marge verticale
         }
 
         .header {
-
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.5rem; // Espacement inférieur
 
             .error-title {
-                font-size: 3rem;
-                color: var(--accent-danger);
-                text-shadow: 0 1px 0 #ec2020, 0 2px 0 #bf1c1c, 0 3px 0 #921111, 0 4px 0 #a91212, 0 5px 0 #921313, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
-                margin: 0.5rem 0;
+                font-size: 3rem; // Grande taille pour le titre
+                color: var(--accent-danger); // Couleur d'erreur
+                text-shadow: 0 1px 0 #ec2020, // Effet de texte en relief
+                        0 2px 0 #bf1c1c,
+                        0 3px 0 #921111,
+                        0 4px 0 #a91212,
+                        0 5px 0 #921313,
+                        0 6px 1px rgba(0,0,0,.1),
+                        0 0 5px rgba(0,0,0,.1),
+                        0 1px 3px rgba(0,0,0,.3),
+                        0 3px 5px rgba(0,0,0,.2),
+                        0 5px 10px rgba(0,0,0,.25),
+                        0 10px 10px rgba(0,0,0,.2),
+                        0 20px 20px rgba(0,0,0,.15);
+                margin: 0.5rem 0; // Marge verticale
             } 
         }
 
         .error-message {
-            font-size: 1.25rem;
-            color: var(--text-color);
-            margin: 0.5rem 0;
+            font-size: 1.25rem; // Taille moyenne pour le message
+            color: var(--text-color); // Couleur de texte standard
+            margin: 0.5rem 0; // Marge verticale
         }
 
         .error-details {
-            font-size: 1rem;
-            color: var(--text-color);
-            margin: 1rem 0;
+            font-size: 1rem; // Taille normale pour les détails
+            color: var(--text-color); // Couleur de texte standard
+            margin: 1rem 0; // Marge verticale
         }
 
-        .footer {
+        /* ************************************************************************** */
+        /* Sous-Section: Pied de Page et Bouton                                      */
+        /* Description: Styles pour la zone de bouton et actions                     */
+        /* ************************************************************************** */
 
-            margin-top: 2.5rem;
+        .footer {
+            margin-top: 2.5rem; // Marge supérieure importante
 
             ion-button {
-                --background: var(--accent-danger); /* Couleur de fond */
-                --color: white; /* Couleur du texte du bouton */
-                transition: transform 0.3s, background-color 0.3s;
-                margin: 0.5rem;
-                width: 95%;
-                font-weight: bold; /* Met le texte du bouton en gras */
-                padding: 0.75rem 1.5rem;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
+                --background: var(--accent-danger); // Couleur de fond du bouton
+                --color: white; // Couleur du texte
+                transition: transform 0.3s, background-color 0.3s; // Animation douce
+                margin: 0.5rem; // Marge autour du bouton
+                width: 95%; // Largeur presque complète
+                font-weight: bold; // Texte en gras
+                padding: 0.75rem 1.5rem; // Espacement interne
+                border: none; // Pas de bordure
+                border-radius: 5px; // Coins arrondis
+                cursor: pointer; // Curseur pointeur
     
                 &:hover {
-                    transform: scale(1.1); /* Augmente légèrement la taille du bouton au survol pour un effet interactif */
-                    --background: var(--accent-darken-danger);
+                    transform: scale(1.1); // Effet de zoom au survol
+                    --background: var(--accent-darken-danger); // Couleur plus foncée
                 }
             }
         }
@@ -129,17 +164,11 @@
 
 /* ************************************************************************** */
 /* Section: Animations                                                        */
-/* Description: Définition de l'animation utilisées pour les nuages           */
+/* Description: Définition de l'animation utilisée pour les nuages           */
 /* ************************************************************************** */
 
 @keyframes floatCloud {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
+    0% { transform: translateY(0); } // Position initiale
+    50% { transform: translateY(-20px); } // Déplacement vers le haut
+    100% { transform: translateY(0); } // Retour à la position initiale
+}

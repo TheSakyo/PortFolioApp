@@ -1,18 +1,140 @@
-<section>
-  <h2>Contact Us</h2>
-  <form>
-    <ion-item>
-      <ion-label position="floating">Your Name</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Your Email</ion-label>
-      <ion-input type="email" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Message</ion-label>
-      <ion-textarea rows="5" required></ion-textarea>
-    </ion-item>
-    <ion-button expand="full" type="submit">Submit</ion-button>
-  </form>
-</section>
+<div class="contact-page">
+  <!-- Section: Hero -->
+  <section class="hero-section ion-no-border">
+    <ion-toolbar>
+      <ion-title>
+        <div class="hero-content">
+          <h1 class="fade-in">Contact</h1>
+          <p class="fade-in">Intéressé par un échange constructif ? N'hésitez pas à me contacter !</p>
+        </div>
+      </ion-title>
+    </ion-toolbar>
+  </section>
+
+  <!-- Section: Contenu Principal -->
+  <section class="contact-content">
+    <div class="contact-grid">
+      <!-- Informations de Contact -->
+      <div class="contact-info fade-in">
+        <ion-card class="info-card">
+          <ion-card-header>
+            <ion-icon name="call-outline" class="contact-icon"></ion-icon>
+            <h3>Parlons de vos projets</h3>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list lines="none">
+              <ion-item button detail>
+                <ion-icon slot="start" name="mail-outline"></ion-icon>
+                <ion-label>email&#64;example.com</ion-label>
+              </ion-item>
+              <ion-item button detail>
+                <ion-icon slot="start" name="logo-linkedin"></ion-icon>
+                <ion-label>linkedin.com/in/profile</ion-label>
+              </ion-item>
+              <ion-item button detail>
+                <ion-icon slot="start" name="logo-github"></ion-icon>
+                <ion-label>github.com/username</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+        
+        <ion-card class="location-card">
+          <ion-card-header>
+            <ion-icon name="location-outline" class="contact-icon"></ion-icon>
+            <h3>Localisation</h3>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Paris, France</p>
+            <div class="map-placeholder">
+              <!-- Emplacement pour une carte interactive -->
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <!-- Formulaire de Contact -->
+      <div class="contact-form fade-in">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <ion-card>
+            <ion-card-header>
+              <ion-icon name="send-outline" class="form-icon"></ion-icon>
+              <h3>Envoyez-moi un message</h3>
+            </ion-card-header>
+            
+            <ion-card-content>
+              <ion-list>
+                <div class="form-grid">
+                  <ion-item>
+                    <ion-label position="floating">Nom complet</ion-label>
+                    <ion-input 
+                      formControlName="name"
+                      type="text" 
+                      placeholder="Votre nom"
+                      [clearInput]="true">
+                    </ion-input>
+                    <ion-note slot="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']">
+                      Le nom est requis
+                    </ion-note>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input 
+                      formControlName="email"
+                      type="email" 
+                      placeholder="votre@email.com"
+                      [clearInput]="true">
+                    </ion-input>
+                    <ion-note slot="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']">
+                      L'email est requis
+                    </ion-note>
+                    <ion-note slot="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']">
+                      Format d'email invalide
+                    </ion-note>
+                  </ion-item>
+                </div>
+
+                <ion-item>
+                  <ion-label position="floating">Sujet</ion-label>
+                  <ion-input 
+                    formControlName="subject"
+                    type="text" 
+                    placeholder="Le sujet de votre message"
+                    [clearInput]="true">
+                  </ion-input>
+                  <ion-note slot="error" *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.errors?.['required']">
+                    Le sujet est requis
+                  </ion-note>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Message</ion-label>
+                  <ion-textarea 
+                    formControlName="message"
+                    rows="6" 
+                    placeholder="Votre message..."
+                    [autoGrow]="true">
+                  </ion-textarea>
+                  <ion-note slot="error" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.errors?.['required']">
+                    Le message est requis
+                  </ion-note>
+                </ion-item>
+              </ion-list>
+
+              <div class="ion-padding-top">
+                <ion-button 
+                  expand="block" 
+                  type="submit"
+                  [disabled]="!contactForm.valid || isSubmitting">
+                  <span>{{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}</span>
+                  <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
