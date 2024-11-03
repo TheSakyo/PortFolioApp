@@ -19,6 +19,7 @@
     --active-background-color: #bfdbfe;  // Bleu clair pour l'état actif
     --active-text-color: #1e40af;        // Bleu foncé pour le texte actif
     --text-color: #1e293b;               // Slate foncé pour le texte
+    --text-color-rgb: 30, 41, 59;              // Slate foncé pour le texte en mode RGB
 
     // Couleurs Accent
     --accent-primary: #3b82f6;           // Bleu vif pour les accents
@@ -102,7 +103,7 @@
     --active-text-color: #ffffff;       // Texte blanc pour l'état actif
     --active-text-color: #ffffff;       // Texte blanc pour l'état actif
     --text-color: #f1f5f9;              // Texte presque blanc
-    --text-color: #f1f5f9;              // Texte presque blanc
+    --text-color-rgb: 241, 245, 249;             // Texte presque blanc en mode RGB
 
     // Couleurs Accent
     --accent-primary: #60a5fa;          // Bleu plus lumineux
