@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { NavigationService } from 'src/app/services/navigation.service';
-import { ThemeService } from 'src/app/services/theme.service';
+import { NavigationService } from 'src/app/shared/services/navigation.service';
+import { ThemeService } from 'src/app/shared/services/theme.service';
 
 @Component({
   selector: 'app-error404',
@@ -10,12 +10,12 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./error404.component.scss'],
   standalone: true,
   imports: [
-    IonicModule, 
+    IonicModule,
     CommonModule
   ]
 })
 export class Error404Component {
-  
+
   /******************************************************/
   /**************   ⬇️    PROPRIÉTÉS    ⬇️   **************/
   /******************************************************/
@@ -25,15 +25,15 @@ export class Error404Component {
   /********************************************************/
   /**************   ⬇️    CONSTRUCTEUR    ⬇️   **************/
   /********************************************************/
-  
+
   /**
    * Constructeur du composant pour afficher l'erreur 404.
    * @param navigationService Le service de navigation.
    */
   constructor(private navigationService: NavigationService, private themeService: ThemeService) {
-    
+
     this.themeService.initializeTheme(); // Récupère l'état du mode à l'aide de son service correspondant
-  } 
+  }
 
   /****************************************************/
   /**************   ⬇️    MÉTHODES    ⬇️   **************/
