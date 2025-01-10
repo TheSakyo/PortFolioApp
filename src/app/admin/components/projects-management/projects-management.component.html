@@ -1,0 +1,46 @@
+<!-- projects-crud.component.html -->
+<div class="projects-crud">
+  <h2>Gestion des Projets</h2>
+
+  <!-- Table des projets -->
+  <table>
+    <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Tags</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let project of projects">
+      <td>{{ project.title }}</td>
+      <td>{{ project.description }}</td>
+      <td>{{ project.tags.join(', ') }}</td>
+      <td>
+        <button (click)="editProject(project)">Modifier</button>
+        <button (click)="deleteProject(project)">Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulaire d'ajout/modification -->
+  <form [formGroup]="projectForm" (ngSubmit)="saveProject()">
+    <label>
+      Titre :
+      <input formControlName="title" placeholder="Nom du projet">
+    </label>
+    <label>
+      Description :
+      <textarea formControlName="description" rows="4" placeholder="Description"></textarea>
+    </label>
+    <label>
+      Tags (séparés par des virgules) :
+      <input formControlName="tags" placeholder="Ex : Angular, Spring, Java">
+    </label>
+    <button type="submit" [disabled]="projectForm.invalid">
+      {{ isEditing ? 'Mettre à jour' : 'Ajouter' }}
+    </button>
+  </form>
+</div>
