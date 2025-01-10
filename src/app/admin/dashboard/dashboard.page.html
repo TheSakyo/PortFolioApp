@@ -1,14 +1,14 @@
-<app-header title="Sacha Cardone - PortFolio | Tableau de bord"
+<sakyo-header title="Sacha Cardone - PortFolio | Tableau de bord"
             [sections]="sectionsMenu" [returnButton]="true"  #header>
-</app-header>
+</sakyo-header>
 <ion-content [fullscreen]="true">
   <ng-container *ngIf="header.currentSection === 'about-management'">
-    <app-about-management></app-about-management>
+    <sakyo-about-management></sakyo-about-management>
   </ng-container>
   <ng-container *ngIf="header.currentSection === 'projects-management'">
-    <app-projects-management></app-projects-management>
+    <sakyo-projects-management></sakyo-projects-management>
   </ng-container>
   <ng-container *ngIf="header.currentSection === 'contact-management'">
-    <app-contact-management></app-contact-management>
+    <sakyo-contact-management></sakyo-contact-management>
   </ng-container>
 </ion-content>
