@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { DarkLightToggleComponent } from '../../elements/dark-light-toggle/dark-light-toggle.component';
-import { AnimationService } from 'src/app/services/animation.service';
+import { DarkLightToggleComponent } from '../../../shared/components/elements/dark-light-toggle/dark-light-toggle.component';
+import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
   selector: 'app-about',
@@ -10,7 +10,7 @@ import { AnimationService } from 'src/app/services/animation.service';
   styleUrls: ['./about.component.scss'],
   standalone: true,
   imports: [
-    IonicModule, 
+    IonicModule,
     CommonModule,
     DarkLightToggleComponent
   ]
@@ -20,7 +20,7 @@ export class AboutComponent implements OnInit {
   /********************************************************/
   /**************   ⬇️    CONSTRUCTEUR    ⬇️   **************/
   /********************************************************/
-  
+
   /**
    * Constructeur du composant 'À Propos de moi'.
    * @param elementRef - Référence à l'élément racine du composant.
@@ -31,7 +31,7 @@ export class AboutComponent implements OnInit {
   /********************************************************/
   /**************   ⬇️    CYCLE DE VIE    ⬇️   **************/
   /********************************************************/
-  
+
   /**
    * Lors de l'initialisation du composant, on initialise l'animation du scroll.
    */
