@@ -3,6 +3,13 @@
  */
 export enum EToastButtonSide {
 
-    START = 'start', // Positionnement au début (par défaut)
-    END = 'end', // Positionnement à la fin
+    /**
+     * Côté : Gauche
+     */
+    START = 'start',
+
+    /**
+     * Côté : Droite
+     */
+    END = 'end'
 }
