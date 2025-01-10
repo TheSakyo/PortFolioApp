@@ -1,0 +1,58 @@
+<!-- about-crud.component.html -->
+<div class="about-crud">
+  <h2>Gestion Générale - À Propos</h2>
+
+  <!-- Section: Introduction -->
+  <div class="crud-section">
+    <h3>Introduction</h3>
+    <form [formGroup]="aboutForm" (ngSubmit)="saveIntroduction()">
+      <label>
+        Salutation :
+        <input formControlName="greeting" placeholder="Par exemple : Salutation, je m'appelle">
+      </label>
+      <label>
+        Nom :
+        <input formControlName="name" placeholder="Ton nom">
+      </label>
+      <label>
+        Titre :
+        <input formControlName="title" placeholder="Développeur Full-Stack">
+      </label>
+      <label>
+        Description :
+        <textarea formControlName="bio" rows="6" placeholder="Ta biographie"></textarea>
+      </label>
+      <button type="submit" [disabled]="aboutForm.invalid">Enregistrer</button>
+    </form>
+  </div>
+
+  <!-- Section: Compétences -->
+  <div class="crud-section">
+    <h3>Compétences</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Compétence</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let skill of skills">
+        <td>{{ skill }}</td>
+        <td>
+          <button (click)="editSkill(skill)">Modifier</button>
+          <button (click)="deleteSkill(skill)">Supprimer</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <form [formGroup]="skillForm" (ngSubmit)="addSkill()">
+      <label>
+        Nouvelle compétence :
+        <input formControlName="skill">
+      </label>
+      <button type="submit" [disabled]="skillForm.invalid">Ajouter</button>
+    </form>
+  </div>
+</div>
