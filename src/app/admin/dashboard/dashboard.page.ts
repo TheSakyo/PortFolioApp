@@ -53,7 +53,7 @@ export class DashboardPage implements OnInit {
      */
     this.navigationService.sections = [
       { name: 'Gestion Générale', icon: 'information-circle-outline', route: 'about-management' }, // Section 'Gestion Générale'
-      { name: 'Gestion des Projets', icon: 'briefcase-outline', route: 'project-management' }, // Section 'Gestion des Projets'
+      { name: 'Gestion des Projets', icon: 'briefcase-outline', route: 'projects-management' }, // Section 'Gestion des Projets'
       { name: 'Gestion des informations de contact', icon: 'mail-outline', route: 'contact-management' }, // Section 'Gestion des informations de contact'
     ];
   }
