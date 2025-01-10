@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title slot="start">{{ title }}</ion-title>
+    <ion-buttons slot="primary">
+      <ng-container *ngFor="let section of sections">
+        <ion-button (click)="changeSection(section.route)" [ngClass]="{'active': currentSection === section.route}">
+          <ion-icon [name]="section.icon"></ion-icon>
+          {{ section.name }}
+        </ion-button>
+      </ng-container>
+    </ion-buttons>
+    <ion-buttons slot="secondary" *ngIf="returnButton">
+      <ion-button (click)="returnHome()">
+        <ion-icon name="home-outline"></ion-icon>
+        Retour à l'accueil
+      </ion-button>
+    </ion-buttons>
+    <app-dark-light-toggle slot="end"></app-dark-light-toggle>
+  </ion-toolbar>
+</ion-header>
