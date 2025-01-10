@@ -5,7 +5,7 @@ import { NavigationService } from 'src/app/shared/services/navigation.service';
 import { ThemeService } from 'src/app/shared/services/theme.service';
 
 @Component({
-  selector: 'app-error404',
+  selector: 'sakyo-error404',
   templateUrl: './error404.component.html',
   styleUrls: ['./error404.component.scss'],
   standalone: true,

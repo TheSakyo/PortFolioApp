@@ -9,7 +9,7 @@ import { ISectionInterface } from "../../shared/interfaces/global/section.interf
 import { NavigationService } from "../../shared/services/navigation.service";
 
 @Component({
-  selector: 'app-content',
+  selector: 'sakyo-content',
   templateUrl: './content.page.html',
   standalone: true,
   imports: [

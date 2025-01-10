@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {IonicModule} from "@ionic/angular";
-import {CommonModule} from "@angular/common";
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
+import { CommonModule } from "@angular/common";
 
 @Component({
-  selector: 'app-projects-management',
+  selector: 'sakyo-projects-management',
   templateUrl: './projects-management.component.html',
   styleUrls: ['./projects-management.component.scss'],
   standalone: true,

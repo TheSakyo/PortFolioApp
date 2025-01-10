@@ -2,19 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import {NavigationService} from "../../shared/services/navigation.service";
-import {ISectionInterface} from "../../shared/interfaces/global/section.interface";
-import {AboutComponent} from "../../main/components/about/about.component";
-import {ContactComponent} from "../../main/components/contact/contact.component";
-import {HeaderComponent} from "../../shared/components/header/header.component";
-import {IonicModule} from "@ionic/angular";
-import {ProjectsComponent} from "../../main/components/projects/projects.component";
-import {AboutManagementComponent} from "../components/about-management/about-management.component";
-import {ProjectsManagementComponent} from "../components/projects-management/projects-management.component";
-import {ContactManagementComponent} from "../components/contact-management/contact-management.component";
+import { NavigationService } from "../../shared/services/navigation.service";
+import { ISectionInterface } from "../../shared/interfaces/global/section.interface";
+import { AboutComponent } from "../../main/components/about/about.component";
+import { ContactComponent } from "../../main/components/contact/contact.component";
+import { HeaderComponent } from "../../shared/components/header/header.component";
+import { IonicModule } from "@ionic/angular";
+import { ProjectsComponent } from "../../main/components/projects/projects.component";
+import { AboutManagementComponent } from "../components/about-management/about-management.component";
+import { ProjectsManagementComponent } from "../components/projects-management/projects-management.component";
+import { ContactManagementComponent } from "../components/contact-management/contact-management.component";
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'sakyo-dashboard',
   templateUrl: './dashboard.page.html',
   standalone: true,
   imports: [

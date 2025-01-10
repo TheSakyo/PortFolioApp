@@ -6,7 +6,7 @@ import { DarkLightToggleComponent } from '../elements/dark-light-toggle/dark-lig
 import { ISectionInterface } from "../../interfaces/global/section.interface";
 
 @Component({
-  selector: 'app-header',
+  selector: 'sakyo-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,

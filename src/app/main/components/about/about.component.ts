@@ -5,7 +5,7 @@ import { DarkLightToggleComponent } from '../../../shared/components/elements/da
 import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
-  selector: 'app-about',
+  selector: 'sakyo-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
   standalone: true,

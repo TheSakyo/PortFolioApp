@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { IoniconsUtils } from './shared/utils/ionicons.utils';
 
 @Component({
-  selector: 'app-root',
+  selector: 'sakyo-root',
   templateUrl: 'app.component.html',
   standalone: true,
   imports: [

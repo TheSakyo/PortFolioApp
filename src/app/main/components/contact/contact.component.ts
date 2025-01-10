@@ -8,7 +8,7 @@ import { AnimationService } from 'src/app/shared/services/animation.service';
 import { EToastPosition } from 'src/app/shared/enums/toast.position.enum';
 
 @Component({
-  selector: 'app-contact',
+  selector: 'sakyo-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
   standalone: true,

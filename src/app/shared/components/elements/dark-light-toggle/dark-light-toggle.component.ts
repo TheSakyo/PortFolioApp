@@ -4,7 +4,7 @@ import { ThemeService } from 'src/app/shared/services/theme.service';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'app-dark-light-toggle',
+  selector: 'sakyo-dark-light-toggle',
   templateUrl: './dark-light-toggle.component.html',
   styleUrls: ['./dark-light-toggle.component.scss'],
   standalone: true,

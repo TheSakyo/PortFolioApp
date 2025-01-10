@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {IonicModule} from "@ionic/angular";
-import {CommonModule} from "@angular/common";
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
+import { CommonModule } from "@angular/common";
 
 @Component({
-  selector: 'app-about-management',
+  selector: 'sakyo-about-management',
   templateUrl: './about-management.component.html',
   styleUrls: ['./about-management.component.scss'],
   standalone: true,

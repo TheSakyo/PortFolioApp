@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
-  selector: 'app-projects',
+  selector: 'sakyo-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
   standalone: true,
