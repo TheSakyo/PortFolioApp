@@ -1,5 +1,5 @@
 import { ToastButton } from '@ionic/core';
-import { EToastButtonSide } from 'src/app/enums/toast.button.side.enum';
+import { EToastButtonSide } from 'src/app/shared/enums/toast.button.side.enum';
 
 /**
  * Interface personnalisée pour les boutons de notification toast,
@@ -7,5 +7,8 @@ import { EToastButtonSide } from 'src/app/enums/toast.button.side.enum';
  */
 export interface IToastButtons extends Omit<ToastButton, 'side'> {
 
-    side?: EToastButtonSide; // Position optionnelle pour le bouton toast avec l'aide d'une énumération
+    /**
+     * Position (optionnelle) pour le bouton toast avec l'aide d'une {@link EToastButtonSide énumération}.
+     */
+    side?: EToastButtonSide;
 }
