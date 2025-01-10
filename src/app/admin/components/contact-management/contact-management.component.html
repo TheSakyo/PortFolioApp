@@ -1,0 +1,28 @@
+<!-- contact-crud.component.html -->
+<div class="contact-crud">
+  <h2>Gestion de la page Contact</h2>
+
+  <!-- Section: Informations -->
+  <div class="crud-section">
+    <h3>Informations de Contact</h3>
+    <form [formGroup]="contactForm" (ngSubmit)="saveContactInfo()">
+      <label>
+        Email :
+        <input formControlName="email" placeholder="email@example.com">
+      </label>
+      <label>
+        LinkedIn :
+        <input formControlName="linkedin" placeholder="Lien vers LinkedIn">
+      </label>
+      <label>
+        GitHub :
+        <input formControlName="github" placeholder="Lien vers GitHub">
+      </label>
+      <label>
+        Localisation :
+        <input formControlName="location" placeholder="Ex : Paris, France">
+      </label>
+      <button type="submit" [disabled]="contactForm.invalid">Enregistrer</button>
+    </form>
+  </div>
+</div>
