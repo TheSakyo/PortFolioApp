@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import {ISectionInterface} from "../interfaces/global/section.interface";
+import { ISectionInterface } from "../interfaces/global/section.interface";
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
