@@ -3,6 +3,13 @@
  */
 export enum EInterfaceMode {
 
-    IOS = 'ios', // Mode iOS
-    MD = 'md' // Mode Material Design
+    /**
+     * Mode iOS
+     */
+    IOS = 'ios',
+
+    /**
+     * Mode Material Design
+     */
+    MD = 'md'
 }
