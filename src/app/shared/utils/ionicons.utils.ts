@@ -1,18 +1,5 @@
 import { addIcons } from "ionicons";
-import {
-  arrowForwardOutline,
-  briefcaseOutline,
-  chevronBackOutline,
-  chevronForwardOutline,
-  homeOutline,
-  informationCircleOutline,
-  logoGithub,
-  logoLinkedin,
-  mailOutline,
-  moon,
-  searchOutline,
-  sunny
-} from 'ionicons/icons';
+import * as Ionicons from 'ionicons/icons';
 
 export abstract class IoniconsUtils {
 
@@ -21,19 +8,22 @@ export abstract class IoniconsUtils {
    */
   public static loadIcons(): void {
 
+    /**
+     * Ajoute les icônes de la bibliothèque 'Ionicons' à l'application.
+     */
       addIcons({
-          'sunny': sunny, // Soleil
-          'moon': moon, // Lune
-          'search-outline': searchOutline, // Loupe
-          'arrow-forward-outline': arrowForwardOutline, // Flèche vers l'avant
-          'chevron-forward-outline': chevronForwardOutline, // Chevron vers l'avant
-          'chevron-back-outline': chevronBackOutline, // Chevron vers l'arrière
-          'briefcase-outline': briefcaseOutline, // Mallette
-          'information-circle-outline': informationCircleOutline, // Cercle d'information
-          'mail-outline': mailOutline, // Enveloppe
-          'logo-linkedin': logoLinkedin, // Logo LinkedIn
-          'logo-github': logoGithub, // Logo GitHub
-          'home-outline': homeOutline, // Maison
+          'sunny': Ionicons.sunny, // Soleil
+          'moon': Ionicons.moon, // Lune
+          'search-outline': Ionicons.searchOutline, // Loupe
+          'arrow-forward-outline': Ionicons.arrowForwardOutline, // Flèche vers l'avant
+          'chevron-forward-outline': Ionicons.chevronForwardOutline, // Chevron vers l'avant
+          'chevron-back-outline': Ionicons.chevronBackOutline, // Chevron vers l'arrière
+          'briefcase-outline': Ionicons.briefcaseOutline, // Mallette
+          'information-circle-outline': Ionicons.informationCircleOutline, // Cercle d'information
+          'mail-outline': Ionicons.mailOutline, // Enveloppe
+          'logo-linkedin': Ionicons.logoLinkedin, // Logo LinkedIn
+          'logo-github': Ionicons.logoGithub, // Logo GitHub
+          'home-outline': Ionicons.homeOutline, // Maison
       });
   }
 }
