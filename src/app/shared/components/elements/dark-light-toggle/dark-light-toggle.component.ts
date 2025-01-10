@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
+import { ThemeService } from 'src/app/shared/services/theme.service';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -9,7 +9,7 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./dark-light-toggle.component.scss'],
   standalone: true,
   imports: [
-    IonicModule, 
+    IonicModule,
     CommonModule,
   ]
 })
@@ -24,7 +24,7 @@ export class DarkLightToggleComponent {
   /********************************************************/
   /**************   ⬇️    CONSTRUCTEUR    ⬇️   **************/
   /********************************************************/
-  
+
   /**
    * Constructeur du composant du bouton pour appliquer le thème sombre ou clair.
    * @param themeService - Le service correspondant à la gestion des thèmes sur l'application.
@@ -36,9 +36,9 @@ export class DarkLightToggleComponent {
   /***************************************************/
   /**************   ⬇️    GETTERS    ⬇️   **************/
   /***************************************************/
-  
-  /** 
-   * Vérifie si l'application est en mode sombre à l'aide de la variable '_isDarkMode'. 
+
+  /**
+   * Vérifie si l'application est en mode sombre à l'aide de la variable '_isDarkMode'.
    * @returns Une valeur booléenne.
    */
   public get isDarkMode(): boolean { return this._isDarkMode; }
@@ -47,7 +47,7 @@ export class DarkLightToggleComponent {
   /**************   ⬇️    MÉTHODES    ⬇️   **************/
   /****************************************************/
 
-  /** 
+  /**
    * Change le thème de l'application web à l'aide de son service correspondant.
    */
   public toggleTheme() {
