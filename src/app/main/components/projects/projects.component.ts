@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { AnimationService } from 'src/app/services/animation.service';
+import { AnimationService } from 'src/app/shared/services/animation.service';
 
 @Component({
   selector: 'app-projects',
@@ -9,8 +9,9 @@ import { AnimationService } from 'src/app/services/animation.service';
   styleUrls: ['./projects.component.scss'],
   standalone: true,
   imports: [
-    IonicModule, 
-    CommonModule
+    IonicModule,
+    CommonModule,
+    NgOptimizedImage
   ]
 })
 export class ProjectsComponent implements OnInit {
@@ -18,7 +19,7 @@ export class ProjectsComponent implements OnInit {
   /********************************************************/
   /**************   ⬇️    CONSTRUCTEUR    ⬇️   **************/
   /********************************************************/
-  
+
   /**
    * Constructeur du composant 'Mes Projets'.
    * @param elementRef - Référence à l'élément racine du composant.
@@ -29,7 +30,7 @@ export class ProjectsComponent implements OnInit {
   /********************************************************/
   /**************   ⬇️    CYCLE DE VIE    ⬇️   **************/
   /********************************************************/
-  
+
   /**
    * Lors de l'initialisation du composant, on initialise l'animation du scroll.
    */
