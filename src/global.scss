@@ -39,10 +39,11 @@
 /* ---------------------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------- */
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* *** ⬇️ Global Base Style ⬇️ *** */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 /* ******************************************************************************* */
 /* Section: Notification toast                                                     */
 /* Description: Stylisation globale des notifications toast de l'application       */
@@ -101,7 +102,32 @@
     }
 }
 
+/* ************************************************************************** */
+/* Section: Formulaires                                                       */
+/* Description: Style global pour les formulaires de l'application            */
+/* ************************************************************************** */
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.form-grid {
+    display: grid; // Utilisation du système de grille
+    grid-template-columns: 1fr 1fr; // Deux colonnes de taille égale
+    gap: 1rem; // Espacement entre les éléments
+    margin-bottom: 1rem; // Marge sous la grille
+
+    // Passage à une seule colonne sur petit écran
+    @media(max-width: 768px) { grid-template-columns: 1fr; }
+}
+
+.items-fix {
+    --background: transparent; // Fond transparent pour les éléments
+    --border-color: rgba(var(--text-color-rgb), 0.1); // Bordure légère
+    --highlight-color: var(--accent-primary); // Couleur de mise en évidence
+    --padding-start: 0; // Suppression du padding gauche par défaut
+
+    &.item-has-focus {
+        --highlight-background: rgba(var(--accent-primary-rgb), 0.1); // Effet de focus subtil
+    }
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* *** ⬆️ Global Base Style ⬆️ *** */
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
