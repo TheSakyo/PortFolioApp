@@ -12,6 +12,10 @@ import { EToastSwipeGesture } from "src/app/shared/enums/toast.swipe-gesture.enu
  */
 export interface IToastOptions extends Omit<ToastOptions, 'buttons' | 'position' | 'swipeGesture' | 'layout' | 'color' | 'mode'> {
 
+    /*****************************************************/
+    /**************   ⬇️    PROPRIÉTÉS    ⬇️   **********/
+    /****************************************************/
+
     /**
      * Boutons (optionnels) pour le toast avec l'aide d'une {@link EToastButtonSide énumération} ou d'une {@link string chaîne de caractères}.
      */

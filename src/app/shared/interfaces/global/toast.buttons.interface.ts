@@ -7,6 +7,10 @@ import { EToastButtonSide } from 'src/app/shared/enums/toast.button.side.enum';
  */
 export interface IToastButtons extends Omit<ToastButton, 'side'> {
 
+    /*****************************************************/
+    /**************   ⬇️    PROPRIÉTÉS    ⬇️   **********/
+    /****************************************************/
+
     /**
      * Position (optionnelle) pour le bouton toast avec l'aide d'une {@link EToastButtonSide énumération}.
      */
