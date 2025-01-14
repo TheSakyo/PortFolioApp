@@ -5,7 +5,7 @@ import { HeaderComponent } from "../../shared/components/header/header.component
 import { AboutComponent } from '../components/about/about.component';
 import { ProjectsComponent } from '../components/projects/projects.component';
 import { ContactComponent } from '../components/contact/contact.component';
-import { ISectionInterface } from "../../shared/interfaces/global/section.interface";
+import { ISection } from "../../shared/interfaces/global/section.interface";
 import { NavigationService } from "../../shared/services/navigation.service";
 
 @Component({
@@ -57,5 +57,5 @@ export class ContentPage implements OnInit {
    * Renvoie Les boutons du menu correspondant aux différentes sections pouvant être affiché à l'utilisateur.
    * @returns Les informations des boutons de navigation.
    */
-  public get sectionsMenu(): ISectionInterface[] { return this.navigationService.sections; }
+  public get sectionsMenu(): ISection[] { return this.navigationService.sections; }
 }
