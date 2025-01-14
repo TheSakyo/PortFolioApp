@@ -1,58 +1,80 @@
 <!-- about-crud.component.html -->
 <div class="about-crud">
-  <h2>Gestion Générale - À Propos</h2>
+    <h2>Gestion Générale - À Propos</h2>
 
-  <!-- Section: Introduction -->
-  <div class="crud-section">
-    <h3>Introduction</h3>
-    <form [formGroup]="aboutForm" (ngSubmit)="saveIntroduction()">
-      <label>
-        Salutation :
-        <input formControlName="greeting" placeholder="Par exemple : Salutation, je m'appelle">
-      </label>
-      <label>
-        Nom :
-        <input formControlName="name" placeholder="Ton nom">
-      </label>
-      <label>
-        Titre :
-        <input formControlName="title" placeholder="Développeur Full-Stack">
-      </label>
-      <label>
-        Description :
-        <textarea formControlName="bio" rows="6" placeholder="Ta biographie"></textarea>
-      </label>
-      <button type="submit" [disabled]="aboutForm.invalid">Enregistrer</button>
-    </form>
-  </div>
+    <!-- Section: Introduction -->
+    <div class="crud-section">
+        <h3>Introduction</h3>
 
-  <!-- Section: Compétences -->
-  <div class="crud-section">
-    <h3>Compétences</h3>
-    <table>
-      <thead>
-      <tr>
-        <th>Compétence</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let skill of skills">
-        <td>{{ skill }}</td>
-        <td>
-          <button (click)="editSkill(skill)">Modifier</button>
-          <button (click)="deleteSkill(skill)">Supprimer</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+        <!-- Formulaire de modification -->
+        <form [formGroup]="form('aboutForm')" (ngSubmit)="saveIntroduction()">
+            <div class="form-grid">
+                <ion-item class="items-fix">
+                    <ion-label position="stacked">Salutation :</ion-label>
+                    <ion-input formControlName="greeting"
+                               placeholder="Par exemple : Bienvenue dans mon portfolio">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="items-fix">
+                    <ion-label position="stacked">Nom :</ion-label>
+                    <ion-input formControlName="name"
+                               placeholder="Ton nom">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="items-fix">
+                    <ion-label position="stacked">Titre :</ion-label>
+                    <ion-input formControlName="title"
+                               placeholder="Ton métier">
+                    </ion-input>
+                </ion-item>
+                <ion-item class="items-fix">
+                    <ion-label position="stacked">Description :</ion-label>
+                    <ion-textarea formControlName="bio" rows="6"
+                                  placeholder="Ta biographie" [autoGrow]="true">
+                    </ion-textarea>
+                    <ion-note slot="error" *ngIf="containsError('bio', 'required', 'aboutForm')">
+                        {{ errorMessage('bio', 'required', 'aboutForm') }}
+                    </ion-note>
+                </ion-item>
+                <ion-button type="submit" [disabled]="form('aboutForm').invalid">Enregistrer</ion-button>
+            </div>
+        </form>
+    </div>
 
-    <form [formGroup]="skillForm" (ngSubmit)="addSkill()">
-      <label>
-        Nouvelle compétence :
-        <input formControlName="skill">
-      </label>
-      <button type="submit" [disabled]="skillForm.invalid">Ajouter</button>
-    </form>
-  </div>
+    <!-- Section: Compétences -->
+    <div class="crud-section">
+        <h3>Compétences</h3>
+
+        <!-- Message si la liste est vide -->
+        <p *ngIf="!skills || skills.length === 0">Aucune compétence n'est encore ajoutée.</p>
+
+        <!-- Tableau des compétences si la liste n'est pas vide -->
+        <table *ngIf="skills && skills.length > 0">
+            <thead>
+                <tr>
+                    <th>Compétence</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let skill of skills">
+                    <td>{{ skill }}</td>
+                    <td>
+                        <ion-button (click)="editSkill('skillForm', skill)">Modifier</ion-button>
+                        <ion-button (click)="deleteSkill(skill)">Supprimer</ion-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form [formGroup]="form('skillForm')" (ngSubmit)="addSkill()">
+            <ion-item class="items-fix">
+                <ion-label position="stacked">Compétence :</ion-label>
+                <ion-input formControlName="skill"
+                           placeholder="Nom de la compétence">
+                </ion-input>
+            </ion-item>
+            <ion-button type="submit" [disabled]="form('skillForm').invalid">Ajouter</ion-button>
+        </form>
+    </div>
 </div>

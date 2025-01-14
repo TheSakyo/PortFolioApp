@@ -1,0 +1,117 @@
+/* ************************************************************************** */
+/* Section: Page 'À Propos'                                                   */
+/* Description: Styles généraux pour la page, y compris les sections et les formulaires */
+/* ************************************************************************** */
+
+.about-crud {
+  background-color: var(--background-color); // Fond général de la page
+  color: var(--text-color); // Couleur du texte
+  padding: var(--spacing-lg); // Espacement interne autour de la section
+
+  /* ************************************************************************** */
+  /* Sous-Section: Titre Principal 'Gestion Générale - À Propos'                */
+  /* Description: Styles pour le titre principal de la page                     */
+  /* ************************************************************************** */
+
+  h2 {
+    font-size: var(--font-size-3xl); // Taille du titre principal
+    font-weight: 700; // Poids de la police en gras
+    color: var(--primary-color); // Couleur du titre principal
+    margin-bottom: var(--spacing-md); // Espacement sous le titre
+  }
+
+  /* ************************************************************************** */
+  /* Sous-Section: Introduction                                                 */
+  /* Description: Styles du formulaire d'introduction et des champs associés    */
+  /* ************************************************************************** */
+
+  form {
+
+    .form-grid { grid-template-columns: 1fr; } // Une seule colonne pour le formulaire
+
+    ion-label {
+      font-size: var(--font-size-base); // Taille de la police pour les labels
+      --color: var(--text-color); // Couleur du texte des labels
+    }
+
+    ion-input, ion-textarea {
+      width: 100%; // Largeur à 90% pour occuper tout l'espace disponible
+      --color: var(--text-color); // Couleur de texte dynamique
+      --padding: var(--spacing-sm); // Padding interne pour les champs
+      --border-radius: var(--border-radius-sm); // Bordure arrondie légère
+      --border-color: var(--border-color); // Bordure grise claire
+      --border-width: 1px; // Épaisseur de la bordure
+      --margin-bottom: var(--spacing-sm); // Marge sous chaque champ
+
+      &:focus {
+        border-color: var(--primary-color); // Couleur de la bordure au focus
+        outline: none; // Supprimer l'outline par défaut
+        box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2); // Ombre légère au focus
+      }
+    }
+
+    ion-textarea {
+      resize: vertical; // Permet de redimensionner verticalement
+      min-height: 150px; // Hauteur minimale pour le champ textarea
+    }
+
+    ion-button {
+      --background: var(--primary-color); // Fond du bouton
+      --background-hover: var(--hover-color); // Couleur au survol
+      --color: white; // Couleur du texte du bouton
+      --border-radius: var(--border-radius-sm); // Bordure arrondie légère
+      --padding: var(--spacing-sm) var(--spacing-md); // Espacement interne du bouton
+      cursor: pointer; // Curseur en forme de main
+      transition: background var(--transition-fast); // Transition rapide pour le hover
+
+      &:disabled {
+        --background: var(--secondary-color); // Couleur de fond quand le bouton est désactivé
+        cursor: not-allowed; // Curseur 'pas autorisé'
+      }
+    }
+  }
+
+  /* ************************************************************************** */
+  /* Sous-Section: Compétences                                                   */
+  /* Description: Styles pour la gestion des compétences et les tableaux associés */
+  /* ************************************************************************** */
+
+  .crud-section {
+    h3 { margin-bottom: var(--spacing-md); } // Espacement sous le titre des compétences
+
+    p {
+      font-size: var(--font-size-base); // Taille de la police du message
+      color: var(--secondary-color); // Couleur du texte du message
+    }
+
+    table {
+      width: 100%; // Largeur complète de la table
+      border-collapse: collapse; // Fusionner les bordures de la table
+
+      th, td {
+        padding: var(--spacing-sm); // Espacement interne des cellules
+        text-align: left; // Alignement du texte à gauche
+        border: 1px solid var(--border-color); // Bordure légère autour des cellules
+      }
+
+      th {
+        background-color: var(--background-container); // Fond du header de la table
+        color: var(--text-color); // Couleur du texte des titres de colonne
+      }
+
+      tr:nth-child(even) { background-color: var(--hover-background-color); } // Fond clair pour les lignes paires
+
+      button {
+        background-color: var(--accent-primary); // Fond du bouton dans la table
+        color: white; // Couleur du texte
+        border: none; // Pas de bordure
+        padding: var(--spacing-xs) var(--spacing-sm); // Espacement interne des boutons
+        border-radius: var(--border-radius-sm); // Bordure arrondie légère
+        cursor: pointer; // Curseur en forme de main
+        transition: background-color var(--transition-fast); // Transition au hover
+
+        &:hover { background-color: var(--hover-color); } // Changer la couleur au survol
+      }
+    }
+  }
+}
