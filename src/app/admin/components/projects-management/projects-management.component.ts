@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { CommonModule } from "@angular/common";
+import { SeoService } from "../../../shared/services/seo.service";
 
 @Component({
   selector: 'sakyo-projects-management',
@@ -15,7 +16,8 @@ import { CommonModule } from "@angular/common";
     ReactiveFormsModule
   ]
 })
-export class ProjectsManagementComponent {
+export class ProjectsManagementComponent implements OnInit {
+
   projects: { title: string; description: string; tags: string[] }[] = [];
   isEditing = false;
   projectForm = this.fb.group({
@@ -24,7 +26,17 @@ export class ProjectsManagementComponent {
     tags: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private seoService: SeoService) {}
+
+  ngOnInit() {
+
+    /*
+     * On définit les données SEO de la page.
+     */
+    this.seoService.setSeoData('Gestion Projets - PortFolio',
+      { 'description': 'Gérez les projets de développement du portfolio.' }
+    );
+  }
 
   saveProject() {
 
