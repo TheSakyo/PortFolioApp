@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { NavigationService } from '../../services/navigation.service';
 import { DarkLightToggleComponent } from '../elements/dark-light-toggle/dark-light-toggle.component';
-import { ISectionInterface } from "../../interfaces/global/section.interface";
+import { ISection } from "../../interfaces/global/section.interface";
 
 @Component({
   selector: 'sakyo-header',
@@ -33,7 +33,7 @@ export class HeaderComponent {
    * différentes sections pouvant être affichées à l'utilisateur.
    */
   @Input()
-  public sections: ISectionInterface[] = [];
+  public sections: ISection[] = [];
 
   /**
    * Représente l'activation du bouton de retour à la page d'accueil.
