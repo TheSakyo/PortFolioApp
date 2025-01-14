@@ -20,6 +20,9 @@ export abstract class IoniconsUtils {
           'chevron-back-outline': Ionicons.chevronBackOutline, // Chevron vers l'arrière
           'briefcase-outline': Ionicons.briefcaseOutline, // Mallette
           'information-circle-outline': Ionicons.informationCircleOutline, // Cercle d'information
+          'globe-outline': Ionicons.globeOutline, // Globe
+          'location-outline': Ionicons.locationOutline, // Localisation
+          'send-outline': Ionicons.sendOutline, // Envoi
           'mail-outline': Ionicons.mailOutline, // Enveloppe
           'logo-linkedin': Ionicons.logoLinkedin, // Logo LinkedIn
           'logo-github': Ionicons.logoGithub, // Logo GitHub
