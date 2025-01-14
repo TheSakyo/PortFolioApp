@@ -1,4 +1,8 @@
-export interface ISectionInterface {
+export interface ISection {
+
+    /*****************************************************/
+    /**************   ⬇️    PROPRIÉTÉS    ⬇️   **********/
+    /****************************************************/
 
     /**
      * Nom de la section.

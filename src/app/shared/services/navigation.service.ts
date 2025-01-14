@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { ISectionInterface } from "../interfaces/global/section.interface";
+import { ISection } from "../interfaces/global/section.interface";
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
@@ -10,7 +10,7 @@ export class NavigationService {
   /**************   ⬇️    PROPRIÉTÉS    ⬇️   **************/
   /********************************************************/
 
-  private _sections: ISectionInterface[] = []; // Sections du menu de navigation
+  private _sections: ISection[] = []; // Sections du menu de navigation
   private _currentSectionSubject = new BehaviorSubject<string>('about'); // Section par défaut
   private _currentSection$ = this._currentSectionSubject.asObservable(); // Section actuelle en tant qu'Observable
   private isInAdmin = false; // Indique si l'utilisateur est dans l'interface d'administration
@@ -39,7 +39,7 @@ export class NavigationService {
    * Définit les sections du menu de navigation.
    * @param sections - Les sections du menu de navigation.
    */
-  public set sections(sections: ISectionInterface[]) { this._sections = sections; }
+  public set sections(sections: ISection[]) { this._sections = sections; }
 
   /**
    * Définit la section actuelle.
@@ -61,7 +61,7 @@ export class NavigationService {
    * Renvoie les sections du menu de navigation.
    * @returns Les sections du menu de navigation.
    */
-  public get sections(): ISectionInterface[] { return this._sections; }
+  public get sections(): ISection[] { return this._sections; }
 
   /**
    * Renvoie la valeur actuelle de la section.
