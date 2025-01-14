@@ -124,44 +124,25 @@
     /* ************************************************************************** */
 
     .contact-form {
-        ion-item {
-            --background: transparent; // Fond transparent pour les éléments
-            --border-color: rgba(var(--text-color-rgb), 0.1); // Bordure légère
-            --highlight-color: var(--accent-primary); // Couleur de mise en évidence
-            --padding-start: 0; // Suppression du padding gauche par défaut
-            
-            &.item-has-focus {
-                --highlight-background: rgba(var(--accent-primary-rgb), 0.1); // Effet de focus subtil
-            }
 
-            ion-label {
-                --color: var(--text-color); // Couleur de texte dynamique
-                opacity: 0.8; // Légère transparence
-            }
-
-            ion-input, ion-textarea {
-                --color: var(--text-color); // Couleur de texte dynamique
-                --padding-start: 1rem; // Espacement à gauche
-                --padding-end: 1rem; // Espacement à droite
-                --padding-top: 1rem; // Espacement en haut
-                --padding-bottom: 1rem; // Espacement en bas
-                --placeholder-color: rgba(var(--text-color-rgb), 0.5); // Couleur du placeholder
-                --placeholder-opacity: 0.5; // Opacité du placeholder
-            }
+        ion-label {
+            --color: var(--text-color); // Couleur de texte dynamique
+            opacity: 0.8; // Légère transparence
+            margin-bottom: 2px; // Espacement sous l'étiquette
         }
 
-        .form-grid {
-            display: grid; // Utilisation du système de grille
-            grid-template-columns: 1fr 1fr; // Deux colonnes de taille égale
-            gap: 1rem; // Espacement entre les éléments
-            margin-bottom: 1rem; // Marge sous la grille
-
-            // Passage à une seule colonne sur petit écran
-            @media(max-width: 768px) { grid-template-columns: 1fr; }
+        ion-input, ion-textarea {
+            --color: var(--text-color); // Couleur de texte dynamique
+            --padding-start: 1rem; // Espacement à gauche
+            --padding-end: 1rem; // Espacement à droite
+            --padding-bottom: 1rem; // Espacement en bas
+            --padding-top: 1.5rem; // Espacement en haut
+            --placeholder-color: rgba(var(--text-color-rgb), 0.5); // Couleur du placeholder
+            --placeholder-opacity: 0.5; // Opacité du placeholder
         }
 
         ion-note[slot="error"] {
-            color: var(--ion-color-danger); // Couleur rouge pour les erreurs
+            color: var(--accent-darken-danger); // Couleur rouge pour les erreurs
             font-size: 0.8rem; // Taille réduite pour les messages d'erreur
             padding: 0.5rem 0; // Espacement vertical
         }

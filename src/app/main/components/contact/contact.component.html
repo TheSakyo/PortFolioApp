@@ -18,7 +18,7 @@
       <div class="contact-info fade-in">
         <ion-card class="info-card">
           <ion-card-header>
-            <ion-icon name="call-outline" class="contact-icon"></ion-icon>
+            <ion-icon name="globe-outline" class="contact-icon"></ion-icon>
             <h3>Mes Réseaux</h3>
           </ion-card-header>
           <ion-card-content>
@@ -55,7 +55,7 @@
 
       <!-- Formulaire de Contact -->
       <div class="contact-form fade-in">
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="form()" (ngSubmit)="onSubmit()">
           <ion-card>
             <ion-card-header>
               <ion-icon name="send-outline" class="form-icon"></ion-icon>
@@ -65,60 +65,75 @@
             <ion-card-content>
               <ion-list>
                 <div class="form-grid">
-                  <ion-item>
-                    <ion-label position="floating">Nom complet</ion-label>
-                    <ion-input 
-                      formControlName="name"
-                      type="text" 
-                      placeholder="Votre nom"
-                      [clearInput]="true">
+                  <ion-item class="items-fix">
+                    <ion-label position="floating">
+                        Nom complet
+                        <ion-note slot="error" *ngIf="containsError('name', 'required')">
+                            {{ errorMessage('name', 'required') }}
+                        </ion-note>
+                        <ion-note slot="error" *ngIf="containsError('name', 'minlength')">
+                            {{ errorMessage('name', 'minlength') }}
+                        </ion-note>
+                    </ion-label>
+                    <ion-input
+                        (input)="onInput($event)"
+                        formControlName="name"
+                        type="text"
+                        placeholder="Votre nom"
+                        [clearInput]="true">
                     </ion-input>
-                    <ion-note slot="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']">
-                      Le nom est requis
-                    </ion-note>
                   </ion-item>
 
-                  <ion-item>
-                    <ion-label position="floating">Email</ion-label>
-                    <ion-input 
-                      formControlName="email"
-                      type="email" 
-                      placeholder="votre@email.com"
-                      [clearInput]="true">
+                  <ion-item class="items-fix">
+                    <ion-label position="floating">
+                        Email
+                        <ion-note slot="error" *ngIf="containsError('email', 'required')">
+                            {{ errorMessage('email', 'required') }}
+                        </ion-note>
+                        <ion-note slot="error" *ngIf="containsError('email', 'email')">
+                            {{ errorMessage('email', 'email') }}
+                        </ion-note>
+                    </ion-label>
+                    <ion-input
+                        (input)="onInput($event)"
+                        formControlName="email"
+                        type="email"
+                        placeholder="votre@email.com"
+                        [clearInput]="true">
                     </ion-input>
-                    <ion-note slot="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']">
-                      L'email est requis
-                    </ion-note>
-                    <ion-note slot="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']">
-                      Format d'email invalide
-                    </ion-note>
                   </ion-item>
                 </div>
 
-                <ion-item>
-                  <ion-label position="floating">Sujet</ion-label>
-                  <ion-input 
-                    formControlName="subject"
-                    type="text" 
-                    placeholder="Le sujet de votre message"
-                    [clearInput]="true">
+                <ion-item class="items-fix">
+                  <ion-label position="floating">
+                      Sujet
+                      <ion-note slot="error" *ngIf="containsError('subject', 'required')">
+                          {{ errorMessage('subject', 'required') }}
+                      </ion-note>
+                  </ion-label>
+                  <ion-input
+                      (input)="onInput($event)"
+                      formControlName="subject"
+                      type="text"
+                      placeholder="Le sujet de votre message"
+                      [clearInput]="true">
                   </ion-input>
-                  <ion-note slot="error" *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.errors?.['required']">
-                    Le sujet est requis
-                  </ion-note>
                 </ion-item>
 
-                <ion-item>
-                  <ion-label position="floating">Message</ion-label>
-                  <ion-textarea 
-                    formControlName="message"
-                    rows="6" 
-                    placeholder="Votre message..."
+                <ion-item class="items-fix">
+                  <ion-label position="floating">
+                      Message
+                      <ion-note slot="error" *ngIf="containsError('message', 'required')">
+                          {{ errorMessage('message', 'required') }}
+                      </ion-note>
+                  </ion-label>
+                  <ion-textarea
+                       (input)="onInput($event)"
+                       formControlName="message"
+                       rows="6"
+                       placeholder="Votre message..."
                     [autoGrow]="true">
                   </ion-textarea>
-                  <ion-note slot="error" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.errors?.['required']">
-                    Le message est requis
-                  </ion-note>
                 </ion-item>
               </ion-list>
 
@@ -126,7 +141,7 @@
                 <ion-button 
                   expand="block" 
                   type="submit"
-                  [disabled]="!contactForm.valid || isSubmitting">
+                  [disabled]="!form().invalid || isSubmitting">
                   <span>{{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}</span>
                   <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
                 </ion-button>
