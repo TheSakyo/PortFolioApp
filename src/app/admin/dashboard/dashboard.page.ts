@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { NavigationService } from "../../shared/services/navigation.service";
-import { ISectionInterface } from "../../shared/interfaces/global/section.interface";
+import { ISection } from "../../shared/interfaces/global/section.interface";
 import { AboutComponent } from "../../main/components/about/about.component";
 import { ContactComponent } from "../../main/components/contact/contact.component";
 import { HeaderComponent } from "../../shared/components/header/header.component";
@@ -66,5 +66,5 @@ export class DashboardPage implements OnInit {
    * Renvoie Les boutons du menu correspondant aux différentes sections pouvant être affiché à l'administrateur.
    * @returns Les informations des boutons de navigation.
    */
-  public get sectionsMenu(): ISectionInterface[] { return this.navigationService.sections; }
+  public get sectionsMenu(): ISection[] { return this.navigationService.sections; }
 }
