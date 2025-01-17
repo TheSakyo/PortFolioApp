@@ -1,12 +1,12 @@
-<sakyo-header title="Sacha Cardone - PortFolio" [sections]="sectionsMenu" #header></sakyo-header>
+<portfolio-header title="Sacha Cardone - PortFolio" [sections]="sectionsMenu" #header></portfolio-header>
 <ion-content [fullscreen]="true">
   <ng-container *ngIf="header.currentSection === 'about'">
-    <sakyo-about></sakyo-about>
+    <portfolio-about></portfolio-about>
   </ng-container>
   <ng-container *ngIf="header.currentSection === 'projects'">
-    <sakyo-projects></sakyo-projects>
+    <portfolio-projects></portfolio-projects>
   </ng-container>
   <ng-container *ngIf="header.currentSection === 'contact'">
-    <sakyo-contact></sakyo-contact>
+    <portfolio-contact></portfolio-contact>
   </ng-container>
 </ion-content>
