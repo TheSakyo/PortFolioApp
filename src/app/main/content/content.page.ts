@@ -1,25 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { HeaderComponent } from "../../shared/components/header/header.component";
-import { AboutComponent } from '../components/about/about.component';
-import { ProjectsComponent } from '../components/projects/projects.component';
-import { ContactComponent } from '../components/contact/contact.component';
-import { ISection } from "../../shared/interfaces/global/section.interface";
-import { NavigationService } from "../../shared/services/navigation.service";
+import { AboutComponent } from "@portfolio/main/components/about/about.component";
+import { ContactComponent } from "@portfolio/main/components/contact/contact.component";
+import { ProjectsComponent } from "@portfolio/main/components/projects/projects.component";
+import { HeaderComponent } from "@portfolio/shared/components/header/header.component";
+import { ISection } from "@portfolio/shared/interfaces/section.interface";
+import { NavigationService } from "@portfolio/shared/services/common/navigation.service";
 
 @Component({
-  selector: 'sakyo-content',
+  selector: 'portfolio-content',
   templateUrl: './content.page.html',
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-    HeaderComponent,
-    AboutComponent,
-    ProjectsComponent,
-    ContactComponent
-  ]
+  imports: [ IonicModule, CommonModule, HeaderComponent, AboutComponent, ProjectsComponent, ContactComponent ]
 })
 export class ContentPage implements OnInit {
 

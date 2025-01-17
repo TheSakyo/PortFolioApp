@@ -1,17 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ThemeService } from 'src/app/shared/services/theme.service';
 import { IonicModule } from '@ionic/angular';
+import { ThemeService } from "@portfolio/shared/services/common/theme.service";
 
 @Component({
-  selector: 'sakyo-dark-light-toggle',
+  selector: 'portfolio-dark-light-toggle',
   templateUrl: './dark-light-toggle.component.html',
   styleUrls: ['./dark-light-toggle.component.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-  ]
+  imports: [ IonicModule, CommonModule ]
 })
 export class DarkLightToggleComponent {
 

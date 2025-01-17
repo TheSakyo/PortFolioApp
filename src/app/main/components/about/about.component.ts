@@ -1,18 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { AnimationService } from 'src/app/shared/services/animation.service';
-import { SeoService } from "../../../shared/services/seo.service";
+import { AnimationService } from "@portfolio/shared/services/common/animation.service";
+import { SeoService } from "@portfolio/shared/services/common/seo.service";
 
 @Component({
-  selector: 'sakyo-about',
+  selector: 'portfolio-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-  ]
+  imports: [ IonicModule, CommonModule ]
 })
 export class AboutComponent implements OnInit {
 

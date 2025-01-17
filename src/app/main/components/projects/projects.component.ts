@@ -1,19 +1,15 @@
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { AnimationService } from 'src/app/shared/services/animation.service';
-import { SeoService } from "../../../shared/services/seo.service";
+import { AnimationService } from "@portfolio/shared/services/common/animation.service";
+import { SeoService } from "@portfolio/shared/services/common/seo.service";
 
 @Component({
-  selector: 'sakyo-projects',
+  selector: 'portfolio-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-    NgOptimizedImage
-  ]
+  imports: [ IonicModule, CommonModule, NgOptimizedImage ]
 })
 export class ProjectsComponent implements OnInit {
 

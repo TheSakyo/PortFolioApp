@@ -1,20 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { NavigationService } from '../../services/navigation.service';
-import { DarkLightToggleComponent } from '../elements/dark-light-toggle/dark-light-toggle.component';
-import { ISection } from "../../interfaces/global/section.interface";
+import { DarkLightToggleComponent } from "@portfolio/shared/components/elements/dark-light-toggle/dark-light-toggle.component";
+import { ISection } from "@portfolio/shared/interfaces/section.interface";
+import { NavigationService } from "@portfolio/shared/services/common/navigation.service";
 
 @Component({
-  selector: 'sakyo-header',
+  selector: 'portfolio-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-    DarkLightToggleComponent
-  ]
+  imports: [ IonicModule, CommonModule, DarkLightToggleComponent ]
 })
 export class HeaderComponent {
 

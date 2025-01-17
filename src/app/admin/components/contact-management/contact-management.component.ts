@@ -1,20 +1,15 @@
+import { CommonModule } from "@angular/common";
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { CommonModule } from "@angular/common";
-import { SeoService } from "../../../shared/services/seo.service";
+import { SeoService } from "@portfolio/shared/services/common/seo.service";
 
 @Component({
-  selector: 'sakyo-contact-management',
+  selector: 'portfolio-contact-management',
   templateUrl: './contact-management.component.html',
   styleUrls: ['./contact-management.component.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+  imports: [ IonicModule, CommonModule, FormsModule, ReactiveFormsModule ]
 })
 export class ContactManagementComponent implements OnInit {
 
