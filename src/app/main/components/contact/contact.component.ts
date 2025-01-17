@@ -1,28 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { ToastService } from '../../../shared/services/toast.service';
-import { EToastColor } from 'src/app/shared/enums/toast.color.enum';
-import { AnimationService } from 'src/app/shared/services/animation.service';
-import { EToastPosition } from 'src/app/shared/enums/toast.position.enum';
-import { SeoService } from "../../../shared/services/seo.service";
-import { FormService } from "../../../shared/services/form.service";
-import { ValidationErrorsWithMessageType } from "../../../shared/utils/types.utils";
-import { FormsUtils } from "../../../shared/utils/forms.utils";
-import { IFormComponent } from "../../../shared/interfaces/forms/form.component.interface";
+import { EToastColor } from "@portfolio/shared/enums/toast/toast.color.enum";
+import { EToastPosition } from "@portfolio/shared/enums/toast/toast.position.enum";
+import { IFormComponent } from "@portfolio/shared/interfaces/forms/form.component.interface";
+import { AnimationService } from "@portfolio/shared/services/common/animation.service";
+import { FormService } from "@portfolio/shared/services/common/form.service";
+import { SeoService } from "@portfolio/shared/services/common/seo.service";
+import { ToastService } from "@portfolio/shared/services/common/toast.service";
+import { FormsUtils } from "@portfolio/shared/utils/forms.utils";
+import { FormControlError } from "@portfolio/shared/utils/types.utils";
 
 @Component({
-  selector: 'sakyo-contact',
+  selector: 'portfolio-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+  imports: [ IonicModule, CommonModule, FormsModule, ReactiveFormsModule ]
 })
 export class ContactComponent implements IFormComponent, OnInit {
 
@@ -35,12 +30,6 @@ export class ContactComponent implements IFormComponent, OnInit {
    * Indicateur d'état indiquant si le formulaire est en cours de soumission.
    */
   public isSubmitting = false;
-
-  /**
-   * @public
-   * Messages d'erreurs pour chaque champ du formulaire.
-   */
-  public validationErrorsMessages: { [key: string]: ValidationErrorsWithMessageType } = {};
 
   /**
    * @private
@@ -78,8 +67,6 @@ export class ContactComponent implements IFormComponent, OnInit {
 
     this.initForm(); // Initialisation du formulaire de contact
 
-    console.log(this.form().errors);
-
     // Initialisation de l'animation du scroll à l'aide de son service
     this.animationService.initScroll(this.elementRef);
 
@@ -101,17 +88,15 @@ export class ContactComponent implements IFormComponent, OnInit {
   /**
    * Méthode appelée lors de la saisie d'un champ du formulaire.
    * @param event - L'évènement déclenché lors de la saisie.
+   * @param controlName - Nom du champ à vérifier.
    */
-  public onInput(event: Event): void {
-
-    // Récupère les messages d'erreurs pour chaque champ du formulaire.
-    let validationErrorsMessages: ValidationErrorsWithMessageType  = this.validationErrorsMessages['contactForm'];
+  public onInput(event: Event, controlName: string): void {
 
     // Récupère le champ de saisie sur lequel l'évènement a été déclenché.
     const target = event.target as HTMLInputElement;
 
     // Vérifie si le champ est valide, alors, on le marque comme 'touched'.
-    if(target.validity.valid && validationErrorsMessages) this.formService.updateControlErrors(validationErrorsMessages)
+    if(target.validity.valid) this.formService.updateFormControlErrors('contactForm', controlName);
   }
 
   /**
@@ -210,45 +195,43 @@ export class ContactComponent implements IFormComponent, OnInit {
     /*
      * Messages d'erreurs personnalisés pour chaque champ du formulaire.
      */
-    this.validationErrorsMessages['contactForm'] = {
+    this.formService.initFormErrorMessages('contactForm', {
       name: [
-        { type: 'required', message: 'Votre nom est requis.' },
-        //{ type: 'minlength', message: 'Le nom doit contenir au moins 2 caractères.' }
+        { type: 'required', message: 'Votre nom est requis.', validator: Validators.required },
+        { type: 'minlength', message: 'Le nom doit contenir au moins 2 caractères.', validator: Validators.minLength(2) }
       ],
       email: [
-        { type: 'required', message: 'Votre adresse email est requise.' },
-        //{ type: 'email', message: 'Votre adresse email n\'est pas valide.' }
+        { type: 'required', message: 'Votre adresse email est requise.', validator: Validators.required },
+        { type: 'email', message: 'Votre adresse email n\'est pas valide.', validator: Validators.email }
       ],
       subject: [
-        { type: 'required', message: 'Le sujet est requis.' },
-        //{ type: 'minlength', message: 'Le sujet doit contenir au moins 3 caractères.' }
+        { type: 'required', message: 'Le sujet est requis.', validator: Validators.required },
+        { type: 'minlength', message: 'Le sujet doit contenir au moins 3 caractères.', validator: Validators.minLength(3) }
       ],
       message: [
-        { type: 'required', message: 'Un message est requis.' },
-        //{ type: 'minlength', message: 'Le message doit contenir au moins 10 caractères.' }
+        { type: 'required', message: 'Un message est requis.', validator: Validators.required },
+        { type: 'minlength', message: 'Le message doit contenir au moins 10 caractères.', validator: Validators.minLength(10) }
       ]
-    };
-
-    // Initialise des messages d'erreurs par défaut pour le formulaire
-    this.formService.initDefaultErrorMessages(this.validationErrorsMessages['contactForm']);
+    });
   }
 
   /**
-   * Vérifie si le champ en question du formulaire demandé a été 'touché' et contient une erreur spécifique.
-   * @param controlName - Le nom du champ à vérifier.
-   * @param error - Le type d'erreur à vérifier.
+   * Vérifie si le champ en question du formulaire a été 'touché' et contient une erreur spécifique.
+   * @param controlError - Le type d'erreur à vérifier avec son contrôle associé.
+   * @returns Vrai si le champ a été touché et contient une erreur spécifique, faux sinon.
    */
-  public containsError(controlName: string, error: string): boolean {
-    return FormsUtils.hasControlTouched('contactForm', controlName) && FormsUtils.hasError('contactForm', controlName, error);
+  public containsError(controlError: FormControlError): boolean {
+    return FormsUtils.hasControlTouched('contactForm', controlError.targetName)
+        && FormsUtils.hasError('contactForm', controlError);
   }
 
   /**
-   * Récupère le message d'erreur associé à un champ du formulaire en question.
-   * @param controlName - Le nom du champ à vérifier.
-   * @param error - Le type d'erreur à vérifier.
+   * Récupère le message d'erreur associé à un champ du formulaire.
+   * @param controlError - Le type d'erreur à vérifier avec son contrôle associé.
+   * @returns Le message d'erreur associé au champ du formulaire.
    */
-  public errorMessage(controlName: string, error: string): string | undefined {
-    return FormsUtils.getErrorMessage('contactForm', controlName, error);
+  public errorMessage(controlError: FormControlError): string | undefined {
+    return FormsUtils.getErrorMessage('contactForm', controlError, true);
   }
 
   /**************************/
@@ -265,10 +248,10 @@ export class ContactComponent implements IFormComponent, OnInit {
      */
     this.formService.createForm('contactForm', {
 
-      name: new FormControl('', [Validators.minLength(2), Validators.required]), // Champ du nom de l'expéditeur
-      email: new FormControl('', [Validators.email, Validators.required]), // Champ de l'adresse email de l'expéditeur
-      subject: new FormControl('', [Validators.minLength(3), Validators.required]), // Champ du sujet de l'email
-      message: new FormControl('', [Validators.minLength(10), Validators.required]) // Champ du message de l'email
+      name: { value: '' }, // Champ du nom de l'expéditeur
+      email: { value: '' }, // Champ de l'adresse email de l'expéditeur
+      subject: { value: '' }, // Champ du sujet de l'email
+      message: { value: '' }, // Champ du message de l'email
     });
 
     this.initErrorsMessages(); // Initialisation des messages d'erreurs pour le formulaire

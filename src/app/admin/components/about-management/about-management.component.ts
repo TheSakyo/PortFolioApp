@@ -1,24 +1,19 @@
+import { CommonModule } from "@angular/common";
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { CommonModule } from "@angular/common";
-import { SeoService } from "../../../shared/services/seo.service";
-import { FormService } from "../../../shared/services/form.service";
-import { IFormComponent } from "../../../shared/interfaces/forms/form.component.interface";
-import { ValidationErrorsWithMessageType } from "../../../shared/utils/types.utils";
-import { FormsUtils } from "../../../shared/utils/forms.utils";
+import { IFormComponent } from "@portfolio/shared/interfaces/forms/form.component.interface";
+import { FormService } from "@portfolio/shared/services/common/form.service";
+import { SeoService } from "@portfolio/shared/services/common/seo.service";
+import { FormsUtils } from "@portfolio/shared/utils/forms.utils";
+import { FormControlError } from "@portfolio/shared/utils/types.utils";
 
 @Component({
-  selector: 'sakyo-about-management',
+  selector: 'portfolio-about-management',
   templateUrl: './about-management.component.html',
   styleUrls: ['./about-management.component.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+  imports: [ IonicModule, CommonModule, FormsModule, ReactiveFormsModule ]
 })
 export class AboutManagementComponent implements IFormComponent, OnInit {
 
@@ -37,12 +32,6 @@ export class AboutManagementComponent implements IFormComponent, OnInit {
    * Indicateur d'état indiquant si un formulaire est en cours de soumission.
    */
   public isSubmitting = false;
-
-  /**
-   * @public
-   * Messages d'erreurs pour chaque champ d'un formulaire.
-   */
-  public validationErrorsMessages: { [key: string]: ValidationErrorsWithMessageType } = {};
 
   /**
    * @private
@@ -93,42 +82,16 @@ export class AboutManagementComponent implements IFormComponent, OnInit {
   /**
    * Méthode appelée lors de la saisie d'un champ du formulaire demandé.
    * @param event - L'évènement déclenché lors de la saisie.
+   * @param controlName - Le nom du champ à vérifier.
    * @param formName - Le nom du formulaire en question.
    */
-  public onInput(event: Event, formName: string): void {
-
-    // Permettra de stocker les messages d'erreurs pour chaque champ du formulaire en question.
-    let validationErrorsMessages: ValidationErrorsWithMessageType | null = null;
+  public onInput(event: Event, controlName: string, formName: string): void {
 
     // Récupère le champ de saisie sur lequel l'évènement a été déclenché.
     const target = event.target as HTMLInputElement;
 
-    /*
-     * En fonction du nom du formulaire récupéré, on essaie de récupérer les messages d'erreurs correspondants.
-     */
-    switch(formName) {
-
-      /*
-       * Essaie de récupérer les messages d'erreurs pour le formulaire 'aboutForm'.
-       */
-      case 'aboutForm':
-
-        // Récupère les messages d'erreurs pour chaque champ du formulaire 'aboutForm'.
-        validationErrorsMessages = this.validationErrorsMessages['aboutForm'];
-        break; // Sort du switch
-
-      /*
-       * Essaie de récupérer les messages d'erreurs pour le formulaire 'skillForm'.
-       */
-      case 'skillForm':
-
-        // Récupère les messages d'erreurs pour chaque champ du formulaire 'skillForm'.
-        validationErrorsMessages = this.validationErrorsMessages['skillForm'];
-        break; // Sort du switch
-    }
-
     // Vérifie si le champ est valide et s'il y a des messages d'erreurs à afficher, alors, on les affiche.
-    if(target.validity.valid && validationErrorsMessages) this.formService.updateControlErrors(validationErrorsMessages)
+    if(target.validity.valid) this.formService.updateFormControlErrors(formName, controlName)
   }
 
   /**
@@ -242,60 +205,57 @@ export class AboutManagementComponent implements IFormComponent, OnInit {
     switch(formName) {
 
       /*
-       * Initialisation des messages d'erreurs pour le formulaire 'aboutForm'.
+       * Initialisation des messages d'erreurs par défaut pour le formulaire 'aboutForm'.
        */
       case 'aboutForm':
 
         /*
-         * Messages d'erreurs pour chaque champ du formulaire 'aboutForm'.
+         * Initialise les messages d'erreurs par défaut pour chaque champ du formulaire 'aboutForm'.
          */
-        this.validationErrorsMessages['aboutForm'] = {
-          'greeting': [{ type: 'required', message: 'Le message de bienvenue est requis.' }],
-          'name': [{ type: 'required', message: 'Le nom est requis.' }],
-          'title': [{ type: 'required', message: 'Le titre est requis.' }],
-          'bio': [{ type: 'required', message: 'La biographie est requise.' }],
-        };
+        this.formService.initFormErrorMessages('aboutForm',  {
+          'greeting': [{ type: 'required', message: 'Le message de bienvenue est requis.', validator: Validators.required }],
+          'name': [{ type: 'required', message: 'Le nom est requis.', validator: Validators.required }],
+          'title': [{ type: 'required', message: 'Le titre est requis.', validator: Validators.required }],
+          'bio': [{ type: 'required', message: 'La biographie est requise.', validator: Validators.required }],
+        });
 
-        // Initialise des messages d'erreurs par défaut pour le formulaire 'aboutForm'.
-        this.formService.initDefaultErrorMessages(this.validationErrorsMessages['aboutForm']);
         break; // Sort du switch
 
       /*
-       * Initialisation des messages d'erreurs pour le formulaire 'skillForm'.
+       * Initialisation des messages d'erreurs par défaut pour le formulaire 'skillForm'.
        */
       case 'skillForm':
 
         /*
-          * Messages d'erreurs pour chaque champ du formulaire 'skillForm'.
-          */
-        this.validationErrorsMessages['skillForm'] = {
-          'skill': [{ type: 'required', message: 'La compétence est requise.' }]
-        };
+         * Initialise les messages d'erreurs par défaut pour chaque champ du formulaire 'skillForm'.
+         */
+        this.formService.initFormErrorMessages('skillForm', {
+          'skill': [{ type: 'required', message: 'La compétence est requise.', validator: Validators.required }]
+        });
 
-        // Initialise des messages d'erreurs par défaut pour le formulaire 'skillForm'.
-        this.formService.initDefaultErrorMessages(this.validationErrorsMessages['skillForm']);
         break; // Sort du switch
     }
   }
 
   /**
    * Vérifie si le champ en question du formulaire demandé a été 'touché' et contient une erreur spécifique.
-   * @param controlName - Le nom du champ à vérifier.
-   * @param error - Le type d'erreur à vérifier.
+   * @param controlError - Le type d'erreur à vérifier avec son contrôle associé.
    * @param formName - Le nom du formulaire à vérifier.
+   * @returns Vrai si le champ a été touché et contient une erreur spécifique, faux sinon.
    */
-  public containsError(controlName: string, error: string, formName: string): boolean {
-    return FormsUtils.hasControlTouched(formName, controlName) && FormsUtils.hasError(formName, controlName, error);
+  public containsError(controlError: FormControlError, formName: string): boolean {
+    return FormsUtils.hasControlTouched(formName, controlError.targetName)
+        && FormsUtils.hasError(formName, controlError);
   }
 
   /**
    * Récupère le message d'erreur associé à un champ du formulaire en question.
-   * @param controlName - Le nom du champ à vérifier.
-   * @param error - Le type d'erreur à vérifier.
+   * @param controlError - Le type d'erreur à vérifier avec son contrôle associé.
    * @param formName - Le nom du formulaire à vérifier.
+   * @returns Le message d'erreur associé au champ du formulaire.
    */
-  public errorMessage(controlName: string, error: string, formName: string): string | undefined {
-    return FormsUtils.getErrorMessage(formName, controlName, error);
+  public errorMessage(controlError: FormControlError, formName: string): string | undefined {
+    return FormsUtils.getErrorMessage(formName, controlError, true);
   }
 
   /**************************/
