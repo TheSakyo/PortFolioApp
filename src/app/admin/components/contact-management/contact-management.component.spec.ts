@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
-import { ContactManagementComponent } from './contact-management.component';
+import { ContactManagementComponent } from "@portfolio/admin/components/contact-management/contact-management.component";
 
 describe('ContactManagementComponent', () => {
   let component: ContactManagementComponent;
