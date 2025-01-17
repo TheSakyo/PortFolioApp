@@ -3,6 +3,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "paths": {
+      "@portfolio/*": ["src/app/*"]
+    },
     "types": []
   },
   "files": [
