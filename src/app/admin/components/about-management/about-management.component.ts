@@ -31,7 +31,7 @@ export class AboutManagementComponent implements IFormComponent, OnInit {
    * @public
    * Indicateur d'état indiquant si un formulaire est en cours de soumission.
    */
-  public isSubmitting = false;
+  public isSubmitting: boolean = false;
 
   /**
    * @private
@@ -90,7 +90,10 @@ export class AboutManagementComponent implements IFormComponent, OnInit {
     // Récupère le champ de saisie sur lequel l'évènement a été déclenché.
     const target = event.target as HTMLInputElement;
 
-    // Vérifie si le champ est valide et s'il y a des messages d'erreurs à afficher, alors, on les affiche.
+    /*
+     * Vérifie si le champ est valide, alors, on met à jour les erreurs du formulaire
+     * (permettant de les afficher ou non)
+     */
     if(target.validity.valid) this.formService.updateFormControlErrors(formName, controlName)
   }
 

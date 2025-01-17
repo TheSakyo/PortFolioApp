@@ -29,7 +29,7 @@ export class ContactComponent implements IFormComponent, OnInit {
    * @public
    * Indicateur d'état indiquant si le formulaire est en cours de soumission.
    */
-  public isSubmitting = false;
+  public isSubmitting: boolean = false;
 
   /**
    * @private
@@ -95,7 +95,10 @@ export class ContactComponent implements IFormComponent, OnInit {
     // Récupère le champ de saisie sur lequel l'évènement a été déclenché.
     const target = event.target as HTMLInputElement;
 
-    // Vérifie si le champ est valide, alors, on le marque comme 'touched'.
+    /*
+     * Vérifie si le champ est valide, alors, on met à jour les erreurs du formulaire
+     * (permettant de les afficher ou non)
+     */
     if(target.validity.valid) this.formService.updateFormControlErrors('contactForm', controlName);
   }
 
