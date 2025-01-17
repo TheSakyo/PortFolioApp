@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { EToastPosition } from '../enums/toast.position.enum';
-import { IToastOptions } from '../interfaces/global/toast.options.interface';
+import { EToastPosition } from "@portfolio/shared/enums/toast/toast.position.enum";
+import { IToastOptions } from "@portfolio/shared/interfaces/toast/toast.options.interface";
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
@@ -74,21 +74,21 @@ export class ToastService {
    *                       après l'affichage. La valeur par défaut est `true`.
    * @returns Une promesse qui se résout lorsque la notification toast a été présentée à l'utilisateur.
    */
-  public present(toastOptions: IToastOptions | undefined = undefined, resetOptions: boolean = true): Promise<void> { 
+  public async present(toastOptions: IToastOptions | undefined = undefined, resetOptions: boolean = true): Promise<void> {
 
     /**
      * Tout d'abord, on vérifie si des options de notification toast initiales (_toastOptions) sont définies.
-     * 
-     * Si c'est le cas et que les options de notification toast fournies (toastOptions) sont vides, 
-     * on assigne la propriété '_toastOptions' à celle de 'toastOptions'. 
-     * 
+     *
+     * Si c'est le cas et que les options de notification toast fournies (toastOptions) sont vides,
+     * on assigne la propriété '_toastOptions' à celle de 'toastOptions'.
+     *
      * Sinon, on conserve la valeur actuelle de la propriété 'toastOptions'.
      */
     toastOptions = this._toastOptions && !toastOptions ? this._toastOptions : toastOptions;
 
     /**
-     * Si les options de notification toast fournies (toastOptions) sont définies après la vérification précédente, 
-     * on met à jour les options de notification toast initiales (_toastOptions) 
+     * Si les options de notification toast fournies (toastOptions) sont définies après la vérification précédente,
+     * on met à jour les options de notification toast initiales (_toastOptions)
      * avec cette valeur à l'aide de son setter (toastOptions()).
      */
     if(toastOptions) this.toastOptions = toastOptions;
@@ -97,8 +97,12 @@ export class ToastService {
      * Crée une instance de notification toast à partir des options de configuration de la notification et l'affiche.
      * Finalement, on réinitialise les options pour la notification toast si le paramètre (resetOptions) est vrai.
      */
-    return this.toastController.create(this._toastOptions).then(toast => toast.present())
-      .finally(() => { if(resetOptions) this._toastOptions = undefined; });
+    try {
+
+      const toast = await this.toastController.create(this._toastOptions);
+      return await toast.present();
+
+    } finally { if(resetOptions) this._toastOptions = undefined; }
   }
 
   /***********************************************************/
@@ -159,7 +163,7 @@ export class ToastService {
      * Sinon, si l'option 'cssClass' est déjà un tableau et qu'il contient pas la classe CSS par défaut, 
      * on redéfinit le tableau proprement en combinant les valeurs avec la classe par défaut.
      */
-    else if(Array.isArray(cssClass) && cssClass.includes(defaultClass) === false) cssClassArray = [...cssClass, ...cssClassArray];
+    else if(Array.isArray(cssClass) && !cssClass.includes(defaultClass)) cssClassArray = [...cssClass, ...cssClassArray];
 
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
