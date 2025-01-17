@@ -68,15 +68,12 @@
                   <ion-item class="items-fix">
                     <ion-label position="floating">
                         Nom complet
-                        <ion-note slot="error" *ngIf="containsError('name', 'required')">
-                            {{ errorMessage('name', 'required') }}
-                        </ion-note>
-                        <ion-note slot="error" *ngIf="containsError('name', 'minlength')">
-                            {{ errorMessage('name', 'minlength') }}
+                        <ion-note slot="error" *ngIf="containsError({ targetName: 'name', type: 'ANY' })">
+                            {{ errorMessage({ targetName: 'name', type: 'ANY' }) }}
                         </ion-note>
                     </ion-label>
                     <ion-input
-                        (input)="onInput($event)"
+                        (input)="onInput($event, 'name')"
                         formControlName="name"
                         type="text"
                         placeholder="Votre nom"
@@ -87,15 +84,12 @@
                   <ion-item class="items-fix">
                     <ion-label position="floating">
                         Email
-                        <ion-note slot="error" *ngIf="containsError('email', 'required')">
-                            {{ errorMessage('email', 'required') }}
-                        </ion-note>
-                        <ion-note slot="error" *ngIf="containsError('email', 'email')">
-                            {{ errorMessage('email', 'email') }}
+                        <ion-note slot="error" *ngIf="containsError({ targetName: 'email', type: 'ANY' })">
+                            {{ errorMessage({ targetName: 'email', type: 'ANY' }) }}
                         </ion-note>
                     </ion-label>
                     <ion-input
-                        (input)="onInput($event)"
+                        (input)="onInput($event, 'email')"
                         formControlName="email"
                         type="email"
                         placeholder="votre@email.com"
@@ -107,12 +101,12 @@
                 <ion-item class="items-fix">
                   <ion-label position="floating">
                       Sujet
-                      <ion-note slot="error" *ngIf="containsError('subject', 'required')">
-                          {{ errorMessage('subject', 'required') }}
+                      <ion-note slot="error" *ngIf="containsError({ targetName: 'subject', type: 'ANY' })">
+                          {{ errorMessage({ targetName: 'subject', type: 'ANY' }) }}
                       </ion-note>
                   </ion-label>
                   <ion-input
-                      (input)="onInput($event)"
+                      (input)="onInput($event, 'subject')"
                       formControlName="subject"
                       type="text"
                       placeholder="Le sujet de votre message"
@@ -123,12 +117,12 @@
                 <ion-item class="items-fix">
                   <ion-label position="floating">
                       Message
-                      <ion-note slot="error" *ngIf="containsError('message', 'required')">
-                          {{ errorMessage('message', 'required') }}
+                      <ion-note slot="error" *ngIf="containsError({ targetName: 'message', type: 'ANY' })">
+                          {{ errorMessage({ targetName: 'message', type: 'ANY' }) }}
                       </ion-note>
                   </ion-label>
                   <ion-textarea
-                       (input)="onInput($event)"
+                       (input)="onInput($event, 'message')"
                        formControlName="message"
                        rows="6"
                        placeholder="Votre message..."
