@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
-import { DarkLightToggleComponent } from './dark-light-toggle.component';
+import { DarkLightToggleComponent } from "@portfolio/shared/components/elements/dark-light-toggle/dark-light-toggle.component";
 
 describe('DarkLightToggleComponent', () => {
   let component: DarkLightToggleComponent;

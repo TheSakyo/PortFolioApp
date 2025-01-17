@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
-import { Error404Component } from './error404.component';
+import { Error404Component } from "@portfolio/shared/components/errors/error-404/error404.component";
 
 describe('Error404Component', () => {
   let component: Error404Component;

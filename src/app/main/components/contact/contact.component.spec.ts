@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
-import { ContactComponent } from './contact.component';
+import { ContactComponent } from "@portfolio/main/components/contact/contact.component";
 
 describe('ContactComponent', () => {
   let component: ContactComponent;

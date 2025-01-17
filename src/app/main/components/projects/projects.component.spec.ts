@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
-import { ProjectsComponent } from './projects.component';
+import { ProjectsComponent } from "@portfolio/main/components/projects/projects.component";
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
