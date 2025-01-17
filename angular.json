@@ -13,7 +13,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "sakyo",
+      "prefix": "portfolio",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
