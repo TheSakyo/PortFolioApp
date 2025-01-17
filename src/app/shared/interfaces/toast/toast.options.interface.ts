@@ -1,10 +1,10 @@
-import { EToastColor } from "src/app/shared/enums/toast.color.enum";
-import { EToastPosition } from "src/app/shared/enums/toast.position.enum";
 import { ToastOptions } from '@ionic/core';
-import { EToastLayout } from "src/app/shared/enums/toast.layout.enum";
-import { EInterfaceMode } from "src/app/shared/enums/interface.mode.enum";
-import { EToastButtonSide } from "src/app/shared/enums/toast.button.side.enum";
-import { EToastSwipeGesture } from "src/app/shared/enums/toast.swipe-gesture.enum";
+import { EInterfaceMode } from "@portfolio/shared/enums/interface.mode.enum";
+import { EToastButtonSide } from "@portfolio/shared/enums/toast/toast.button.side.enum";
+import { EToastColor } from "@portfolio/shared/enums/toast/toast.color.enum";
+import { EToastLayout } from "@portfolio/shared/enums/toast/toast.layout.enum";
+import { EToastPosition } from "@portfolio/shared/enums/toast/toast.position.enum";
+import { EToastSwipeGesture } from "@portfolio/shared/enums/toast/toast.swipe-gesture.enum";
 
 /**
  * Interface personnalisée pour les options de notification toast,

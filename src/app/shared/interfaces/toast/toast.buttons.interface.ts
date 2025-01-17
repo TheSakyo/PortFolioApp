@@ -1,5 +1,5 @@
 import { ToastButton } from '@ionic/core';
-import { EToastButtonSide } from 'src/app/shared/enums/toast.button.side.enum';
+import { EToastButtonSide } from "@portfolio/shared/enums/toast/toast.button.side.enum";
 
 /**
  * Interface personnalisée pour les boutons de notification toast,
