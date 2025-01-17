@@ -11,30 +11,27 @@
             <div class="form-grid">
                 <ion-item class="items-fix">
                     <ion-label position="stacked">Salutation :</ion-label>
-                    <ion-input formControlName="greeting"
-                               placeholder="Par exemple : Bienvenue dans mon portfolio">
+                    <ion-input (input)="onInput($event, 'greeting', 'aboutForm')"
+                               formControlName="greeting" placeholder="Par exemple : Bienvenue dans mon portfolio">
                     </ion-input>
                 </ion-item>
                 <ion-item class="items-fix">
                     <ion-label position="stacked">Nom :</ion-label>
-                    <ion-input formControlName="name"
-                               placeholder="Ton nom">
+                    <ion-input (input)="onInput($event, 'name', 'aboutForm')"
+                               formControlName="name" placeholder="Ton nom">
                     </ion-input>
                 </ion-item>
                 <ion-item class="items-fix">
                     <ion-label position="stacked">Titre :</ion-label>
-                    <ion-input formControlName="title"
-                               placeholder="Ton métier">
+                    <ion-input (input)="onInput($event, 'title', 'aboutForm')"
+                               formControlName="title" placeholder="Ton métier">
                     </ion-input>
                 </ion-item>
                 <ion-item class="items-fix">
                     <ion-label position="stacked">Description :</ion-label>
-                    <ion-textarea formControlName="bio" rows="6"
-                                  placeholder="Ta biographie" [autoGrow]="true">
+                    <ion-textarea (input)="onInput($event, 'bio', 'aboutForm')"
+                                  formControlName="bio" rows="6" placeholder="Ta biographie" [autoGrow]="true">
                     </ion-textarea>
-                    <ion-note slot="error" *ngIf="containsError('bio', 'required', 'aboutForm')">
-                        {{ errorMessage('bio', 'required', 'aboutForm') }}
-                    </ion-note>
                 </ion-item>
                 <ion-button type="submit" [disabled]="form('aboutForm').invalid">Enregistrer</ion-button>
             </div>
@@ -70,8 +67,8 @@
         <form [formGroup]="form('skillForm')" (ngSubmit)="addSkill()">
             <ion-item class="items-fix">
                 <ion-label position="stacked">Compétence :</ion-label>
-                <ion-input formControlName="skill"
-                           placeholder="Nom de la compétence">
+                <ion-input (input)="onInput($event, 'skill', 'skillForm')"
+                           formControlName="skill" placeholder="Nom de la compétence">
                 </ion-input>
             </ion-item>
             <ion-button type="submit" [disabled]="form('skillForm').invalid">Ajouter</ion-button>
