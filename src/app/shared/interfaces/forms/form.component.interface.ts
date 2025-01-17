@@ -1,5 +1,5 @@
 import { FormGroup } from "@angular/forms";
-import { ValidationErrorsWithMessageType } from "../../utils/types.utils";
+import { FormControlError } from "@portfolio/shared/utils/types.utils";
 
 export declare interface IFormComponent {
 
@@ -12,11 +12,6 @@ export declare interface IFormComponent {
      */
     isSubmitting: boolean,
 
-    /**
-     * Messages d'erreurs pour chaque champ par formulaire.
-     */
-    validationErrorsMessages: { [key: string]: ValidationErrorsWithMessageType },
-
     /*****************************************************/
     /**************   ⬇️    ÉVÈNEMENTS    ⬇️   **********/
     /****************************************************/
@@ -24,9 +19,10 @@ export declare interface IFormComponent {
     /**
      * Méthode appelée lors de la saisie d'un champ du formulaire demandé.
      * @param event - L'évènement déclenché lors de la saisie.
+     * @param controlName - Nom du champ à vérifier.
      * @param formName - Nom du formulaire à vérifier.
      */
-    onInput(event: Event, formName?: string): void,
+    onInput(event: Event, controlName: string, formName?: string): void,
 
     /**
      * Méthode appelée lors de la soumission d'un formulaire.
@@ -60,19 +56,17 @@ export declare interface IFormComponent {
 
     /**
      * Vérifie si le champ en question du formulaire demandé a été 'touché' et contient une erreur spécifique.
-     * @param controlName - Le nom du champ à vérifier.
-     * @param error - Le type d'erreur à vérifier.
+     * @param controlError - Les informations sur le champ et le nom de l'erreur qui doit être vérifiée.
      * @param formName - Le nom du formulaire à vérifier.
      * @remarks Le nom du formulaire est facultatif.
      */
-     containsError(controlName: string, error: string, formName?: string): boolean,
+     containsError(controlError: FormControlError, formName?: string): boolean,
 
     /**
      * Récupère le message d'erreur associé à un champ du formulaire demandé.
-     * @param controlName - Le nom du champ à vérifier.
-     * @param error - Le type d'erreur à vérifier.
+     * @param controlError - Les informations sur le champ et le nom de l'erreur qui doit être vérifiée.
      * @param formName - Le nom du formulaire à vérifier.
      * @remarks Le nom du formulaire est facultatif.
      */
-     errorMessage(controlName: string, error: string, formName?: string): string | undefined
+     errorMessage(controlError: FormControlError, formName?: string): string | undefined
 }
