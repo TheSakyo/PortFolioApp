@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
-import { NavigationService } from './navigation.service';
+import { NavigationService } from "@portfolio/shared/services/common/navigation.service";
 
 describe('NavigationService', () => {
   let service: NavigationService;
